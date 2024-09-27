@@ -8,8 +8,8 @@ from pymongo.errors import ServerSelectionTimeoutError, InvalidDocument, Connect
 
 def save_to_atlas(books: list[dict]):
     load_dotenv()
-    mongodb_uri = os.environ["MONGODB_URI_YAN"]
-    tls_cert_file = os.environ["TLS_CERT_FILE_YAN"]
+    mongodb_uri = os.environ["MONGODB_URI_YURI"]
+    tls_cert_file = os.environ["TLS_CERT_FILE_YURI"]
     try:
         client = MongoClient(mongodb_uri,
                              tls=True,
@@ -40,9 +40,7 @@ def save_to_atlas(books: list[dict]):
                 print(f"Skipping duplicate book: {book['title']}, by {book['authors']}, {book['publication_year']}")
 
         if books_to_insert:
-            print("Successfully inserted documents:")
-            for doc in books_to_insert:
-                print(doc["title"])  # Print titles of inserted documents
+            print(f"Successfully inserted {len(books)} documents")
         else:
             print("No new documents inserted (all duplicates).")
 

@@ -41,16 +41,13 @@ def regex_parse(markdown_data: str) -> list[dict]:
                     url = i
                     break
 
-                print("Invalid URL:", url)
-                print("Invalid URL:", url)
-
             # Validate the URL using the validators library
             try:
                 if not validators.url(url):
                     print("Invalid URL:", url)
                     raise ValueError(f"Invalid URL: {url}")
             except ValueError as e:
-                print(f"Error parsing book entry: {e}")
+                print(f"Error parsing book entry: {e} for {title}")
                 # Optionally: Skip this entry and continue processing others
                 continue
 

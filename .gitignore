@@ -131,7 +131,7 @@ env.bak/
 venv.bak/
 
 # Certificates
-.pem
+*.pem
 
 # Spyder project settings
 .spyderproject

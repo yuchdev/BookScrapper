@@ -1,5 +1,5 @@
 import unittest
-from src.bookscraper.mdparser import regex_parse
+from tools.mdparser import regex_parse
 from src.bookscraper.book_utils import hash_book
 
 

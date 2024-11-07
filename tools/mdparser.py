@@ -1,5 +1,5 @@
 import re
-from src.bookscraper.book_utils import hash_book
+from book_utils import hash_book
 import validators
 
 

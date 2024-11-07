@@ -16,22 +16,26 @@ pip install -r requirements.txt
 
 ## Usage
 
-### 1. To scrape an existing .md file
+### ...
+
+## Tools
+
+### 1. scrapemd.py
 
 ````bash
-python3 scrapemd.py
+python scrapemd.py
 ````
 
-## How it works
+### How it works
 
-### 1. Loading an .md file
+#### 1. Loading an .md file
 
 - The scraper loads a specified markdown file.
 
 For now, its URI is hardcoded, but we could change it to a CLI argument in a future iteration.
 will parse an md file, line by line,
 
-### 2. Parsing the .md file
+#### 2. Parsing the .md file
 
 The md file is read line-by-line and parsed for tokenization
 
@@ -75,8 +79,7 @@ Tests folder contains 5 tests for the mdparser.regex_parse function:
 3. Test with Invalid URL
 4. Test with Multiple Authors
 
-### Version notes:
+###
+### *Version notes:*
 
-**Current Version**: The remote file https://raw.githubusercontent.com/yuchdev/CppBooks/refs/heads/master/README.md is
-hardcoded, but CLI arguments could be considered in the future.
-
+**Current Version**:

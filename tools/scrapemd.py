@@ -1,11 +1,25 @@
 import requests
 import json
 from datetime import datetime
-from src.bookscraper.mdparser import regex_parse
-from src.bookscraper.save_to_mongo import save_to_atlas
+from mdparser import regex_parse
+from save_to_mongo import save_to_atlas
 
 
 def main():
+    """
+    Scrapes book data from a remote Markdown file, parses it, and saves it to both a JSON file and a MongoDB database.
+
+    The function performs the following steps:
+
+    1. Fetches the Markdown content from the specified URL.
+    2. Parses the Markdown to extract book information (title, URL, authors, year, category).
+    3. Prints statistics about the extracted data (number of books, number of categories).
+    4. Saves the parsed book data to a JSON file with a timestamp in the filename.
+    5. Saves the parsed book data to a MongoDB Atlas database using the `save_to_atlas` function.
+
+    The Markdown file is expected to follow a specific format for book entries, as documented in the `regex_parse` function.
+    """
+
     md_file_path = "https://raw.githubusercontent.com/yuchdev/CppBooks/refs/heads/master/README.md"
     print("Getting MD file at " + md_file_path)
     markdown_data = requests.get(md_file_path).content.decode('utf-8')

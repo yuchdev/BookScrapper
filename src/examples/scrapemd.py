@@ -1,8 +1,8 @@
 import requests
-import json
 from datetime import datetime
 from mdparser import regex_parse
 from save_to_mongo import save_to_atlas
+import pandas as pd
 
 
 def main():
@@ -17,8 +17,25 @@ def main():
     4. Saves the parsed book data to a JSON file with a timestamp in the filename.
     5. Saves the parsed book data to a MongoDB Atlas database using the `save_to_atlas` function.
 
-    The Markdown file is expected to follow a specific format for book entries, as documented in the `regex_parse` function.
+    The Markdown file is expected to follow a specific format for book entries, as documented in the `regex_parse`
+     function.
     """
+
+    def json_to_csv_pandas(json_data, csv_filename):
+        """Converts JSON data to CSV using Pandas.  Handles nested JSON well.
+
+        Args:
+            json_data: The JSON data (can be a list or a dictionary, even nested).
+            csv_filename: The name of the CSV file.
+        """
+        try:
+            df = pd.json_normalize(json_data)  # Use json_normalize for nested JSON
+            df.to_csv(csv_filename, index=False, encoding='utf-8')
+            print(f"JSON data successfully saved to {csv_filename}")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    STORAGE = "local"
 
     md_file_path = "https://raw.githubusercontent.com/yuchdev/CppBooks/refs/heads/master/README.md"
     print("Getting MD file at " + md_file_path)
@@ -34,15 +51,23 @@ def main():
     print(f"{num_books} books found in {num_sections} categories.")
     # Save the data as JSON
     timestamp = datetime.now().strftime("%Y-%m-%d_%H.%M")
-    filename = f"readmeBooks_{timestamp}.json"
+    # filename = f"readmeBooks_{timestamp}.json"
+    filename = f"readmeBooks_{timestamp}.csv"
 
-    print("Saving results to", filename)
-    with open(filename, "w", encoding="utf-8") as file:
-        json.dump(books, file, ensure_ascii=False, indent=4)
+    match STORAGE:
+        case "local":
+            print("Saving results to", filename)
+            # with open(filename, "w", encoding="utf-8") as file:
+            #     json.dump(books, file, ensure_ascii=False, indent=4)
+            # with open(filename, "w", newline="") as csvfile:
+            #     writer = csv.writer(csvfile)
+            #     writer.writerows(books)  # Write all rows at once
+            json_to_csv_pandas(books, "output_from_file_pandas.csv")
 
-    # Save the data to MongoDB Atlas
-    print("Saving results to MongoDB Atlas")
-    save_to_atlas(books)
+        case "remote":
+            # Save the data to MongoDB Atlas
+            print("Saving results to MongoDB Atlas")
+            save_to_atlas(books)
 
 
 if __name__ == "__main__":

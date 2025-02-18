@@ -1,4 +1,29 @@
 import hashlib
+from datetime import datetime
+
+
+def extract_year_from_date(date_string):
+    """
+    Extracts the year from a date string.
+
+    Args:
+      date_string: The date string in any supported format (e.g., "2023-12-19", "December 17, 2019", "1995").
+
+    Returns:
+      int: The extracted year, or None if the year cannot be extracted.
+    """
+    try:
+        # Attempt to parse the date string using different formats
+        for date_format in ["%Y-%m-%d", "%B %d, %Y", "%Y"]:
+            try:
+                date_object = datetime.strptime(date_string, date_format)
+                return date_object.year
+            except ValueError:
+                continue  # Try the next format
+
+    except Exception as e:
+        print(f"Error extracting year: {e}")
+        return None
 
 
 def hash_book(title: str = "", authors: list = [None], year=None) -> str:

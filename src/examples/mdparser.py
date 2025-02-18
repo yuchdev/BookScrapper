@@ -1,6 +1,7 @@
 import re
-from .book_utils import hash_book
+from book_utils import hash_book
 import validators
+import csv
 
 
 def regex_parse(markdown_data: str) -> list[dict]:

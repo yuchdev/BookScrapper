@@ -6,27 +6,40 @@ from pymongo.errors import ServerSelectionTimeoutError, InvalidDocument, Connect
     DuplicateKeyError
 
 
-def save_to_atlas(books: list[dict]):
+def save_to_atlas(books: list[dict]) -> None:
     """Saves a list of book dictionaries to MongoDB Atlas, handling duplicates.
 
+    This function takes a list of dictionaries, where each dictionary represents a book.
+    It connects to MongoDB Atlas using environment variables and inserts the books
+    into the 'books' collection of the 'bookscraper' database. Duplicate entries
+    based on the 'hash' key are skipped.
+
     Args:
-        books (list[dict]): A list of dictionaries, where each dictionary represents a book.
-            Each book dictionary should have at least the following keys:
+        books (list[dict]): A list of dictionaries representing books.
+            Each dictionary should have the following keys:
                 "title" (str): The title of the book.
                 "hash" (str): A unique hash representing the book.
                 "authors" (list): A list of authors of the book.
                 "publication_year" (int): The publication year of the book.
 
     Returns:
-        None. Prints messages to the console indicating the success or failure of the operation.
+        None. Prints messages to the console indicating success or failure.
+
+    Example Usage:
+        my_books = [
+            {"title": "Book 1", "hash": "unique_hash_1", "authors": ["Author 1"], "publication_year": 2023},
+            # ... other book dictionaries
+        ]
+        save_to_atlas(my_books)
     """
 
     load_dotenv()
-    mongodb_uri = os.environ["MONGODB_URI_YAN"]
-    tls_cert_file = os.environ["TLS_CERT_FILE_YAN"]
+    mongodb_uri = os.environ["MONGODB_URI"]
+    tls_cert_file = os.environ["TLS_CERT_FILE"]
 
     # Configure logging (choose a destination, e.g., console)
-    logging.basicConfig(filename="bookscraper.log", level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename="bookscraper.log", level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
     logger = logging.getLogger(__name__)  # Get a logger instance
 
     try:

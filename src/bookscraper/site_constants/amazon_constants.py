@@ -1,0 +1,7 @@
+AMAZON_TITLE = "#productTitle"
+AMAZON_AUTHORS = "#bylineInfo span.author.notFaded a"
+AMAZON_ISBN10 = "#rpi-attribute-book_details-isbn10 .rpi-attribute-value"
+AMAZON_ISBN13 = "#rpi-attribute-book_details-isbn13 .rpi-attribute-value"
+AMAZON_TAGS = "#detailBulletsWrapper_feature_div ul li ul li a"
+AMAZON_PUBLICATION_DATE = "div#rpi-attribute-book_details-publication_date div.rpi-attribute-value span"
+AMAZON_SUMMARY = "#bookDescription_feature_div .a-expander-content"

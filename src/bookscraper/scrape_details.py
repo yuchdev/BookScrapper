@@ -1,9 +1,11 @@
 import random
 import re
+
+from fake_useragent import UserAgent
+from playwright_stealth import stealth_async, stealth_sync
+
 from .book_utils import hash_book, extract_year_from_date
-
-
-# from .site_constants import amazon_constants
+from .site_constants import amazon_constants
 
 
 def get_random_user_agent():
@@ -37,9 +39,7 @@ def scrape_packtpub(url: str, page):
 
         page.wait_for_selector("h1.product-title", state="attached", timeout=3000)
 
-        book_details = {}
-        book_details["url"] = url
-        book_details["site"] = "packtpub.com"
+        book_details = {"url": url, "site": "packtpub.com"}
 
         # Scrape Title
         try:
@@ -115,105 +115,120 @@ def scrape_packtpub(url: str, page):
         return None
 
 
-def scrape_amazon(url, page):
-    try:
-        print(f"Opening {url}...")
-        page.goto(url, timeout=10000)
-        print("Waiting for elements to load...")
-
-        # Getting Title
-        page.wait_for_selector("#productTitle", state="attached", timeout=3000)
-
-        book_details = {}
-        book_details["url"] = url
-        book_details["site"] = "amazon.com"
-
-        # Scrape Title
+def scrape_amazon(url, browser):
+    retries = 3
+    for attempt in range(retries):
         try:
-            print("Getting book title...")
-            book_details["title"] = page.locator("#productTitle").inner_text().strip()
-        except Exception as e:
-            print(f"Failed to get book at {url}. Check link.")
-            return
+            page = browser.new_page()
+            ua = UserAgent(platforms='desktop')
+            chosen_user_agent = ua.random
+            # print(f"Using User-Agent: {chosen_user_agent}")
+            stealth_sync(page)  # Use stealth_sync
+            page.set_extra_http_headers({"User-Agent": chosen_user_agent})
 
-        # Scrape Authors
-        try:
-            print("Getting book author(s)...")
-            book_details["authors"] = [
-                author.inner_text().strip() for author in page.locator("#bylineInfo span.author.notFaded a").all()
-            ]
-        except:
-            book_details["authors"] = []
+            print(f"Opening {url}...")
+            try:
+                page.goto(url, timeout=30000)
+            except TimeoutError:
+                print(f"Timeout navigating to {url}")
+                return None
 
-        # Scrape isbn10
-        try:
-            print("Getting book isbn10...")
-            book_details["isbn10"] = page.locator(
-                "#rpi-attribute-book_details-isbn10 .rpi-attribute-value", timeout=2000).inner_text().strip()
-        except:
-            book_details["isbn10"] = None
+            # Waiting for page to load
+            print("Waiting for elements to load...")
 
-        # Scrape isbn13
-        try:
-            print("Getting book isbn13...")
-            book_details["isbn13"] = page.locator(
-                "#rpi-attribute-book_details-isbn13 .rpi-attribute-value", timeout=2000).inner_text().strip()
-        except:
-            book_details["isbn13"] = None
+            book_details = {"url": url, "site": "amazon.com"}
 
-        # Scrape Book Tags
-        try:
-            print("Getting book tags...")
-            book_details["tags"] = [
-                tag.inner_text().replace("(Books)", "").strip() for tag in
-                page.locator("#detailBulletsWrapper_feature_div ul li ul li a").all()
-            ]
-        except:
-            book_details["tags"] = []
+            # Scrape Title
+            try:
+                print("Getting book title...")
+                page.wait_for_selector(amazon_constants.TITLE, state="attached", timeout=10000)
+                book_details["title"] = page.locator(amazon_constants.TITLE).inner_text().strip()
+            except TimeoutError as e:
+                print(f"Failed to get book at {url}. Check link.")
+                return
 
-        # Scrape Publication Date
-        try:
-            print("Getting book publication date...")
-            page.locator("a:has-text('Next slide of product details')").click()
-            page.wait_for_selector("#rpi-attribute-book_details-publication_date", state="attached")
-            book_details["publication_date"] = page.locator(
-                "div#rpi-attribute-book_details-publication_date div.rpi-attribute-value span").inner_text().strip()
-        except:
-            book_details["publication_date"] = None
+            # Scrape Authors
+            try:
+                print("Getting book author(s)...")
+                page.wait_for_selector(amazon_constants.AUTHORS, timeout=10000)
+                book_details["authors"] = [
+                    author.inner_text().strip() for author in page.locator(amazon_constants.AUTHORS).all()
+                ]
+            except:
+                book_details["authors"] = []
 
-        # Scrape Description
-        try:
-            print("Getting book summary...")
+            # Scrape isbn10
+            try:
+                print("Getting book isbn10...")
+                page.wait_for_selector(amazon_constants.ISBN10, timeout=10000)
+                book_details["isbn10"] = page.locator(
+                    amazon_constants.ISBN10).inner_text().strip()
+            except:
+                book_details["isbn10"] = None
 
-            # Integrated description logic:
-            full_description = page.locator("#bookDescription_feature_div .a-expander-content").inner_text().strip()
-            if full_description:
-                book_details["summary"] = full_description
-            else:  # Check for "Read more" and click if necessary
-                read_more_link = page.locator("#bookDescription_feature_div .a-expander-prompt")
-                if read_more_link.is_visible():
-                    read_more_link.click()
-                    page.wait_for_selector(
-                        "#bookDescription_feature_div .a-expander-content:not(.a-expander-partial-collapse-content)",
-                        state="attached")
-                    full_description = page.locator(
-                        "#bookDescription_feature_div .a-expander-content").inner_text().strip()
+            # Scrape isbn13
+            try:
+                print("Getting book isbn10...")
+                page.wait_for_selector(amazon_constants.ISBN13, timeout=10000)
+                book_details["isbn13"] = page.locator(
+                    amazon_constants.ISBN13).inner_text().strip()
+            except:
+                book_details["isbn13"] = None
+
+            # Scrape Book Tags
+            try:
+                print("Getting book tags...")
+
+                book_details["tags"] = [
+                    tag.inner_text().replace("(Books)", "").strip() for tag in
+                    page.locator("#detailBulletsWrapper_feature_div ul li ul li a").all()
+                ]
+            except:
+                book_details["tags"] = []
+
+            # Scrape Publication Date
+            try:
+                print("Getting book publication date...")
+                page.locator("a:has-text('Next slide of product details')").click()
+                page.wait_for_selector("#rpi-attribute-book_details-publication_date", state="attached")
+                book_details["publication_date"] = page.locator(
+                    "div#rpi-attribute-book_details-publication_date div.rpi-attribute-value span").inner_text().strip()
+            except:
+                book_details["publication_date"] = None
+
+            # Scrape Description
+            try:
+                print("Getting book summary...")
+
+                # Integrated description logic:
+                full_description = page.locator("#bookDescription_feature_div .a-expander-content").inner_text().strip()
+                if full_description:
                     book_details["summary"] = full_description
-                else:
-                    book_details["summary"] = None  # Handle the case where there's no description
+                else:  # Check for "Read more" and click if necessary
+                    read_more_link = page.locator("#bookDescription_feature_div .a-expander-prompt")
+                    if read_more_link.is_visible():
+                        read_more_link.click()
+                        page.wait_for_selector(
+                            "#bookDescription_feature_div .a-expander-content:not(.a-expander-partial-collapse-content)",
+                            state="attached")
+                        full_description = page.locator(
+                            "#bookDescription_feature_div .a-expander-content").inner_text().strip()
+                        book_details["summary"] = full_description
+                    else:
+                        book_details["summary"] = None  # Handle the case where there's no description
+
+            except Exception as e:
+                print(f"Error getting summary: {e}")
+                book_details["summary"] = None
+
+            year = extract_year_from_date(book_details.get("publication_date"))
+            book_details["hash"] = hash_book(book_details.get("title"), book_details.get("authors"), year)  # Use get
+
+            return book_details
 
         except Exception as e:
-            print(f"Error getting summary: {e}")
-            book_details["summary"] = None
-
-        year = extract_year_from_date(book_details.get("publication_date"))
-        book_details["hash"] = hash_book(book_details.get("title"), book_details.get("authors"), year)  # Use get
-
-        return book_details
-
-    except Exception as e:
-        print(f"Error scraping book details: {e} Please check {url}.")
-        return None
+            print(f"Error scraping book details: {e} Please check {url}.")
+            return None
 
 
 def scrape_leanpub(url: str, page):
@@ -361,7 +376,7 @@ def scrape_oreilly(url: str, page):
             all_p_text = ""
 
             for p_element in summary_elements.all():
-                all_p_text += p_element.inner_text().strip() + " " # Add text and a space
+                all_p_text += p_element.inner_text().strip() + " "  # Add text and a space
             book_details['summary'] = all_p_text
         except Exception as e:
             print(f"Error getting summary: {e}")

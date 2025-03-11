@@ -1,6 +1,9 @@
 import argparse
 import csv
 import time
+
+from fake_useragent import UserAgent
+
 from src.bookscraper import scrape_details
 import pandas as pd
 from playwright.sync_api import sync_playwright
@@ -86,28 +89,28 @@ def main():
     with sync_playwright() as p:
         print("Launching browser...")
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context(user_agent=scrape_details.get_random_user_agent())
-        page = context.new_page()
+        # context = browser.new_context(user_agent=UserAgent().random)  # Use random User-Agent
+        # page = context.new_page()
 
         print("Fetching Amazon book details...")
-        for url in amazon_urls:
+        for url in amazon_urls[:10]:
             time.sleep(1)
-            books.append(scrape_details.scrape_amazon(url, page))
+            books.append(scrape_details.scrape_amazon(url, browser))
 
-        print("Fetching PactPub book details...")
-        for url in packtpub_urls:
-            time.sleep(1)
-            books.append(scrape_details.scrape_packtpub(url, page))
-
-        print("Fetching LeanPub book details...")
-        for url in leanpub_urls:
-            time.sleep(1)
-            books.append(scrape_details.scrape_leanpub(url, page))
-
-        print("Fetching O'Reilly book details...")
-        for url in oreilly_urls:
-            time.sleep(1)
-            books.append(scrape_details.scrape_oreilly(url, page))
+        # print("Fetching PactPub book details...")
+        # for url in packtpub_urls:
+        #     time.sleep(1)
+        #     books.append(scrape_details.scrape_packtpub(url, page))
+        #
+        # print("Fetching LeanPub book details...")
+        # for url in leanpub_urls:
+        #     time.sleep(1)
+        #     books.append(scrape_details.scrape_leanpub(url, page))
+        #
+        # print("Fetching O'Reilly book details...")
+        # for url in oreilly_urls:
+        #     time.sleep(1)
+        #     books.append(scrape_details.scrape_oreilly(url, page))
 
         print("Shutting down browser")
         browser.close()

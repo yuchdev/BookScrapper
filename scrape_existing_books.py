@@ -1,17 +1,24 @@
 import argparse
+import asyncio
 import csv
 import time
-
-from fake_useragent import UserAgent
-
-from src.bookscraper import scrape_details
 import pandas as pd
-from playwright.sync_api import sync_playwright
+
+from playwright.async_api import async_playwright, TimeoutError
+import random
+
+from src.bookscraper import scrape_amazon
 
 
 def save_books_to_csv(books, filename="books.csv"):
-    """Saves a list of book dictionaries to a CSV file."""
+    """
+    Saves a list of book dictionaries to a CSV file.
 
+    Args:
+        books: A list of dictionaries, where each dictionary represents a book
+               and contains key-value pairs for book attributes (e.g., title, author).
+        filename: The name of the CSV file to create.
+    """
     if not books:
         print("No book data to save.")
         return
@@ -22,6 +29,7 @@ def save_books_to_csv(books, filename="books.csv"):
         for book in books:
             if book:  # Check if the book dictionary is not None
                 fieldnames.update(book.keys())
+
         fieldnames = sorted(list(fieldnames))  # Convert to a sorted list for consistent order
 
         with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
@@ -37,7 +45,51 @@ def save_books_to_csv(books, filename="books.csv"):
         print(f"Error saving books to CSV: {e}")
 
 
-def main():
+def save_failed_urls_to_csv(failed_urls, filename="failed_books.csv"):
+    """Saves the failed URLs to a CSV file."""
+    if not failed_urls:
+        print("No failed URLs to save.")
+        return
+
+    try:
+        with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["url"])  # Write header
+            for url in failed_urls:
+                writer.writerow([url])
+
+        print(f"Failed URLs saved to {filename}")
+
+    except Exception as e:
+        print(f"Error saving failed URLs to CSV: {e}")
+
+
+async def main():
+    """
+    Asynchronously scrape book details from URLs provided in a CSV file.
+
+    This function sets up command-line argument parsing, reads URLs from a CSV file,
+    categorizes them by website, and then scrapes Amazon book details in batches.
+    It uses Playwright for web scraping and implements concurrent scraping with
+    asyncio for improved performance.
+
+    Command-line Arguments:
+        -f, --file: Path to the CSV file containing URLs (required).
+
+    The function performs the following steps:
+    1. Parse command-line arguments.
+    2. Read and categorize URLs from the specified CSV file.
+    3. Initialize a Playwright browser.
+    4. Scrape Amazon book details in batches.
+    5. Save the scraped book details to a CSV file.
+
+    Returns:
+        None. The function saves the scraped data to a CSV file as a side effect.
+
+    Raises:
+        FileNotFoundError: If the specified CSV file is not found.
+        pd.errors.ParserError: If there's an error parsing the CSV file.
+    """
     parser = argparse.ArgumentParser(description="Scrape book details from URLs.")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-f", "--file", help="Path to the CSV file containing URLs.")
@@ -48,6 +100,7 @@ def main():
     leanpub_urls = []  # Initialize an empty list for Leanpub books
     oreilly_urls = []  # Initialize an empty list for O'Reilly books
     other_urls = []  # Initialize an empty list for other books (PDFs, portals, etc.)
+    failed_urls = []  # Initialize an empty list for failed books
 
     if args.file:
         filepath = args.file
@@ -58,13 +111,10 @@ def main():
                     amazon_urls.append(url)
                 elif "packtpub.com" in url:  # Filter for Packtpub URLs
                     packtpub_urls.append(url)
-
                 elif "leanpub.com" in url:  # Filter for Leanpub URLs
                     leanpub_urls.append(url)
-
                 elif "oreilly.com" in url:  # Filter for O'Reilly URLs
                     oreilly_urls.append(url)
-
                 else:
                     other_urls.append(url)
 
@@ -81,47 +131,44 @@ def main():
     print(f" {len(oreilly_urls)} O'Reilly URLs to scrape.")
     print(f" {len(other_urls)} Other URLs in file.")
 
-    # print(amazon_urls)
-    books = []
+    batch_size = 10
+    total_urls = len(amazon_urls)
 
-    start = time.time()
+    async with async_playwright() as p:
+        print("Opening browser")
+        browser = await p.chromium.launch(headless=True)
 
-    with sync_playwright() as p:
-        print("Launching browser...")
-        browser = p.chromium.launch(headless=True)
-        # context = browser.new_context(user_agent=UserAgent().random)  # Use random User-Agent
-        # page = context.new_page()
+        books = []
+        start = time.time()
 
-        print("Fetching Amazon book details...")
-        for url in amazon_urls[:10]:
-            time.sleep(1)
-            books.append(scrape_details.scrape_amazon(url, browser))
+        for i in range(0, total_urls, batch_size):
+            batch_urls = amazon_urls[i:i + batch_size]
+            print(f"Starting batch {i // batch_size + 1}")
 
-        # print("Fetching PactPub book details...")
-        # for url in packtpub_urls:
-        #     time.sleep(1)
-        #     books.append(scrape_details.scrape_packtpub(url, page))
-        #
-        # print("Fetching LeanPub book details...")
-        # for url in leanpub_urls:
-        #     time.sleep(1)
-        #     books.append(scrape_details.scrape_leanpub(url, page))
-        #
-        # print("Fetching O'Reilly book details...")
-        # for url in oreilly_urls:
-        #     time.sleep(1)
-        #     books.append(scrape_details.scrape_oreilly(url, page))
+            tasks = []
+            for url in batch_urls:
+                tasks.append(scrape_amazon(url, browser))
 
-        print("Shutting down browser")
-        browser.close()
+            results = await asyncio.gather(*tasks)
 
-        end = time.time()
+            for index, result in enumerate(results):
+                if result:
+                    books.append(result)
+                else:
+                    failed_urls.append(batch_urls[index])
+                    print(f"Failed urls: {failed_urls}")
 
-        # print(books)
-        print(f"Time spent: {end - start} seconds")
+            if i + batch_size < total_urls:
+                print("Pausing between batches...")
+                await asyncio.sleep(random.uniform(3, 5))  # Pause between batches
+        print("Shutting down browser...")
+        print(f"Time elapsed: {time.time() - start} seconds")
 
-        save_books_to_csv(books)
+        await browser.close()
+
+    save_books_to_csv(books)
+    save_failed_urls_to_csv(failed_urls)
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

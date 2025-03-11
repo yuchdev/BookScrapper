@@ -2,7 +2,21 @@ import hashlib
 from datetime import datetime
 
 
-def extract_year_from_date(date_string):
+def print_log(text, status: str):
+    """Prints the given text in red to stdout."""
+    match status:
+        case "error":
+            color = "\033[31m"  # ANSI escape code for red text
+        case "info":
+            color = "\033[33m"  # ANSI escape code for yellow text
+        case _:
+            color = "\033[0m"  # ANSI escape code to reset text color
+    reset_color_code = "\033[0m"  # ANSI escape code to reset text color
+
+    print(f"{color}{text}{reset_color_code}")
+
+
+def extract_year_from_date(date_string: str) -> int | None:
     """
     Extracts the year from a date string.
 
@@ -27,7 +41,8 @@ def extract_year_from_date(date_string):
 
 
 def hash_book(title: str = "", authors: list = [None], year=None) -> str:
-    """Calculates a SHA-256 hash for a book based on its title, authors, and year.
+    """
+    Calculates a SHA-256 hash for a book based on its title, authors, and year.
 
     Args:
         title: The title of the book (required).

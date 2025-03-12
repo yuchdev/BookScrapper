@@ -27,3 +27,54 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.40",
 ]
+
+site_constants = {
+    "amazon": {
+        "TITLE": "#productTitle",
+        "AUTHORS": "#bylineInfo span.author.notFaded a",
+        "AUTHORS_ALT": "._about-the-author-card_style_cardContentDiv__FXLPd ._about-the-author-card_carouselItemStyles_authorName__HSb1t h2",
+        "ISBN10": "#rpi-attribute-book_details-isbn10 .rpi-attribute-value",
+        "ISBN13": "#rpi-attribute-book_details-isbn13 .rpi-attribute-value",
+        "TAGS": "#detailBulletsWrapper_feature_div ul li ul li a",
+        "DETAILS_BUTTON": "a:has-text('Next slide of product details')",
+        "PUBLICATION_DATE": "#rpi-attribute-book_details-publication_date div.rpi-attribute-value span",
+        "DESCRIPTION": "#bookDescription_feature_div",
+        "READ_MORE_LINK": "#bookDescription_feature_div .a-expander-prompt"
+    },
+    "leanpub": {
+        "TITLE": "h3.book-hero__title",
+        "AUTHORS": ".avatar-with-name__name",
+        "AUTHORS_ALT": "",
+        # "ISBN10": "",
+        # "ISBN13": "",
+        "TAGS": ".meta-list__item.categories li",
+        "PUBLICATION_DATE": ".last-updated",
+        "DESCRIPTION": ".about-book div.about-book__copy",
+        "DESCRIPTION_ALT": ".book-hero__blurb",
+        "READ_MORE_LINK": ""
+    },
+    "packtpub": {
+        "TITLE": "",
+        "AUTHORS": "",
+        "AUTHORS_ALT": "",
+        "ISBN10": "",
+        "ISBN13": "",
+        "TAGS": "",
+        "DETAILS_BUTTON": "",
+        "PUBLICATION_DATE": "",
+        "DESCRIPTION": "",
+        "READ_MORE_LINK": ""
+    },
+    "oreilly": {
+        "TITLE": "",
+        "AUTHORS": "",
+        "AUTHORS_ALT": "",
+        "ISBN10": "",
+        "ISBN13": "",
+        "TAGS": "",
+        "DETAILS_BUTTON": "",
+        "PUBLICATION_DATE": "",
+        "DESCRIPTION": "",
+        "READ_MORE_LINK": ""
+    }
+}

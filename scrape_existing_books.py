@@ -2,12 +2,14 @@ import argparse
 import asyncio
 import csv
 import time
+import urllib.parse
+
 import pandas as pd
 
 from playwright.async_api import async_playwright, TimeoutError
 import random
 
-from src.bookscraper import scrape_amazon
+from src.bookscraper.scrape_details import scrape_book
 
 
 def save_books_to_csv(books, filename="books.csv"):
@@ -95,11 +97,14 @@ async def main():
     group.add_argument("-f", "--file", help="Path to the CSV file containing URLs.")
     args = parser.parse_args()
 
-    amazon_urls = []  # Initialize an empty list for Amazon books
-    packtpub_urls = []  # Initialize an empty list for Packtpub books
-    leanpub_urls = []  # Initialize an empty list for Leanpub books
-    oreilly_urls = []  # Initialize an empty list for O'Reilly books
-    other_urls = []  # Initialize an empty list for other books (PDFs, portals, etc.)
+    # Store URLs to scrape within a dictionary
+    website_urls = {
+        "amazon": [],
+        "packtpub": [],
+        "leanpub": [],
+        "oreilly": [],
+        "other": []
+    }
     failed_urls = []  # Initialize an empty list for failed books
 
     if args.file:
@@ -107,16 +112,18 @@ async def main():
         try:
             df = pd.read_csv(filepath, encoding='utf-8')
             for url in df['url']:
-                if "amazon.com" in url:  # Filter for Amazon URLs
-                    amazon_urls.append(url)
-                elif "packtpub.com" in url:  # Filter for Packtpub URLs
-                    packtpub_urls.append(url)
-                elif "leanpub.com" in url:  # Filter for Leanpub URLs
-                    leanpub_urls.append(url)
-                elif "oreilly.com" in url:  # Filter for O'Reilly URLs
-                    oreilly_urls.append(url)
+                if "amazon.com" in url:
+                    website_urls["amazon"].append(url)
+                elif "packtpub.com" in url:
+                    website_urls["packtpub"].append(url)
+                elif "leanpub.com" in url:
+                    website_urls["leanpub"].append(url)
+                elif "oreilly.com" in url:
+                    website_urls["oreilly"].append(url)
+                elif urllib.parse.urlparse(url).path.lower().endswith(".pdf"):
+                    print(f"Skipping PDF URL: {url}")
                 else:
-                    other_urls.append(url)
+                    website_urls["other"].append(url)
 
         except FileNotFoundError:
             print(f"Error: File not found at {filepath}")
@@ -125,14 +132,15 @@ async def main():
             print(f"Error: Could not parse CSV at {filepath}")
             return
 
-    print(f" {len(amazon_urls)} Amazon URLs to scrape.")
-    print(f" {len(packtpub_urls)} PacktPub URLs to scrape.")
-    print(f" {len(leanpub_urls)} LeanPub URLs to scrape.")
-    print(f" {len(oreilly_urls)} O'Reilly URLs to scrape.")
-    print(f" {len(other_urls)} Other URLs in file.")
+    for website, urls in website_urls.items():
+        print(f" {len(urls)} {website.capitalize()} URLs to scrape.")
 
     batch_size = 10
-    total_urls = len(amazon_urls)
+    # all_urls = website_urls["leanpub"]  # For single-site testing
+    all_urls = []
+    for urls in website_urls.values():
+        all_urls.extend(urls)
+    total_urls = len(all_urls)
 
     async with async_playwright() as p:
         print("Opening browser")
@@ -142,12 +150,13 @@ async def main():
         start = time.time()
 
         for i in range(0, total_urls, batch_size):
-            batch_urls = amazon_urls[i:i + batch_size]
+            batch_urls = all_urls[i:i + batch_size]
             print(f"Starting batch {i // batch_size + 1}")
 
             tasks = []
             for url in batch_urls:
-                tasks.append(scrape_amazon(url, browser))
+                site = identify_website(url)
+                tasks.append(scrape_book(url, browser, site))  # pass the site identifier.
 
             results = await asyncio.gather(*tasks)
 
@@ -160,7 +169,8 @@ async def main():
 
             if i + batch_size < total_urls:
                 print("Pausing between batches...")
-                await asyncio.sleep(random.uniform(3, 5))  # Pause between batches
+                await asyncio.sleep(random.uniform(3, 5))
+
         print("Shutting down browser...")
         print(f"Time elapsed: {time.time() - start} seconds")
 
@@ -168,6 +178,19 @@ async def main():
 
     save_books_to_csv(books)
     save_failed_urls_to_csv(failed_urls)
+
+
+def identify_website(url):
+    if "amazon.com" in url:
+        return "amazon"
+    elif "packtpub.com" in url:
+        return "packtpub"
+    elif "leanpub.com" in url:
+        return "leanpub"
+    elif "oreilly.com" in url:
+        return "oreilly"
+    else:
+        return "other"
 
 
 if __name__ == "__main__":

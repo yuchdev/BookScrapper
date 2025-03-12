@@ -1,4 +1,4 @@
-authors,description,hash,isbn10,isbn13,publication_date,tags,title,url,year
+authors,description,hash,isbn10,isbn13,publication_date,site,tags,title,url,year
 "['Stanley Lippman', 'Josée Lajoie', 'Barbara Moo']","Bestselling Programming Tutorial and Reference Completely Rewritten for the New C++11 Standard
 
 Fully updated and recast for the newly released C++11 standard, this authoritative and comprehensive introduction to C++ will help you to learn the language fast, and to use it in modern, highly effective ways. Highlighting today’s best practices, the authors show how to use both the core language and its standard library to write efficient, readable, and powerful code.
@@ -17,7 +17,7 @@ Access the source code for the extended examples from informit.com/title/0321714
 
 C++ Primer, Fifth Edition, features an enhanced, layflat binding, which allows the book to stay open more easily when placed on a flat surface. This special binding method—notable by a small space inside the spine—also increases durability.
 
-Read more",1f922f9b94b9ee18ac94965f40f162bf77737fc3d39025532e2596082523bba5,9780321714114,978-0321714114,"August 6, 2012","['C++ Programming Language', 'Object-Oriented Design', 'Software Development']",C++ Primer (5th Edition),https://www.amazon.com/dp/0321714113,2012
+Read more",1f922f9b94b9ee18ac94965f40f162bf77737fc3d39025532e2596082523bba5,9780321714114,978-0321714114,"August 6, 2012",amazon,"['C++ Programming Language', 'Object-Oriented Design', 'Software Development']",C++ Primer (5th Edition),https://www.amazon.com/dp/0321714113,2012
 ['Bjarne Stroustrup'],"An Introduction to Programming by the Inventor of C++
 
 Programming: Principles and Practice Using C++, Third Edition, will help anyone who is willing to work hard learn the fundamental principles of programming and develop the practical skills needed for programming in the real world. Previous editions have been used successfully by many thousands of students. This revised and updated edition
@@ -35,7 +35,7 @@ Offers an introduction to the C++ standard library containers and algorithms
 
 Register your book for convenient access to downloads, updates, and/or corrections as they become available. See inside book for details.
 
-Read more",3c247e615866dd8f54e19393b4bd9b9e34deae19bd32455c32235c4641228473,0138308683,978-0138308681,"April 22, 2024","['Object-Oriented Software Design', 'C++ Programming Language', 'Object-Oriented Design']",Programming: Principles and Practice Using C++ (C++ In-depth),https://www.amazon.com/dp/0138308683,2024
+Read more",3c247e615866dd8f54e19393b4bd9b9e34deae19bd32455c32235c4641228473,0138308683,978-0138308681,"April 22, 2024",amazon,"['Object-Oriented Software Design', 'C++ Programming Language', 'Object-Oriented Design']",Programming: Principles and Practice Using C++ (C++ In-depth),https://www.amazon.com/dp/0138308683,2024
 ['John Horton'],"Get to grips with programming techniques and game development using C++ libraries and Visual Studio 2019
 
 Key Features
@@ -83,7 +83,7 @@ Particle Systems and Shaders
 
 (N.B. Please use the Look Inside option to see further chapters)
 
-Read more",27d4dbc7ffe02e7c1cf3b3b13c3a64feb5883f13f3e1bbdcdc7c14bb9100925d,1838648577,978-1838648572,"October 31, 2019","['C++ Programming Language', 'Game Programming', 'Introductory & Beginning Programming']","Beginning C++ Game Programming: Learn to program with C++ by building fun games, 2nd Edition",https://www.amazon.com/dp/1838648577,2019
+Read more",27d4dbc7ffe02e7c1cf3b3b13c3a64feb5883f13f3e1bbdcdc7c14bb9100925d,1838648577,978-1838648572,"October 31, 2019",amazon,"['C++ Programming Language', 'Game Programming', 'Introductory & Beginning Programming']","Beginning C++ Game Programming: Learn to program with C++ by building fun games, 2nd Edition",https://www.amazon.com/dp/1838648577,2019
 ['Tony Gaddis'],"For two-semester courses in the C++ programming sequence, or an accelerated one-semester course.
 
 A clear and student-friendly way to teach the fundamentals of C++
@@ -113,19 +113,19 @@ https://support.pearson.com/getsupport/s/
 
 800-677-6337
 
-Read more",763c6029cf02d0f4484e1ef2b7f3229ba949c58681c518a9887741aa9a743d1a,9780134498379,978-0134498379,"February 13, 2017","['C++ Programming Language', 'Computer Programming Languages']",Starting Out with C++ from Control Structures to Objects,https://www.amazon.com/dp/0134498372,2017
+Read more",763c6029cf02d0f4484e1ef2b7f3229ba949c58681c518a9887741aa9a743d1a,9780134498379,978-0134498379,"February 13, 2017",amazon,"['C++ Programming Language', 'Computer Programming Languages']",Starting Out with C++ from Control Structures to Objects,https://www.amazon.com/dp/0134498372,2017
 "['Paul Deitel', 'Harvey Deitel']","C++ How to Program presents leading-edge computing technologies in a friendly manner appropriate for introductory college course sequences, based on the curriculum recommendations of two key professional organizations–the ACM and the IEEE.
 
 The best-selling C++ How to Program is accessible to readers with little or no programming experience, yet comprehensive enough for the professional programmer. The Deitels’ signature live-code approach presents the concepts in the context of full working programs followed by sample executions. The early objects approach gets readers thinking about objects immediately–allowing them to more thoroughly master the concepts. Emphasis is placed on achieving program clarity and building well-engineered software. Interesting, entertaining, and challenging exercises encourage students to make a difference and use computers and the Internet to work on problems. To keep readers up-to-date with leading-edge computing technologies, the Tenth Edition conforms to the C++11 standard and the new C++14 standard.
 
 
-Read more",7300dd2c105742a0d31d691c6fc0f5c4cd13b18439e1bcb710c75136f0281962,9780134448237,978-0134448237,"February 29, 2016","['C++ Programming Language', 'Computer Programming Languages']",C++ How to Program,https://www.amazon.com/dp/0134448235,2016
+Read more",7300dd2c105742a0d31d691c6fc0f5c4cd13b18439e1bcb710c75136f0281962,9780134448237,978-0134448237,"February 29, 2016",amazon,"['C++ Programming Language', 'Computer Programming Languages']",C++ How to Program,https://www.amazon.com/dp/0134448235,2016
 ['Bjarne Stroustrup'],"In A Tour of C++, Third Edition, Bjarne Stroustrup provides an overview of ISO C++, C++20, that aims to give experienced programmers a clear understanding of what constitutes modern C++. Featuring carefully crafted examples and practical help in getting started, this revised and updated edition concisely covers most major language features and the major standard-library components needed for effective use.
 
 Stroustrup presents C++ features in the context of the programming styles they support, such as object-oriented and generic programming. His tour is remarkably comprehensive. Coverage begins with the basics, then ranges widely through more advanced topics, emphasizing newer language features. This edition covers many features that are new in C++20 as implemented by major C++ suppliers, including modules, concepts, coroutines, and ranges. It even introduces some library components in current use that are not scheduled for inclusion in the standard until C++23.
 
 This authoritative guide does not aim to teach you how to program (for that, see Stroustrup's Programming: Principles and Practice Using C++, Second Edition), nor will it be the only resource you'll need for C++ mastery (for that, see Stroustrup's The C++ Programming Language, Fourth Edition, and recommended online sources). If, however, you are a C or C++ programmer wanting greater familiarity with the current C++ language, or a programmer versed in another language wishing to gain an accurate picture of the nature and benefits of modern C++, you won't find a shorter or simpler introduction.
-Read more",2879c82e735eecaee6728fd7154487af300345bed730a8f0ad23e31159250e52,0136816487,978-0136816485,"September 24, 2022","['C++ Programming Language', 'Object-Oriented Design', 'Computer & Technology Certification Guides']","Tour of C++, A (C++ In-Depth Series)",https://www.amazon.com/dp/0136816487,2022
+Read more",2879c82e735eecaee6728fd7154487af300345bed730a8f0ad23e31159250e52,0136816487,978-0136816485,"September 24, 2022",amazon,"['C++ Programming Language', 'Object-Oriented Design', 'Computer & Technology Certification Guides']","Tour of C++, A (C++ In-Depth Series)",https://www.amazon.com/dp/0136816487,2022
 "['Ivor Horton', 'Peter Van Weert']","Begin your programming journey with C++ , starting with the basics and progressing through step-by-step examples that will help you become a proficient C++ programmer. This book includes new features from the C++23 standard. All you need are Beginning C++23 and any recent C++ compiler and you'll soon be writing real C++ programs.
 There is no assumption of prior programming knowledge. All language concepts that are explained in the book are illustrated with working program examples, and all chapters include exercises for you to test and practice your knowledge. Free source code downloads are provided for all examples from the text and solutions to the exercises.
 This latest edition has been fully updated to the latest version of the language, C++23, and to all conventions and best practices of modern C++. This bookalso introduces elements of the C++ Standard Library that provide essential support for C++23. After completing this book, you will have the knowledge and skills needed to build your first C++ applications.
@@ -141,11 +141,11 @@ Learn the ins and outs of containers, algorithms, and ranges
 Use auto type declarations, exceptions, move semantics, lambda expressions, and much more
 Who This Book Is For
 Programmers new to C++ and those who may be looking for a refresh primer on C++ in general.
-Read more",dd5fda3d3b9df8c0f0a7a696591bf70d81e59cf96b9832332132315a87cc5c2f,1484293428,978-1484293423,"October 8, 2023","['C++ Programming Language', 'Computer Programming Languages', 'Software Development']",Beginning C++23: From Beginner to Pro,https://www.amazon.com/dp/1484293428,2023
+Read more",dd5fda3d3b9df8c0f0a7a696591bf70d81e59cf96b9832332132315a87cc5c2f,1484293428,978-1484293423,"October 8, 2023",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Software Development']",Beginning C++23: From Beginner to Pro,https://www.amazon.com/dp/1484293428,2023
 ['Anthony J. Dos Reis'],"THERE IS AN UPDATED AND IMPROVED VERSION (THE SECOND EDITION) OF THIS BOOK.
 
 This book provides the reader with an invaluable insight to C and C++ in particular and programming languages in general. Although the title suggests that the book has a narrow scope, in fact, just the opposite is the case: The book is an introduction to programming language design, object-oriented programming, assemblers, compilers, interpreters, linkers, computer architecture, and system programming--everything you need to know to be a master of C and C++. Included in the book are several well-defined system programming projects that support the material covered, including a machine interpreter implementation, an assembler implementation, and a linker implementation. The software package for the book supports Windows, OS X, Linux, and Raspbian.
-Read more",efa76c6cbd8c1777df6deafbfa1d839e5691f4fb360c3bc7637905e663bb3da5,1793302898,978-1793302892,"February 9, 2019","['C Programming Language', 'C++ Programming Language', 'Computer Programming Languages']",C and C++ Under the Hood,https://www.amazon.com/dp/1793302898/,2019
+Read more",efa76c6cbd8c1777df6deafbfa1d839e5691f4fb360c3bc7637905e663bb3da5,1793302898,978-1793302892,"February 9, 2019",amazon,"['C Programming Language', 'C++ Programming Language', 'Computer Programming Languages']",C and C++ Under the Hood,https://www.amazon.com/dp/1793302898/,2019
 ['Peter Gottschling'],"Write Powerful, Modern C++ Code for Scientific, Engineering, and Embedded Applications
 
 Discovering Modern C++, Second Edition, will help you master valuable skills for programming with C++ at nearly every level, from ""close to the hardware"" to high-level abstractions.
@@ -162,12 +162,12 @@ Explore metaprogramming in depth, and master cutting-edge optimization technique
 Walk through representative scientific projects, and create your own
 Register your book for convenient access to downloads, updates, and/or corrections as they become available. See inside book for details.
 
-Read more",aa56d83f6dfd5deb33268337d190fa4c5a05777538cd309541d8cf9abbaa3816,0136677649,978-0136677642,"December 17, 2021","['C++ Programming Language', 'Computer Programming Languages', 'Microsoft Programming']",Discovering Modern C++ (C++ In-Depth Series),https://www.amazon.com/Discovering-Modern-Depth-Peter-Gottschling/dp/0136677649/,2021
+Read more",aa56d83f6dfd5deb33268337d190fa4c5a05777538cd309541d8cf9abbaa3816,0136677649,978-0136677642,"December 17, 2021",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Microsoft Programming']",Discovering Modern C++ (C++ In-Depth Series),https://www.amazon.com/Discovering-Modern-Depth-Peter-Gottschling/dp/0136677649/,2021
 "['Paul Deitel', 'Harvey Deitel']","C++ How to Program: An Objects-Natural Approach is a code-intensive, modular introduction to C++ programming. The Deitel live-code approach presents concepts using full working programs rather than code snippets so that you can immediately start to run programs as you read. Interesting, entertaining and challenging examples, exercises and projects help you see how what you're learning applies to real-world scenarios.
 
 The 11th Edition presents new features of C++ 20 and even more hands-on application opportunities. Hundreds of new self-checks let you test your code and understanding of key concepts. New case studies and exercises focus on security, data science, ethics and more.
 
-Read more",333ab369ecc1a99fa145938ed7656b9169da86bfcc8fc986b463ef8681a4438b,,,"July 27, 2023",['Kindle eBooks'],C++ How to Program: An Objects-Natural Approach,https://www.amazon.com/dp/B0CF4TX8XG,2023
+Read more",333ab369ecc1a99fa145938ed7656b9169da86bfcc8fc986b463ef8681a4438b,,,"July 27, 2023",amazon,['Kindle eBooks'],C++ How to Program: An Objects-Natural Approach,https://www.amazon.com/dp/B0CF4TX8XG,2023
 ['Marc Gregoire'],"Expand your C++ knowledge quickly and efficiently with this advanced resource
 
 In the newly revised sixth edition of Professional C++, veteran software engineer and developer Marc Gregoire delivers yet another volume that raises the bar for advanced programming manuals. Covering almost all features of the new C++ standard codenamed C++23, the book offers case studies with working code that’s been tested on Windows and Linux.
@@ -182,9 +182,9 @@ Learn about tips and tricks for efficiency and performance
 
 C++ is a complex language. Professional C++, 6th Edition, allows dedicated practitioners to remain current and abreast of the latest developments and advances.
 
-Read more",1ffb2f437f450cfce6701b69f4ed16fffea29605ff255ba4053bc3c986255a4d,1394193173,978-1394193172,"February 13, 2024","['C Programming Language', 'Object-Oriented Design', 'Software Development']",Professional C++ (Tech Today),https://www.amazon.com/dp/1394193173,2024
+Read more",1ffb2f437f450cfce6701b69f4ed16fffea29605ff255ba4053bc3c986255a4d,1394193173,978-1394193172,"February 13, 2024",amazon,"['C Programming Language', 'Object-Oriented Design', 'Software Development']",Professional C++ (Tech Today),https://www.amazon.com/dp/1394193173,2024
 ['Stephen C. Dewhurst'],"C++ Common Knowledge covers essential but commonly misunderstood topics in C++ programming and design while filtering out needless complexity in the discussion of each topic. What remains is a clear distillation of the essentials required for production C++ programming, presented in the author's trademark incisive, engaging style.
-Read more",4a6368fc06fa5317839310ef6cddf04b23b10b0ade60d37cafe9e6da383d5d0e,0321321928,978-0321321923,"February 28, 2005","['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']",C++ Common Knowledge: Essential Intermediate Programming: Essential Intermediate Programming,https://www.amazon.com/dp/0321321928,2005
+Read more",4a6368fc06fa5317839310ef6cddf04b23b10b0ade60d37cafe9e6da383d5d0e,0321321928,978-0321321923,"February 28, 2005",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']",C++ Common Knowledge: Essential Intermediate Programming: Essential Intermediate Programming,https://www.amazon.com/dp/0321321928,2005
 "['D. Ryan Stephens', 'Christopher Diggins', 'Jonathan Turkanis']","Despite its highly adaptable and flexible nature, C++ is also one of the more complex programming languages to learn. Once mastered, however, it can help you organize and process information with amazing efficiency and quickness.
 
 The C++ Cookbook will make your path to mastery much shorter. This practical, problem-solving guide is ideal if you're an engineer, programmer, or researcher writing an application for one of the legions of platforms on which C++ runs. The algorithms provided in C++ Cookbook will jump-start your development by giving you some basic building blocks that you don't have to develop on your own.
@@ -201,7 +201,7 @@ Using the standard containers
 
 Typical of O'Reilly's ""Cookbook"" series, C++ Cookbook is written in a straightforward format, featuring recipes that contain problem statements and code solutions, and apply not to hypothetical situations, but those that you're likely to encounter. A detailed explanation then follows each recipe in order to show you how and why the solution works. This question-solution-discussion format is a proven teaching method, as any fan of the ""Cookbook"" series can attest to. This book will move quickly to the top of your list of essential C++ references.
 
-Read more",401108fdeac6304ac31d99f8f28064f45444c37b1497723eb1a5263a8835c0d3,0596007612,978-0596007614,"December 13, 2005","['C++ Programming Language', 'Software Development', 'Computer Software']",C++ Cookbook: Solutions and Examples for C++ Programmers,https://www.amazon.com/dp/0596007612,2005
+Read more",401108fdeac6304ac31d99f8f28064f45444c37b1497723eb1a5263a8835c0d3,0596007612,978-0596007614,"December 13, 2005",amazon,"['C++ Programming Language', 'Software Development', 'Computer Software']",C++ Cookbook: Solutions and Examples for C++ Programmers,https://www.amazon.com/dp/0596007612,2005
 ['Scott Meyers'],"“Every C++ professional needs a copy of Effective C++. It is an absolute must-read for anyone thinking of doing serious C++ development. If you’ve never read Effective C++ and you think you know everything about C++, think again.”
 ― Steve Schirripa, Software Engineer, Google “C++ and the C++ community have grown up in the last fifteen years, and the third edition of Effective C++ reflects this. The clear and precise style of the book is evidence of Scott’s deep insight and distinctive ability to impart knowledge.”
 ― Gerhard Kreuzer, Research and Development Engineer, Siemens AG
@@ -215,7 +215,7 @@ Important features of Effective C++ include:
 Expert guidance on the design of effective classes, functions, templates, and inheritance hierarchies.
 Applications of new “TR1” standard library functionality, along with comparisons to existing standard library components.
 Insights into differences between C++ and other languages (e.g., Java, C#, C) that help developers from those languages assimilate “the C++ way” of doing things.
-Read more",d7fb689afe45990fecb30f8883a4a9036fe3039e93737bdf560bb9082a515622,0321334876,978-0321334879,"May 12, 2005","['C++ Programming Language', 'Software Development', 'Computer Software']",Effective C++: 55 Specific Ways to Improve Your Programs and Designs,https://www.amazon.com/dp/0321334876,2005
+Read more",d7fb689afe45990fecb30f8883a4a9036fe3039e93737bdf560bb9082a515622,0321334876,978-0321334879,"May 12, 2005",amazon,"['C++ Programming Language', 'Software Development', 'Computer Software']",Effective C++: 55 Specific Ways to Improve Your Programs and Designs,https://www.amazon.com/dp/0321334876,2005
 ['Scott Meyers'],"“This is Effective C++ volume three – it’s really that good.”
 – Herb Sutter, independent consultant and secretary of the ISO/ANSI C++ standards committee “There are very few books which all C++ programmers must have. Add Effective STL to that list.”
 – Thomas Becker, Senior Software Engineer, Zephyr Associates, Inc., and columnist, C/C++ Users Journal
@@ -234,12 +234,12 @@ Discussions of potential portability problems, including straightforward ways to
 
 Like Meyers’ previous books, Effective STL is filled with proven wisdom that comes only from experience. Its clear, concise, penetrating style makes it an essential resource for every STL programmer.
 
-Read more",0acdc63dd949613a48a2375393eecee7dcbdae68d8ad1d2ee280e0d1299159ed,0201749629,978-0201749625,"June 6, 2001","['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']",Effective STL: 50 Specific Ways to Improve Your Use of the Standard Template Library,https://www.amazon.com/dp/0201749629,2001
+Read more",0acdc63dd949613a48a2375393eecee7dcbdae68d8ad1d2ee280e0d1299159ed,0201749629,978-0201749625,"June 6, 2001",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']",Effective STL: 50 Specific Ways to Improve Your Use of the Standard Template Library,https://www.amazon.com/dp/0201749629,2001
 ['Herb Sutter'],"The puzzles and problems in Exceptional C++ not only entertain, they will help you hone your skills to become the sharpest C++ programmer you can be. Many of these problems are culled from the famous Guru of the Week feature of the Internet newsgroup comp.lang.c++, moderated, expanded and updated to conform to the official ISO/ANSI C++ Standard.
 Try your skills against the C++ masters and come away with the insight and experience to create more efficient, effective, robust, and portable C++ code.
-Read more",9fc968bd25f5468e66394091f20896fd81d6f64985aeec7914c6dec4d819aebf,0201615622,978-0201615623,"November 18, 1999","['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']","Exceptional C++: 47 Engineering Puzzles, Programming Problems, and Solutions",https://www.amazon.com/dp/0201615622,1999
+Read more",9fc968bd25f5468e66394091f20896fd81d6f64985aeec7914c6dec4d819aebf,0201615622,978-0201615623,"November 18, 1999",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']","Exceptional C++: 47 Engineering Puzzles, Programming Problems, and Solutions",https://www.amazon.com/dp/0201615622,1999
 ['Herb Sutter'],"Picks up where the widely acclaimed Exceptional C++ leaves off, providing successful strategies for solving real-world problems in C++. Promotes the practical and pragmatic understanding of the language while showing you how to write exceptional code in C++. Softcover.
-Read more",8c19ca819af80969485aff3fe1ba273b8eadd8738468eaf4050f49389edadb18,020170434X,978-0201704341,"December 17, 2001","['C++ Programming Language', 'Computer Software', 'Marketing']","More Exceptional C++: 40 New Engineering Puzzles, Programming Problems, and Solutions",https://www.amazon.com/dp/020170434X,2001
+Read more",8c19ca819af80969485aff3fe1ba273b8eadd8738468eaf4050f49389edadb18,020170434X,978-0201704341,"December 17, 2001",amazon,"['C++ Programming Language', 'Computer Software', 'Marketing']","More Exceptional C++: 40 New Engineering Puzzles, Programming Problems, and Solutions",https://www.amazon.com/dp/020170434X,2001
 "['Herb Sutter', 'John Fuller']","Software ""style"" is about finding the perfect balance between overhead and functionality... elegance and maintainability... flexibility and excess. In Exceptional C++ Style, legendary C++ guru Herb Sutter presents 40 new programming scenarios designed to analyze not only the what but the why and help you find just the right balance in your software.
 
 Organized around practical problems and solutions, this book offers new insight into crucial C++ details and interrelationships, and new strategies for today's key C++ programming techniques--including generic programming, STL, exception safety, and more. You'll find answers to questions like:
@@ -263,7 +263,7 @@ Exceptional C++ Style will help you design, architect, and code with style--and 
 
 
 
-Read more",93e5b2f2f9751c9c3bdfe4aa8027ed04ddb69b9239c8f9c6aeb7a8309163e703,0201760428,978-0201760422,"August 2, 2004","['C++ Programming Language', 'Microsoft Programming', 'Computer Software']","Exceptional C++ Style: 40 New Engineering Puzzles, Programming Problems, and Solutions",https://www.amazon.com/dp/0201760428,2004
+Read more",93e5b2f2f9751c9c3bdfe4aa8027ed04ddb69b9239c8f9c6aeb7a8309163e703,0201760428,978-0201760422,"August 2, 2004",amazon,"['C++ Programming Language', 'Microsoft Programming', 'Computer Software']","Exceptional C++ Style: 40 New Engineering Puzzles, Programming Problems, and Solutions",https://www.amazon.com/dp/0201760428,2004
 "['Herb Sutter', 'Andrei Alexandrescu', 'John Fuller']","Consistent, high-quality coding standards improve software quality, reduce time-to-market, promote teamwork, eliminate time wasted on inconsequential matters, and simplify maintenance. Now, two of the world's most respected C++ experts distill the rich collective experience of the global C++ community into a set of coding standards that every developer and development team can understand and use as a basis for their own coding standards.
 
 The authors cover virtually every facet of C++ programming: design and coding style, functions, operators, class design, inheritance, construction/destruction, copying, assignment, namespaces, modules, templates, genericity, exceptions, STL containers and algorithms, and more. Each standard is described concisely, with practical examples. From type definition to error handling, this book presents C++ best practices, including some that have only recently been identified and standardized-techniques you may not know even if you've used C++ for years. Along the way, you'll find answers to questions like
@@ -286,7 +286,7 @@ Whether you're working alone or with others, C++ Coding Standards will help you 
 
 
 
-Read more",6d64121fcefdd1163266be0f9a405ff15920133c800f055025f13ccc02e54645,9780321113580,978-0321113580,"October 25, 2004","['C++ Programming Language', 'Software Development', 'Computer Software']","C++ Coding Standards: 101 Rules, Guidelines, and Best Practices",https://www.amazon.com/dp/0321113586,2004
+Read more",6d64121fcefdd1163266be0f9a405ff15920133c800f055025f13ccc02e54645,9780321113580,978-0321113580,"October 25, 2004",amazon,"['C++ Programming Language', 'Software Development', 'Computer Software']","C++ Coding Standards: 101 Rules, Guidelines, and Best Practices",https://www.amazon.com/dp/0321113586,2004
 ['Bjarne Stroustrup'],"The new C++11 standard allows programmers to express ideas more clearly, simply, and directly, and to write faster, more efficient code. Bjarne Stroustrup, the designer and original implementer of C++, has reorganized, extended, and completely rewritten his definitive reference and tutorial for programmers who want to use C++ most effectively.
 
 The C++ Programming Language, Fourth Edition, delivers meticulous, richly explained, and integrated coverage of the entire language―its facilities, abstraction mechanisms, standard libraries, and key design techniques. Throughout, Stroustrup presents concise, “pure C++11” examples, which have been carefully crafted to clarify both usage and program design. To promote deeper understanding, the author provides extensive cross-references, both within the book and to the ISO standard.
@@ -313,7 +313,7 @@ This is a hardcover version of the Fourth Edition. Content in this hardcover and
 
 This book features an enhanced, layflat binding, which allows the book to stay open more easily when placed on a flat surface. This special binding method―noticeable by a small space inside the spine―also increases durability.
 
-Read more",aa2effbb6a9a2a8fd429cb2edbee81e1a85fcf450216c38c4ed270933016ac50,0321958322,978-0321958327,"July 24, 2013","['C++ Programming Language', 'Computer Programming Languages']","C++ Programming Language, The",https://www.amazon.com/dp/0321958322,2013
+Read more",aa2effbb6a9a2a8fd429cb2edbee81e1a85fcf450216c38c4ed270933016ac50,0321958322,978-0321958327,"July 24, 2013",amazon,"['C++ Programming Language', 'Computer Programming Languages']","C++ Programming Language, The",https://www.amazon.com/dp/0321958322,2013
 ['Nicolai Josuttis'],"The Best-Selling C++ Resource
 
 Now Updated for C++11
@@ -340,9 +340,9 @@ The book also examines the new C++ programming style and its effect on the stand
 
 An accompanying Web site, including source code, can be found at www.cppstdlib.com.
 
-Read more",0920a6dcc7e29d354ede4d2f54544324562c231417723be98fcac931346022dc,0321623215,978-0321623218,"March 30, 2012","['C++ Programming Language', 'Computer Programming Languages']","C++ Standard Library, The: A Tutorial and Reference",https://www.amazon.com/dp/0321623215,2012
+Read more",0920a6dcc7e29d354ede4d2f54544324562c231417723be98fcac931346022dc,0321623215,978-0321623218,"March 30, 2012",amazon,"['C++ Programming Language', 'Computer Programming Languages']","C++ Standard Library, The: A Tutorial and Reference",https://www.amazon.com/dp/0321623215,2012
 "['Angelika Langer', 'Klaus Kreft']","Provides a comprehensive description of, and reference to, the iostreams and locales classes, showing how to put them ot use and offering advanced information on customizing and extending their basic operation. DLC: C++ (Computer program language)
-Read more",4c6449031e0e77898f0811c6c62d1614e9aadbeb3693425d951be6d8e3176878,0201183951,978-0201183955,"January 1, 2000","['C++ Programming Language', 'Computer Software', 'Mathematics']",Standard C++ Iostreams and Locales: Advanced Programmer's Guide and Reference,https://www.amazon.com/dp/0201183951,2000
+Read more",4c6449031e0e77898f0811c6c62d1614e9aadbeb3693425d951be6d8e3176878,0201183951,978-0201183955,"January 1, 2000",amazon,"['C++ Programming Language', 'Computer Software', 'Mathematics']",Standard C++ Iostreams and Locales: Advanced Programmer's Guide and Reference,https://www.amazon.com/dp/0201183951,2000
 ['Nicolai M. Josuttis'],"All aspects of C++ Move Semantics.
 
 Move semantics, introduced with C++11, has become a hallmark of modern C++ programming. However, it also complicates the language in many ways. Even after several years of support of move semantics experienced programmers struggle with all the details of move semantics. And style guides still don't recommend the right consequences for programming even of trivial classes. Time to explain all aspects of C++ move semantics in detail.
@@ -368,7 +368,7 @@ The focus lies on the application of the described features in practice. Compell
 ""Sometimes I think I have a better grasp on entanglement & quantum teleportation than I do in some weird C++ move semantics. To paraphrase Feynman: If you think you understand C++ move semantics, you don't understand C++ move semantics. Read this book.""
 (Victor Ciura)
 
-Read more",47be6794d595e64e6be8618f27c6fa8562877cf91bb9a0a19d1f87d7b82ce925,3967309002,978-3967309003,"August 30, 2020","['C++ Programming Language', 'Schools & Teaching']",C++ Move Semantics - The Complete Guide: First Edition,https://www.amazon.com/dp/3967309002,2020
+Read more",47be6794d595e64e6be8618f27c6fa8562877cf91bb9a0a19d1f87d7b82ce925,3967309002,978-3967309003,"August 30, 2020",amazon,"['C++ Programming Language', 'Schools & Teaching']",C++ Move Semantics - The Complete Guide: First Edition,https://www.amazon.com/dp/3967309002,2020
 ['Ivan Cukic'],"Summary
 
 Functional Programming in C++ teaches developers the practical side of functional programming and the tools that C++ provides to develop software in the functional style. This in-depth guide is full of useful diagrams that help you understand FP concepts and begin to think functionally.
@@ -415,7 +415,7 @@ Monads
 Template metaprogramming
 Functional design for concurrent systems
 Testing and debugging
-Read more",3ecbb6166ff2d6832bd16317da99c22f82fae1874423b9b817fcdcef5c7a7824,1617293814,978-1617293818,"November 19, 2018","['C Programming Language', 'C++ Programming Language', 'Computer Programming Languages']",Functional Programming in C++: How to improve your C++ programs using functional techniques,https://www.amazon.com/dp/1617293814,2018
+Read more",3ecbb6166ff2d6832bd16317da99c22f82fae1874423b9b817fcdcef5c7a7824,1617293814,978-1617293818,"November 19, 2018",amazon,"['C Programming Language', 'C++ Programming Language', 'Computer Programming Languages']",Functional Programming in C++: How to improve your C++ programs using functional techniques,https://www.amazon.com/dp/1617293814,2018
 "['Björn Andrist', 'Viktor Sehr']","A comprehensive guide to help aspiring and professional C++ developers elevate the performance of their apps by allowing them to run faster and consume fewer resources
 
 Purchase of the print or Kindle book includes a free eBook in PDF format.
@@ -464,9 +464,9 @@ Who this book is for
 
 ﻿If you're a C++ developer looking to improve the efficiency of your code or just keen to upgrade your skills to the next level, this book is for you.
 
-Read more",ab63389f4ad38b5154f5fd294bdb1e73ed818ce34521cdc960e6113f96bd40da,1839216549,978-1839216541,"December 21, 2020","['Memory Management Algorithms', 'Parallel Computer Programming', 'C++ Programming Language']","C++ High Performance, Second Edition: Master the art of optimizing the functioning of your C++ code",https://www.amazon.com/dp/1839216549,2020
+Read more",ab63389f4ad38b5154f5fd294bdb1e73ed818ce34521cdc960e6113f96bd40da,1839216549,978-1839216541,"December 21, 2020",amazon,"['Memory Management Algorithms', 'Parallel Computer Programming', 'C++ Programming Language']","C++ High Performance, Second Edition: Master the art of optimizing the functioning of your C++ code",https://www.amazon.com/dp/1839216549,2020
 ['Bill Blunden'],"Memory Management: Algorithms and Implementation in C/C++ presents several concrete implementations of garbage collection and explicit memory management algorithms. Every implementation is complemented by an in-depth presentation of theory, followed by benchmark tests, a complete listing of C/C++ source code, and a discussion of each implementation’s trade-offs.Find out how memory is managed at the hardware level by the processor. Discover the ways in which different operating systems take advantage of processor facilities to provide memory services via the system call interface. Understand how development libraries and run-time systems build upon the operating system services to manage memory on behalf of user applications. Learn about five complete memory management subsystems that utilize both explicit and automatic collection algorithms.
-Read more",787ba1fd312a52c4c8bd14263f068acb9d12d7e222d92dc7d58168a17fe50ba9,1556223471,978-1556223471,"October 18, 2002","['Memory Management Algorithms', 'Computer Algorithms', 'C Programming Language']",Memory Management Algorithms and Implementation in C/C++ (Windows Programming/Development),https://www.amazon.com/dp/1556223471,2002
+Read more",787ba1fd312a52c4c8bd14263f068acb9d12d7e222d92dc7d58168a17fe50ba9,1556223471,978-1556223471,"October 18, 2002",amazon,"['Memory Management Algorithms', 'Computer Algorithms', 'C Programming Language']",Memory Management Algorithms and Implementation in C/C++ (Windows Programming/Development),https://www.amazon.com/dp/1556223471,2002
 ['Antony Polukhin'],"Learn to build applications faster and better by leveraging the real power of Boost and C++
 
 About This Book
@@ -495,7 +495,7 @@ Beginning with the basics of Boost C++, you will move on to learn how the Boost 
 
 Be sure that knowledge from this book won't get outdated, as more and more Boost libraries become part of the C++ Standard.
 
-Read more",b74faba1e09d1be994665c666c3947ee9a5d8109a6946b87b52173d1487e8d26,,,"August 30, 2017","['Parallel Computer Programming', 'C++ Programming', 'Open Source Programming']",Boost C++ Application Development Cookbook - Second Edition: Recipes to simplify your application development,https://www.amazon.com/dp/B06Y2WTZPR,2017
+Read more",b74faba1e09d1be994665c666c3947ee9a5d8109a6946b87b52173d1487e8d26,,,"August 30, 2017",amazon,"['Parallel Computer Programming', 'C++ Programming', 'Open Source Programming']",Boost C++ Application Development Cookbook - Second Edition: Recipes to simplify your application development,https://www.amazon.com/dp/B06Y2WTZPR,2017
 ['Fedor G. Pikus'],"Become a better programmer with performance improvement techniques such as concurrency, lock-free programming, atomic operations, parallelism, and memory management
 
 Key Features
@@ -536,7 +536,7 @@ High-Performance C++
 Compiler Optimizations in C++
 Undefined Behavior and Performance
 Design for Performance
-Read more",2b910c88a63c3aac9c39080811ba4c3d0455ff1f3bb4c28f0f471d0a5184e8a5,1800208111,978-1800208117,"October 22, 2021","['C++ Programming Language', 'Computer Systems Analysis & Design', 'Software Development']",The Art of Writing Efficient Programs: An advanced programmer's guide to efficient hardware utilization and compiler optimizations using C++ examples,https://www.amazon.com/dp/1800208111,2021
+Read more",2b910c88a63c3aac9c39080811ba4c3d0455ff1f3bb4c28f0f471d0a5184e8a5,1800208111,978-1800208117,"October 22, 2021",amazon,"['C++ Programming Language', 'Computer Systems Analysis & Design', 'Software Development']",The Art of Writing Efficient Programs: An advanced programmer's guide to efficient hardware utilization and compiler optimizations using C++ examples,https://www.amazon.com/dp/1800208111,2021
 "['J. Davidson', 'Kate Gregory']","Discover the Beauty of Modern C++
 
 "" Beautiful C++ presents the C++ Core Guidelines from a developer's point of view with an emphasis on what benefits can be obtained from following the rules and what nightmares can result from ignoring them. For true geeks, it is an easy and entertaining read. For most software developers, it offers something new and useful.""
@@ -561,7 +561,7 @@ For ease of experimentation, all sample code is available on Compiler Explorer a
 
 Register your book for convenient access to downloads, updates, and/or corrections as they become available. See inside book for details.
 
-Read more",4606e785afc81733c1835dd62796211afcf59df089382b5e71f4b4fa44e8d171,0231193742,978-0231193740,"December 16, 2021","['C++ Programming Language', 'Computer Programming Languages']","Beautiful C++: 30 Core Guidelines for Writing Clean, Safe, and Fast Code",https://www.amazon.com/dp/0137647840,2021
+Read more",4606e785afc81733c1835dd62796211afcf59df089382b5e71f4b4fa44e8d171,0231193742,978-0231193740,"December 16, 2021",amazon,"['C++ Programming Language', 'Computer Programming Languages']","Beautiful C++: 30 Core Guidelines for Writing Clean, Safe, and Fast Code",https://www.amazon.com/dp/0137647840,2021
 "['David Vandevoorde', 'Nicolai Josuttis', 'Douglas Gregor']","Templates are among the most powerful features of C++, but they remain misunderstood and underutilized, even as the C++ language and development community have advanced. In C++ Templates, Second Edition, three pioneering C++ experts show why, when, and how to use modern templates to build software that’s cleaner, faster, more efficient, and easier to maintain.
 
 Now extensively updated for the C++11, C++14, and C++17 standards, this new edition presents state-of-the-art techniques for a wider spectrum of applications. The authors provide authoritative explanations of all new language features that either improve templates or interact with them, including variadic templates, generic lambdas, class template argument deduction, compile-time if, forwarding references, and user-defined literals. They also deeply delve into fundamental language concepts (like value categories) and fully cover all standard type traits.
@@ -578,12 +578,12 @@ Preview the upcoming concepts feature
 
 The companion website, tmplbook.com, contains sample code and additional updates.
 
-Read more",3bd2c34cbe78c3219d56dafc5f83150e72c8ee44daee1037c222ef2f037698e5,0321714121,978-0321714121,"September 8, 2017","['C++ Programming Language', 'Computer Programming Languages']",C++ Templates: The Complete Guide,https://www.amazon.com/dp/0321714121,2017
+Read more",3bd2c34cbe78c3219d56dafc5f83150e72c8ee44daee1037c222ef2f037698e5,0321714121,978-0321714121,"September 8, 2017",amazon,"['C++ Programming Language', 'Computer Programming Languages']",C++ Templates: The Complete Guide,https://www.amazon.com/dp/0321714121,2017
 ['Davide Di Gennaro'],"Advanced Metaprogramming in Classic C++ aims to be both an introduction and a reference to C++ template metaprogramming (TMP); TMP is presented in the book as a set of techniques that will bring a new style in C++ and make code exceptionally clear and efficient. The book deals with language aspects, design patterns, examples and applications (seen as case studies). Special emphasis is put on small reusable techniques that will improve the quality of daily work.
 
 What makes the book exceptional is the level of understanding of the concepts involved imparted by the author. This is not just a rote overview of metaprogramming. You will truly understand difficult topics like static assertions, how to write metafunctions, overload resolution, lambda expressions, and many others. More than that, you will work through them with practical examples guided by the author's frank explanations. This book requires you to think and to learn and to understand the language so that youcan program at a higher level.
 
-Read more",dfab4ea428227460e19ef714d0ee85d8463712630bc55b687100633b3d5ecba7,,,"May 8, 2015","['C++ Programming', 'Compiler Design', 'Software Programming Compilers']",Advanced Metaprogramming in Classic C++,https://www.amazon.com/dp/B01JCOFWD4,2015
+Read more",dfab4ea428227460e19ef714d0ee85d8463712630bc55b687100633b3d5ecba7,,,"May 8, 2015",amazon,"['C++ Programming', 'Compiler Design', 'Software Programming Compilers']",Advanced Metaprogramming in Classic C++,https://www.amazon.com/dp/B01JCOFWD4,2015
 ['Marius Bancila'],"Understand how to use modern C++ templates for writing maintainable, robust, and fast software
 
 Key Features
@@ -621,7 +621,7 @@ Patterns and Idioms
 Ranges and Algorithms
 The Ranges Library
 Appendix
-Read more",816fb6780ec6906fa8d4a4f14f22f4b103c01f735e84bd3d2aa1bcaba32cd34a,,,"August 19, 2022","['C++ Programming', 'C++ Programming Language', 'Object-Oriented Design']",Template Metaprogramming with C++: Learn everything about C++ templates and unlock the power of template metaprogramming,https://www.amazon.com/dp/B09ZHZFTKV,2022
+Read more",816fb6780ec6906fa8d4a4f14f22f4b103c01f735e84bd3d2aa1bcaba32cd34a,,,"August 19, 2022",amazon,"['C++ Programming', 'C++ Programming Language', 'Object-Oriented Design']",Template Metaprogramming with C++: Learn everything about C++ templates and unlock the power of template metaprogramming,https://www.amazon.com/dp/B09ZHZFTKV,2022
 ['Anthony Williams'],"Summary
 
 This bestseller has been updated and revised to cover all the latest changes to C++ 14 and 17! C++ Concurrency in Action, Second Edition teaches you everything you need to write robust and elegant multithreaded applications in C++17.
@@ -667,7 +667,7 @@ Designing concurrent code
 Advanced thread management
 Parallel algorithms
 Testing and debugging multithreaded applications
-Read more",2c1bfc786745ce1030ce0bc0e9aabf2e15d796fc1ab9baeaa48dd45d7ff8048d,1617294691,978-1617294693,"February 10, 2019","['Parallel Computer Programming', 'C Programming Language', 'C++ Programming Language']",C++ Concurrency in Action,https://www.amazon.com/dp/1617294691,2019
+Read more",2c1bfc786745ce1030ce0bc0e9aabf2e15d796fc1ab9baeaa48dd45d7ff8048d,1617294691,978-1617294693,"February 10, 2019",amazon,"['Parallel Computer Programming', 'C Programming Language', 'C++ Programming Language']",C++ Concurrency in Action,https://www.amazon.com/dp/1617294691,2019
 "['Praseed Pai', 'Peter Abraham']","Learn how to implement the reactive programming paradigm with C++ and build asynchronous and concurrent applications
 
 Key Features
@@ -707,12 +707,12 @@ Reactive GUI Programming using Qt/C++
 Design Patterns and Idioms for C++ Reactive programming
 Reactive Micro services in C++
 Advanced Streams and Handling Errors
-Read more",435c0b5817cd3fbe7359fefb9668e5970a5060369df6b0d469963729739b50ac,1788629779,978-1788629775,"June 29, 2018","['C++ Programming Language', 'Computer Programming Languages', 'Microsoft Programming']",C++ Reactive Programming,https://www.amazon.com/dp/1788629779,2018
+Read more",435c0b5817cd3fbe7359fefb9668e5970a5060369df6b0d469963729739b50ac,1788629779,978-1788629775,"June 29, 2018",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Microsoft Programming']",C++ Reactive Programming,https://www.amazon.com/dp/1788629779,2018
 "['Maurice Herlihy', 'Nir Shavit', 'Victor Luchangco']","The Art of Multiprocessor Programming, Second Edition, provides users with an authoritative guide to multicore programming. This updated edition introduces higher level software development skills relative to those needed for efficient single-core programming, and includes comprehensive coverage of the new principles, algorithms, and tools necessary for effective multiprocessor programming. The book is an ideal resource for students and professionals alike who will benefit from its thorough coverage of key multiprocessor programming issues.
 Features new exercises developed for instructors using the text, with more algorithms, new examples, and other updates throughout the book
 Presents the fundamentals of programming multiple threads for accessing shared memory
 Explores mainstream concurrent data structures and the key elements of their design, as well as synchronization techniques, from simple locks to transactional memory systems
-Read more",95d6f49d69e97fd96500014e5a647d87c62f83a364dfe190e346902469f4653b,9780124159501,978-0124159501,"October 27, 2020","['Software Design & Engineering', 'Microsoft Programming', 'Software Development']",The Art of Multiprocessor Programming,https://www.amazon.com/dp/0124159508,2020
+Read more",95d6f49d69e97fd96500014e5a647d87c62f83a364dfe190e346902469f4653b,9780124159501,978-0124159501,"October 27, 2020",amazon,"['Software Design & Engineering', 'Microsoft Programming', 'Software Development']",The Art of Multiprocessor Programming,https://www.amazon.com/dp/0124159508,2020
 "['Rainer Grimm', 'Beatrix Jaud-Grimm']","C++11 is the first C++ standard that deals with concurrency. The story goes on with C++17, C++20, and will continue with C++23. I'll give you a detailed insight into the current and the upcoming concurrency in C++. This insight includes the theory and a lot of practice.
 
 C++11 and C++14 have the basic building blocks for creating concurrent or parallel programs.
@@ -720,7 +720,7 @@ With C++17, we got the parallel algorithms of the Standard Template Library (STL
 The concurrency story in C++ goes on. With C++20, we got coroutines, atomic smart pointers, semaphores, latches, and barriers.
 C++23 supports the first concrete coroutine: std::generator.
 With future C++ standards, we can hope for executors, extended futures, transactional memory, and more.
-Read more",a0029bbfd432aee3909b4c90af3ffe6c59a7a3459db58bb8d5b8beff46a65ed7,,979-8873420933,"January 20, 2024",['C++ Programming Language'],Concurrency with Modern C++: What every professional C++ programmer should know about concurrency.,https://www.amazon.com/dp/B0CT41Q1FF,2024
+Read more",a0029bbfd432aee3909b4c90af3ffe6c59a7a3459db58bb8d5b8beff46a65ed7,,979-8873420933,"January 20, 2024",amazon,['C++ Programming Language'],Concurrency with Modern C++: What every professional C++ programmer should know about concurrency.,https://www.amazon.com/dp/B0CT41Q1FF,2024
 "['Randal Bryant', ""David O'Hallaron""]","&>standalone product; MasteringEngineering ® does not come packaged with this content. If you would like to purchase both the physical text and MasteringEngineering search for 0134123832 / 9780134123837 Computer Systems: A Programmer's Perspective plus MasteringEngineering with Pearson eText ― Access Card Package, 3/e
 
 Package consists of:
@@ -745,14 +745,14 @@ MasteringEngineering is an online homework, tutorial, and assessment system, des
 
 Students, if interested in purchasing this title with MasteringEngineering, ask your instructor for the correct package ISBN and Course ID. Instructors, contact your Pearson representative for more information.
 
-Read more",9a5e5e0e6c903a0cf51c31a609abc06c94a87f442063b42903a84a1c6a8474fc,013409266X,978-0134092669,"March 2, 2015",['Computer Science'],Computer Systems: A Programmer's Perspective,https://www.amazon.com/dp/013409266X,2015
+Read more",9a5e5e0e6c903a0cf51c31a609abc06c94a87f442063b42903a84a1c6a8474fc,013409266X,978-0134092669,"March 2, 2015",amazon,['Computer Science'],Computer Systems: A Programmer's Perspective,https://www.amazon.com/dp/013409266X,2015
 "['Bertil Schmidt Ph.D.', 'Jorge Álvaro Gonzalez-Martinez MD PhD', 'Christian Hundt']","Parallel Programming: Concepts and Practice provides an upper level introduction to parallel programming. In addition to covering general parallelism concepts, this text teaches practical programming skills for both shared memory and distributed memory architectures. The authors’ open-source system for automated code evaluation provides easy access to parallel computing resources, making the book particularly suitable for classroom settings.
 
 Covers parallel programming approaches for single computer nodes and HPC clusters: OpenMP, multithreading, SIMD vectorization, MPI, UPC++
 Contains numerous practical parallel programming exercises
 Includes access to an automated code evaluation tool that enables students the opportunity to program in a web browser and receive immediate feedback on the result validity of their program
 Features an example-based teaching of concept to enhance learning outcomes
-Read more",08790683fc8018de5619b4325dd4d4f77ba8720dce68031d9155d509b3b760a4,9780128498903,978-0128498903,"November 27, 2017","['Parallel Computer Programming', 'Information Theory', 'Discrete Mathematics']",Parallel Programming: Concepts and Practice,https://www.amazon.com/dp/0128498900,2017
+Read more",08790683fc8018de5619b4325dd4d4f77ba8720dce68031d9155d509b3b760a4,9780128498903,978-0128498903,"November 27, 2017",amazon,"['Parallel Computer Programming', 'Information Theory', 'Discrete Mathematics']",Parallel Programming: Concepts and Practice,https://www.amazon.com/dp/0128498900,2017
 ['Dmytro Kedyk'],"Programmers use algorithms and data structures all the time, usually through numerous available APIs. Ideally an algorithm is correct, easy to understand, applicable to many problems, efficient, and free of intellectual property claims. This book covers algorithms and data structures learned in an algorithms class and many that aren't, including statistical algorithms, external memory algorithms, numerical methods, optimization, string algorithms, and data compression.
 
 About a fourth of the book is devoted to machine learning. There is much more theory than in the rest of the book because in machine learning relevant theory is more practical than algorithms. New learning algorithms are proposed often, and it's easy to get lost without understanding how learning actually works. In particular, getting comfortable with the concept of estimation error substantially improves the ability to reason about statistical algorithms.
@@ -763,17 +763,17 @@ Expect to learn something new in every chapter. Many topics appear only in speci
 
 Algorithm descriptions have tested C++ code, illustrations, performance analysis, and suggestions for optimizations and extensions. Still, the book is advanced, requiring some algorithmic maturity. After working through it, you will know more about algorithms and machine learning than before, even if you are already an expert. This is the book the author wishes he had when he started studying algorithms.
 
-Read more",f54c28fd949954d9b4ed9bdd72aff90795dd26d041253393df0d42ed26f67835,,979-8605325307,"December 8, 2020","['Programming Algorithms', 'Mathematical Analysis', 'Mathematics']",Implementing Useful Algorithms in C++,https://www.amazon.com/dp/B08PXHJCXY,2020
+Read more",f54c28fd949954d9b4ed9bdd72aff90795dd26d041253393df0d42ed26f67835,,979-8605325307,"December 8, 2020",amazon,"['Programming Algorithms', 'Mathematical Analysis', 'Mathematics']",Implementing Useful Algorithms in C++,https://www.amazon.com/dp/B08PXHJCXY,2020
 "['Robert Sedgewick', 'Peter Gordon']","Software developers and computer scientists have eagerly awaited this comprehensive revision of Robert Sedgewick's landmark texts on algorithms for C++. Sedgewick has completely revamped all five sections, illuminating today's best algorithms for an exceptionally wide range of tasks. This shrink-wrapped package brings together Algorithms in C++, Third Edition, Parts 1-4 and his new Algorithms in C++, Third Edition, Part 5. Together, these books are the most definitive, up-to-date, and practical algorithms resource available. The first book introduces fundamental concepts associated with algorithms; then covers data structures, sorting, and searching. The second book focuses entirely on graphing algorithms, which are critical for a wide range of applications, including network connectivity, circuit design, scheduling, transaction processing, and resource allocation. Sedgewick focuses on practical applications, giving readers all the information, diagrams, and real (not pseudo-) code they need to confidently implement, debug, and use the algorithms he presents. Together, these books present nearly 2,000 new exercises, hundreds of new figures, and dozens of new programs.
 
-Read more",37706bac55acc1a81e4889240c3f1270f264bef0714a8e68601b0d2ccfcd1b81,020172684X,978-0201726848,"December 28, 2001","['Computer Programming Structured Design', 'C++ Programming Language', 'Computer Systems Analysis & Design']","Bundle of Algorithms in C++, Parts 1-5: Fundamentals, Data Structures, Sorting, Searching, and Graph Algorithms",https://www.amazon.com/dp/020172684X,2001
+Read more",37706bac55acc1a81e4889240c3f1270f264bef0714a8e68601b0d2ccfcd1b81,020172684X,978-0201726848,"December 28, 2001",amazon,"['Computer Programming Structured Design', 'C++ Programming Language', 'Computer Systems Analysis & Design']","Bundle of Algorithms in C++, Parts 1-5: Fundamentals, Data Structures, Sorting, Searching, and Graph Algorithms",https://www.amazon.com/dp/020172684X,2001
 "['Michael T. Goodrich', 'Roberto Tamassia', 'David M. Mount']","This second edition of Data Structures and Algorithms in C++ is designed to provide an introduction to data structures and algorithms, including their design, analysis, and implementation. The authors offer an introduction to object-oriented design with C++ and design patterns, including the use of class inheritance and generic programming through class and function templates, and retain a consistent object-oriented viewpoint throughout the book.
 
 This is a “sister” book to Goodrich & Tamassia’s Data Structures and Algorithms in Java, but uses C++ as the basis language instead of Java. This C++ version retains the same pedagogical approach and general structure as the Java version so schools that teach data structures in both C++ and Java can share the same core syllabus.
 
 In terms of curricula based on the IEEE/ACM 2001 Computing Curriculum, this book is appropriate for use in the courses CS102 (I/O/B versions), CS103 (I/O/B versions), CS111 (A version), and CS112 (A/I/O/F/H versions).
 
-Read more",3c5409f622b9c4f1daac82d191c8011073f0f2921a03af97c13e19fa372229da,0470383275,978-0470383278,"February 22, 2011","['Data Structure and Algorithms', 'C++ Programming Language', 'Computer Programming Languages']",Data Structures and Algorithms in C++,https://www.amazon.com/dp/0470383275,2011
+Read more",3c5409f622b9c4f1daac82d191c8011073f0f2921a03af97c13e19fa372229da,0470383275,978-0470383278,"February 22, 2011",amazon,"['Data Structure and Algorithms', 'C++ Programming Language', 'Computer Programming Languages']",Data Structures and Algorithms in C++,https://www.amazon.com/dp/0470383275,2011
 ['Mark Weiss'],"Data Structures and Algorithm Analysis in C++ is an advanced algorithms book that bridges the gap between traditional CS2 and Algorithms Analysis courses.
 
 
@@ -781,7 +781,7 @@ As the speed and power of computers increases, so does the need for effective pr
 
 This book explains topics from binary heaps to sorting to NP-completeness, and dedicates a full chapter to amortized analysis and advanced data structures and their implementation. Figures and examples illustrating successive stages of algorithms contribute to Weiss’ careful, rigorous and in-depth analysis of each type of algorithm.
 
-Read more",ff00a58409dece5a3c2a7ce307f296fa390f08123009feb7706fdf8f18ecd81b,013284737X,978-0132847377,"June 13, 2013","['Computer Programming Structured Design', 'C++ Programming Language', 'Computer Systems Analysis & Design']",Data Structures & Algorithm Analysis in C++,https://www.amazon.com/dp/013284737X,2013
+Read more",ff00a58409dece5a3c2a7ce307f296fa390f08123009feb7706fdf8f18ecd81b,013284737X,978-0132847377,"June 13, 2013",amazon,"['Computer Programming Structured Design', 'C++ Programming Language', 'Computer Systems Analysis & Design']",Data Structures & Algorithm Analysis in C++,https://www.amazon.com/dp/013284737X,2013
 ['Henry Warren'],"In Hacker’s Delight, Second Edition, Hank Warren once again compiles an irresistible collection of programming hacks: timesaving techniques, algorithms, and tricks that help programmers build more elegant and efficient software, while also gaining deeper insights into their craft. Warren’s hacks are eminently practical, but they’re also intrinsically interesting, and sometimes unexpected, much like the solution to a great puzzle. They are, in a word, a delight to any programmer who is excited by the opportunity to improve.
 
 
@@ -803,7 +803,7 @@ Approximate floating-point reciprocal square root routine
 A gallery of graphs of discrete functions
 Now with exercises and answers .
 
-Read more",9452c821b53e5f6703e2a477b488ba43f6c9c63ff8336371d3c094a7a8232480,0321842685,978-0321842688,"September 25, 2012","['Computer Algorithms', 'Programming Algorithms', 'Computer Hacking']",Hacker's Delight,https://www.amazon.com/dp/0321842685,2012
+Read more",9452c821b53e5f6703e2a477b488ba43f6c9c63ff8336371d3c094a7a8232480,0321842685,978-0321842688,"September 25, 2012",amazon,"['Computer Algorithms', 'Programming Algorithms', 'Computer Hacking']",Hacker's Delight,https://www.amazon.com/dp/0321842685,2012
 "['Adnan Aziz', 'Tsung-Hsien Lee', 'Amit Prakash']","This is the C++ version of our book. See the website for links to the Java version, as well as to a version that uses larger fonts. Have you ever...
 
 Wanted to work at an exciting futuristic company?
@@ -823,7 +823,7 @@ Coding problems are presented through a series of chapters on basic and advanced
 A practical, fun approach to computer science fundamentals, as seen through the lens of common programming interview questions.
 Jeff Atwood/Co-founder, Stack Overflow and Discourse
 
-Read more",e64c6b0245578be1d7369299d3e7cc8a067597eb32ae442ae9471c0a773fb8ed,1479274836,978-1479274833,"October 11, 2012","['Discrete Mathematics', 'C++ Programming Language', 'Computer Software']",Elements of Programming Interviews: The Insiders' Guide,https://www.amazon.com/dp/1479274836,2012
+Read more",e64c6b0245578be1d7369299d3e7cc8a067597eb32ae442ae9471c0a773fb8ed,1479274836,978-1479274833,"October 11, 2012",amazon,"['Discrete Mathematics', 'C++ Programming Language', 'Computer Software']",Elements of Programming Interviews: The Insiders' Guide,https://www.amazon.com/dp/1479274836,2012
 "['Paul Deitel', 'Harvey Deitel']","In C++11 for Programmers, the Deitels bring their proven Live Code approach to teaching today’s powerful new version of the C++ language. Like all Deitel Developer titles, they teach the best way possible: via hundreds of complete example C++ programs, with thousands of lines of downloadable C++ source code.
 
 Unlike other C++11 books, this guide teaches robust, best-practice coding practices that fully support the CERT® Coordination Center’s authoritative secure coding standards. To help you write programs that are even more secure, the Deitels also introduce C++11’s new non-deterministic random-number generation capabilities. Using all these techniques, you can write industrial-strength C+11 code that stands up to attacks from viruses, worms, and other forms of malware.
@@ -832,7 +832,7 @@ Ideal for anyone who’s worked with at least one programming language before, C
 
 This book contains 240 complete C++11 programs (more than 15,000 lines of downloadable code). All code has been thoroughly tested on three popular industrial-strength C++11 compilers: GNU C++ 4.7, Microsoft® Visual C++® 2012, and Apple® LLVM in Xcode® 4.5.
 
-Read more",6bb1eff48d29bad5b84c17a2aa3522f741bd6e294b6d63885899af12553a1ce6,0133439852,978-0133439854,"January 1, 2014","['C# Programming', 'C++ Programming Language', 'Computer Programming Languages']",C++11 for Programmers (Deitel Developer),https://www.amazon.com/dp/0133439852,2014
+Read more",6bb1eff48d29bad5b84c17a2aa3522f741bd6e294b6d63885899af12553a1ce6,0133439852,978-0133439854,"January 1, 2014",amazon,"['C# Programming', 'C++ Programming Language', 'Computer Programming Languages']",C++11 for Programmers (Deitel Developer),https://www.amazon.com/dp/0133439852,2014
 ['Scott Meyers'],"Coming to grips with C++11 and C++14 is more than a matter of familiarizing yourself with the features they introduce (e.g., auto type declarations, move semantics, lambda expressions, and concurrency support). The challenge is learning to use those features effectively―so that your software is correct, efficient, maintainable, and portable. That’s where this practical book comes in. It describes how to write truly great software using C++11 and C++14―i.e. using modern C++.
 
 Topics include:
@@ -849,7 +849,7 @@ Effective Modern C++ follows the proven guideline-based, example-driven format o
 
 -- Herb Sutter, Chair of ISO C++ Standards Committee and C++ Software Architect at Microsoft
 
-Read more",adcc368b589173acf8bda4466471e543644b78af3a50f668cce159a9e23bab2f,9781491903995,978-1491903995,"December 30, 2014","['C Programming Language', 'C++ Programming Language', 'Software Development']",Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14,https://www.amazon.com/dp/1491903996,2014
+Read more",adcc368b589173acf8bda4466471e543644b78af3a50f668cce159a9e23bab2f,9781491903995,978-1491903995,"December 30, 2014",amazon,"['C Programming Language', 'C++ Programming Language', 'Software Development']",Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14,https://www.amazon.com/dp/1491903996,2014
 ['Jacek Galowicz'],"Key Features
 Learn the latest features of C++ and how to write better code by using the Standard Library (STL). Reduce the development time for your applications.
 Understand the scope and power of STL features to deal with real-world problems.
@@ -885,7 +885,7 @@ Strings, Stream Classes, and Regular Expressions
 Utility Classses
 Parallelism and Concurrency
 Filesystem
-Read more",0894a7d089bb0782b46319c00fd4d4d6bfa2c762faf995c7062114edda60a0f0,,,"June 28, 2017","['Functional Software Programming', 'C++ Programming', 'C++ Programming Language']",C++17 STL Cookbook: Discover the latest enhancements to functional programming and lambda expressions,https://www.amazon.com/dp/B01MTSADN8,2017
+Read more",0894a7d089bb0782b46319c00fd4d4d6bfa2c762faf995c7062114edda60a0f0,,,"June 28, 2017",amazon,"['Functional Software Programming', 'C++ Programming', 'C++ Programming Language']",C++17 STL Cookbook: Discover the latest enhancements to functional programming and lambda expressions,https://www.amazon.com/dp/B01MTSADN8,2017
 ['Marius Bancila'],"Test your C++ programming skills by solving real-world programming problems covered in the book
 
 Key Features
@@ -910,7 +910,7 @@ Implement general purpose algorithms as well as algorithms that solve specific p
 Create client-server applications that communicate over TCP/IP
 Consume HTTP REST services
 Use design patterns to solve real-world problems
-Read more",9b440e2f3426f4b81166936d27cc888776422bb8402585701a8bce672058eb20,1788993861,978-1788993869,"May 24, 2018","['C++ Programming Language', 'Computer Programming Languages', 'Microsoft Programming']",The Modern C++ Challenge: Become an expert programmer by solving real-world problems,https://www.amazon.com/dp/1788993861,2018
+Read more",9b440e2f3426f4b81166936d27cc888776422bb8402585701a8bce672058eb20,1788993861,978-1788993869,"May 24, 2018",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Microsoft Programming']",The Modern C++ Challenge: Become an expert programmer by solving real-world problems,https://www.amazon.com/dp/1788993861,2018
 ['Bartlomiej Filipek'],"This book shows the story of lambda expressions in C++. You’ll learn how to use this powerful feature in a step-by-step manner, slowly digesting the new capabilities and enhancements that come with each revision of the C++ Standard.
 
 This is a Black and White version. The full-colour print is also available - look for ""C++ Lambda Story (Full Color)"".
@@ -936,7 +936,7 @@ and many more
 
 All equipped with more than 85 runnable code samples!
 
-Read more",35e4309d9d96c5c0132f77e5f200b7d1fc58074f12b39c4e53d4b04eb4bd5715,,979-8590126835,"February 1, 2021","['C++ Programming Language', 'Microsoft Programming']",C++ Lambda Story: Everything you need to know about Lambda Expressions in Modern C++! (C++ Stories),https://www.amazon.com/dp/B08VLM1R76,2021
+Read more",35e4309d9d96c5c0132f77e5f200b7d1fc58074f12b39c4e53d4b04eb4bd5715,,979-8590126835,"February 1, 2021",amazon,"['C++ Programming Language', 'Microsoft Programming']",C++ Lambda Story: Everything you need to know about Lambda Expressions in Modern C++! (C++ Stories),https://www.amazon.com/dp/B08VLM1R76,2021
 ['Marius Bancila'],"A pragmatic recipe book for acquiring a comprehensive understanding of the complexities and core fundamentals of C++ programming
 
 Key Features
@@ -981,7 +981,7 @@ Robustness and Performance
 Implementing Patterns and Idioms
 Exploring Testing Frameworks
 C++20 Core Features
-Read more",e9f3d05c3d4ec03ffd06a7a13758e958ff2bfb7fdf5922065c54721e849ae309,1800208987,978-1800208988,"September 11, 2020","['C++ Programming Language', 'Computer Programming Languages', 'Software Development']","Modern C++ Programming Cookbook: Master C++ core language and standard library features, with over 100 recipes, updated to C++20, 2nd Edition",https://www.amazon.com/dp/1800208987,2020
+Read more",e9f3d05c3d4ec03ffd06a7a13758e958ff2bfb7fdf5922065c54721e849ae309,1800208987,978-1800208988,"September 11, 2020",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Software Development']","Modern C++ Programming Cookbook: Master C++ core language and standard library features, with over 100 recipes, updated to C++20, 2nd Edition",https://www.amazon.com/dp/1800208987,2020
 ['Ray Lischner'],"Discover everything you need to know about C++ in a logical progression of small lessons that you can work through as quickly or as slowly as you need. This book divides C++ up into bite-sized chunks that will help you learn the language one step at a time. Fully updated to include C++20, it assumes no familiarity with C++ or any other C-based language.
 
 Exploring C++20acknowledges that C++ can be a complicated language, so rather than baffle you with complex chapters explaining functions, classes, and statements in isolation you’ll focus on how to achieve results. By learning a little bit of this and a little of that you’ll soon have amassed enough knowledge to be writing non-trivial programs and will have built a solid foundation of experience that puts those previously baffling concepts into context.
@@ -1003,7 +1003,7 @@ Who This Book Is For
 
 Experienced programmers who may have little or no experience with C++ who want an accelerated learning guide to C++20 so they can hit the ground running.
 
-Read more",16fd6aab914ab2822ae924b86f793a6e847da01dd5cb209496b6ca659ba4d295,1484259602,978-1484259603,"August 28, 2020","['Compiler Design', 'Software Programming Compilers', 'Software Design & Engineering']",Exploring C++20: The Programmer's Introduction to C++,https://www.amazon.com/dp/1484259602,2020
+Read more",16fd6aab914ab2822ae924b86f793a6e847da01dd5cb209496b6ca659ba4d295,1484259602,978-1484259603,"August 28, 2020",amazon,"['Compiler Design', 'Software Programming Compilers', 'Software Design & Engineering']",Exploring C++20: The Programmer's Introduction to C++,https://www.amazon.com/dp/1484259602,2020
 ['Anais Sutherland'],"""C++ Programming Cookbook"" stands out as a clear, concise, and powerful technical resource for programmers who want to master C++'s intricacies. C++ programmers face a wide variety of problems, and this carefully written book is a treasure trove of solutions and methods to those software development challenges.
 
 Each chapter is organized to help you get a good grasp of the language and everything it can do, from the basics of C++20 to more complex topics like sophisticated type manipulation and performance optimization. Through a series of carefully curated recipes, readers are invited on a journey of learning and competency. Starting with the fundamentals of creating a development environment and comprehending C++ syntax, the book progresses to cover more advanced subjects like concurrency, memory management, file I/O operations, object-oriented design concepts, functional programming, and more. This book focuses on the latest C++ features and aims to get programmers to use idiomatic C++ patterns and modern best practices.
@@ -1032,7 +1032,7 @@ Concurrency and Multithreading
 Performance and Memory Management
 Advanced Type Manipulation
 File I/O and Streams Operations
-Read more",24ccb0e4428e2864f676d7b9b5d3d30dfbba30b75fb17fdb3988e15c312295d6,,,"March 17, 2024","['Memory Management Algorithms', 'Computer Programming Debugging', 'C++ Programming']","C++ Programming Cookbook: Proven solutions using C++ 20 across functions, file I/O, streams, memory management, STL, concurrency, type manipulation and error debugging",https://www.amazon.com/dp/B0CYCV5748,2024
+Read more",24ccb0e4428e2864f676d7b9b5d3d30dfbba30b75fb17fdb3988e15c312295d6,,,"March 17, 2024",amazon,"['Memory Management Algorithms', 'Computer Programming Debugging', 'C++ Programming']","C++ Programming Cookbook: Proven solutions using C++ 20 across functions, file I/O, streams, memory management, STL, concurrency, type manipulation and error debugging",https://www.amazon.com/dp/B0CYCV5748,2024
 ['Marius Bancila'],"Meta Description: With a wealth of practical recipes, this third edition isn't just a guide to C++23; it's a complete resource covering key features and techniques from C++11 through to C++23. It's designed to keep you ahead of the curve in C++.
 
 Key Features
@@ -1076,7 +1076,7 @@ Robustness and Performance
 Implementing Patterns and Idioms
 Exploring Testing Frameworks
 C++23 Features
-Read more",fed7940345059708f2e9949e3fb60ccf2a16ca79890a3959a9e405514e6e2d25,1835080545,978-1835080542,"February 29, 2024","['C++ Programming Language', 'Computer Programming Languages', 'Software Development']",Modern C++ Programming Cookbook: Master Modern C++ with comprehensive solutions for C++23 and all previous standards,https://www.amazon.com/dp/1835080545,2024
+Read more",fed7940345059708f2e9949e3fb60ccf2a16ca79890a3959a9e405514e6e2d25,1835080545,978-1835080542,"February 29, 2024",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Software Development']",Modern C++ Programming Cookbook: Master Modern C++ with comprehensive solutions for C++23 and all previous standards,https://www.amazon.com/dp/1835080545,2024
 ['Fedor G. Pikus'],"A comprehensive guide with extensive coverage of concepts such as OOP, functional programming, generic programming, concurrency, and STL along with the latest features of C++
 
 Purchase of the print or Kindle book includes a free PDF eBook
@@ -1123,9 +1123,9 @@ Singleton - A Classic OOP Pattern
 Policy-Based Design
 The Visitor Pattern and Multiple Dispatch
 Adapters and Decorators
-Read more",50e39da39e7cd4bdd67d3d84bca202074ce0feb31c67975aac02f2bd098e32b9,1804611557,978-1804611555,"July 21, 2023","['Computer Operating Systems', 'Operating Systems', 'Computer Hardware & DIY']","Hands-On Design Patterns with C++: Solve common C++ problems with modern design patterns and build robust applications, 2nd Edition",https://www.amazon.com/dp/1804611557,2023
+Read more",50e39da39e7cd4bdd67d3d84bca202074ce0feb31c67975aac02f2bd098e32b9,1804611557,978-1804611555,"July 21, 2023",amazon,"['Computer Operating Systems', 'Operating Systems', 'Computer Hardware & DIY']","Hands-On Design Patterns with C++: Solve common C++ problems with modern design patterns and build robust applications, 2nd Edition",https://www.amazon.com/dp/1804611557,2023
 ['Dmitri Nesteruk'],"Apply modern C++17 to the implementations of classic design patterns. As well as covering traditional design patterns, this book fleshes out new patterns and approaches that will be useful to C++ developers. The author presents concepts as a fun investigation of how problems can be solved in different ways, along the way using varying degrees of technical sophistication and explaining different sorts of trade-offs.Design Patterns in Modern C++ also provides a technology demo for modern C++, showcasing how some of its latest features (e.g., coroutines) make difficult problems a lot easier to solve. The examples in this book are all suitable for putting into production, with only a few simplifications made in order to aid readability.What You Will LearnApply design patterns to modern C++ programmingUse creational patterns of builder, factories, prototype and singletonImplement structural patterns such as adapter, bridge, decorator, facade and moreWork with the behavioral patterns such as chain of responsibility, command, iterator, mediator and moreApply functional design patterns such as Monad and moreWho This Book Is ForThose with at least some prior programming experience, especially in C++.
-Read more",78ee12384f7cc4cbad135d0243f5c85ee090af8fdeb358e44a21166244db2589,9781484236024,978-1484236024,"January 1, 2018",[],Design Patterns in Modern C++: Reusable Approaches for Object-Oriented Software Design,https://www.amazon.com/dp/1484236025,2018
+Read more",78ee12384f7cc4cbad135d0243f5c85ee090af8fdeb358e44a21166244db2589,9781484236024,978-1484236024,"January 1, 2018",amazon,[],Design Patterns in Modern C++: Reusable Approaches for Object-Oriented Software Design,https://www.amazon.com/dp/1484236025,2018
 "['John Debbie Lafferty', 'John Lakos', 'John Fuller']","Writing reliable and maintainable C++ software is hard. Designing such software at scale adds a new set of challenges. Creating large-scale systems requires a practical understanding of logical design ― beyond the theoretical concepts addressed in most popular texts. To be successful on an enterprise scale, developers must also address physical design, a dimension of software engineering that may be unfamiliar even to expert developers. Drawing on over 30 years of hands-on experience building massive, mission-critical enterprise systems, John Lakos shows how to create and grow Software Capital. This groundbreaking volume lays the foundation for projects of all sizes and demonstrates the processes, methods, techniques, and tools needed for successful real-world, large-scale development.
 Up to date and with a solid engineering focus, Large-Scale C++, Volume I: Process and Architecture, demonstrates fundamental design concepts with concrete examples. Professional developers of all experience levels will gain insights that transform their approach to design and development by understanding how to
 
@@ -1148,14 +1148,14 @@ This is the first of John Lakos’s three authoritative volumes on developing la
 Register your book for convenient access to downloads, updates, and/or corrections as they become available. See inside book for details.
 
 
-Read more",83485757510adfa42457aa17584fb533e63926740dc7bfcd8ef70e2e8cff4292,0201717069,978-0201717068,"December 17, 2019","['C++ Programming Language', 'Software Development', 'Computer Software']","Large-Scale C++: Process and Architecture, Volume 1 (Addison-Wesley Professional Computing Series)",https://www.amazon.com/dp/0201717069,2019
+Read more",83485757510adfa42457aa17584fb533e63926740dc7bfcd8ef70e2e8cff4292,0201717069,978-0201717068,"December 17, 2019",amazon,"['C++ Programming Language', 'Software Development', 'Computer Software']","Large-Scale C++: Process and Architecture, Volume 1 (Addison-Wesley Professional Computing Series)",https://www.amazon.com/dp/0201717069,2019
 ['John Lakos'],"Designing scalable software in C++ requires more than just a sound understanding of logical design. Senior developers, architects, and project leaders need a grasp of high-level physical design concepts that even many software experts have never explored. In Large-Scale C++ Volume Process and Architecture, John Lakos takes a practitioner's view of modern large-scale software development, helping experienced professionals apply architectural-level physical design concepts in their everyday work. Lakos teaches critical concepts clearly and concisely, with new high-value examples. Up to date and modular, Large-Scale C++ Volume I is designed to help you solve problems right now, and serve as an appealing reference for years to come.
-Read more",fd53e9048fd4a696203814a79f7b2f3cfc461691787a390b687f5fc97f9e2ff7,0134694694,978-0134694696,"March 14, 2021",[],Large-Scale C++ Volume II: Design and Implementation (Addison-Wesley Professional Computing Series),https://www.amazon.com/dp/0134694694,2021
+Read more",fd53e9048fd4a696203814a79f7b2f3cfc461691787a390b687f5fc97f9e2ff7,0134694694,978-0134694696,"March 14, 2021",amazon,[],Large-Scale C++ Volume II: Design and Implementation (Addison-Wesley Professional Computing Series),https://www.amazon.com/dp/0134694694,2021
 ['Martin Reddy'],"API Design for C++ provides a comprehensive discussion of Application Programming Interface (API) development, from initial design through implementation, testing, documentation, release, versioning, maintenance, and deprecation. It is the only book that teaches the strategies of C++ API development, including interface design, versioning, scripting, and plug-in extensibility. Drawing from the author's experience on large scale, collaborative software projects, the text offers practical techniques of API design that produce robust code for the long term. It presents patterns and practices that provide real value to individual developers as well as organizations. API Design for C++ explores often overlooked issues, both technical and non-technical, contributing to successful design decisions that product high quality, robust, and long-lived APIs. It focuses on various API styles and patterns that will allow you to produce elegant and durable libraries. A discussion on testing strategies concentrates on automated API testing techniques rather than attempting to include end-user application testing techniques such as GUI testing, system testing, or manual testing. Each concept is illustrated with extensive C++ code examples, and fully functional examples and working source code for experimentation are available online. This book will be helpful to new programmers who understand the fundamentals of C++ and who want to advance their design skills, as well as to senior engineers and software architects seeking to gain new expertise to complement their existing talents. Three specific groups of readers are targeted: practicing software engineers and architects, technical managers, and students and educators.
 - The only book that teaches the strategies of C++ API development, including design, versioning, documentation, testing, scripting, and extensibility
 - Extensive code examples illustrate each concept, with fully functional examples and working source code for experimentation available online
 - Covers various API styles and patterns with a focus on practical and efficient designs for large-scale long-term projects
-Read more",cc5068c8f13bacb65dd2f132a05a0e18785f9ede762fff06c20b4774d3a22249,,,"March 14, 2011","['Computer Engineering', 'Object-Oriented Design', 'Software Development (Kindle Store)']",API Design for C++,https://www.amazon.com/dp/B004NNUZ6O/,2011
+Read more",cc5068c8f13bacb65dd2f132a05a0e18785f9ede762fff06c20b4774d3a22249,,,"March 14, 2011",amazon,"['Computer Engineering', 'Object-Oriented Design', 'Software Development (Kindle Store)']",API Design for C++,https://www.amazon.com/dp/B004NNUZ6O/,2011
 ['Ronald Mak'],"Learn the fundamentals of Object-Oriented design by investigating good—and bad—code!
 
 Well-designed applications run more efficiently, have fewer bugs, and are easier to revise and maintain. Using an engaging “before-and-after” approach, Object-Oriented Software Design in C++ shows you exactly what bad software looks like and how to fix it with good design principles and patterns.
@@ -1223,7 +1223,7 @@ PART 4
 PART 5
 15 Designing solutions with recursion and backtracking
 16 Designing multithreaded programs
-Read more",a5419c57b52d1a39b92a2cd67d75a9c8a198cf07fec2e28e14cfc776cd234b19,163343950X,978-1633439504,"June 18, 2024","['C++ Programming Language', 'Object-Oriented Design', 'Software Development']",Object-Oriented Software Design in C++,https://www.amazon.com/dp/163343950X/,2024
+Read more",a5419c57b52d1a39b92a2cd67d75a9c8a198cf07fec2e28e14cfc776cd234b19,163343950X,978-1633439504,"June 18, 2024",amazon,"['C++ Programming Language', 'Object-Oriented Design', 'Software Development']",Object-Oriented Software Design in C++,https://www.amazon.com/dp/163343950X/,2024
 ['Klaus Iglberger'],"Good software design is essential for the success of your project, but designing software is hard to do. You need to have a deep understanding of the consequences of design decisions and a good overview of available design alternatives. With this book, experienced C++ developers will get a thorough, practical, and unparalleled overview of software design with this modern language.
 
 C++ trainer and consultant Klaus Iglberger explains how you can manage dependencies and abstractions, improve changeability and extensibility of software entities, and apply and implement modern design patterns to help you take advantage of today's possibilities. Software design is the most essential aspect of a software project because it impacts the software's most important properties: maintainability, changeability, and extensibility.
@@ -1234,7 +1234,7 @@ Explore the advantages and disadvantages of each design approach
 Learn how design patterns help solve problems and express intent
 Choose the right form of a design pattern to get the most out of its advantages
 
-Read more",ef835bcf7b230abf43415847dfbbb55d0f9c292c84dd50fbc55c1d6550a46bea,1098113160,978-1098113162,"October 25, 2022","['C++ Programming Language', 'Object-Oriented Design', 'Software Development']",C++ Software Design: Design Principles and Patterns for High-Quality Software,https://www.amazon.com/dp/1098113160,2022
+Read more",ef835bcf7b230abf43415847dfbbb55d0f9c292c84dd50fbc55c1d6550a46bea,1098113160,978-1098113162,"October 25, 2022",amazon,"['C++ Programming Language', 'Object-Oriented Design', 'Software Development']",C++ Software Design: Design Principles and Patterns for High-Quality Software,https://www.amazon.com/dp/1098113160,2022
 ['Lee Zhi Eng'],"Use Qt6 to design and build functional, appealing, and user-friendly graphical user interfaces (GUIs) for your applications.
 
 Key Features
@@ -1276,7 +1276,7 @@ Conversion Library
 Accessing Databases with SQL Driver and Qt
 Develop Web Applications using Qt WebEngine
 Performance Optimization
-Read more",c1f949f787901e99e2fc9c8713e7844cd5df1c0ac77934b868fe94e5f6727c72,1805122630,978-1805122630,"May 9, 2024","['Cross-platform Software Development', 'Mobile App Development & Programming', 'C++ Programming Language']","QT6 C++ GUI Programming Cookbook: Practical recipes for building cross-platform GUI applications, widgets, and animations with Qt6",https://www.amazon.com/dp/1805122630,2024
+Read more",c1f949f787901e99e2fc9c8713e7844cd5df1c0ac77934b868fe94e5f6727c72,1805122630,978-1805122630,"May 9, 2024",amazon,"['Cross-platform Software Development', 'C++ Programming Language', 'Mobile App Development & Programming']","QT6 C++ GUI Programming Cookbook: Practical recipes for building cross-platform GUI applications, widgets, and animations with Qt6",https://www.amazon.com/dp/1805122630,2024
 ['Mark Summerfield'],"Master Qts Most Powerful APIs, Patterns, and Development Practices
 
  
@@ -1300,12 +1300,12 @@ Explains how to write more effective threaded programs with the QtConcurrent mod
 Includes detailed coverage of creating rich text editors and documents
 Thoroughly covers graphics/view programming: architecture, windows, widgets, layouts, scenes, and more
 Introduces Qt 4.6s powerful animation and state machine frameworks
-Read more",95d8e7ed9f87f5d9fee5de180f4f53e0449d7a5da1c648ba9c060b2fa92b8826,0134670876,978-0134670874,,[],Advanced Qt Programming: Creating Great Software With C++ and Qt 4,https://www.amazon.com/dp/0134670876,
+Read more",95d8e7ed9f87f5d9fee5de180f4f53e0449d7a5da1c648ba9c060b2fa92b8826,0134670876,978-0134670874,,amazon,[],Advanced Qt Programming: Creating Great Software With C++ and Qt 4,https://www.amazon.com/dp/0134670876,
 ['Roger Deutsch'],"Part 1: The first book in the Program Win10 Series contains Chapters 1 - 8.All source code is available from GitHub at https://github.com/raddevus/Win10UWPI have written this book to lead readers into the story of creating apps for the Windows 10 Desktop.This book contains a complete flow so that you can pick it up, read through it and see all the screenshots that you will experience when you begin developing your own Windows 10 app. This book brings the reader into the story of developing Win10 apps and allows the reader to peek inside the head of a developer as he creates complete Win10 apps.How will this book work?Programming Windows 10 For Beginners (and Advanced devs)There are two ways you can learn to program computers: Read a long book that tells you all about the history of programming and lists all the things you can do.Start building projects. Begin at the beginning and go on from there. Programming Windows 10 (PW10) will use the second method to teach. This method makes learning faster and here's why. Read Entire Fish Encyclopedia The first method is similar to reading the entire Fish Encyclopedia so you can know how to catch a fish. Sure, there's a lot of information in the encyclopedia that may be helpful, but perhaps you first want to decide if you even like fishing. Start Fishing The second method gets you fishing so you can feel what it's like to collect bait, put the bait on a hook, cast your line, wait, not catch a fish, and finally (hopefully) catch a fish. There Are Things You Won't Know Using the second method, there are a lot of things that you won't know as you fish. But, those things only matter if you decide to continue fishing. So, as long as you feel comfortable not knowing some things at first, you will like the way this book teaches Windows programming. Try It, Learn It In this book we try it and then we learn it. We build it first and see it work and then we figure out how it works and why it behaves the way it does. Which Is More Memorable? The try it learn it method is more fun and ends up being more memorable too. Which do you think you would remember more? Reading the Encyclopedia of Fish Going on a fishing trip. Right. Going on the fishing trip is a whole lot more fun, a better way to learn and more memorable.What Is the Focus of Programming Windows 10?My focus here is on creating UWAs (Universal Windows Apps) with a focus on creating apps for the Windows 10 desktop. Yes, the dream is to develop an app and deploy it to any type of device (PC, laptop, pad (Surface), phone or whatever). However, the focus here in this book is creating desktop apps that will keep those other platforms in mind but not focus directly on them.
-Read more",f203cfb3028098a54dbe100418f02556fe0673411129b63a8c37ba6df4858e0e,1973438771,978-1973438779,"December 1, 2017","['Windows 10 Guides', 'Microsoft C & C++ Windows Programming', 'Mobile App Development & Programming']",Programming Windows 10 Via UWP: Learn To Program Universal Windows Apps For the Desktop (Program Win10),https://www.amazon.com/dp/1973438771,2017
+Read more",f203cfb3028098a54dbe100418f02556fe0673411129b63a8c37ba6df4858e0e,1973438771,978-1973438779,"December 1, 2017",amazon,"['Windows 10 Guides', 'Microsoft C & C++ Windows Programming', 'Mobile App Development & Programming']",Programming Windows 10 Via UWP: Learn To Program Universal Windows Apps For the Desktop (Program Win10),https://www.amazon.com/dp/1973438771,2017
 "['David LeBlanc', 'Michael Howard']","Keep black-hat hackers at bay with the tips and techniques in this entertaining, eye-opening book! Developers will learn how to padlock their applications throughout the entire development process—from designing secure applications to writing robust code that can withstand repeated attacks to testing applications for security flaws. Easily digested chapters reveal proven principles, strategies, and coding techniques. The authors—two battle-scarred veterans who have solved some of the industry’s toughest security problems—provide sample code in several languages. This edition includes updated information about threat modeling, designing a security process, international issues, file-system issues, adding privacy to applications, and performing security code reviews. It also includes enhanced coverage of buffer overruns, Microsoft .NET security, and Microsoft ActiveX development, plus practical checklists for developers, testers, and program managers.
 
-Read more",a6c1be4f15c2d0b949647c16a0ad41baab1f45302e819921942bb292c8d283df,,,"December 4, 2002","['Software Development (Kindle Store)', 'Security & Encryption', 'Microsoft Programming']",Writing Secure Code (Developer Best Practices),https://www.amazon.com/dp/B00JDMP718,2002
+Read more",a6c1be4f15c2d0b949647c16a0ad41baab1f45302e819921942bb292c8d283df,,,"December 4, 2002",amazon,"['Software Development (Kindle Store)', 'Security & Encryption', 'Microsoft Programming']",Writing Secure Code (Developer Best Practices),https://www.amazon.com/dp/B00JDMP718,2002
 "['John Lakos', 'Vittorio Romeo', 'Rostislav Khlebnikov']","Maximize Reward and Minimize Risk with Modern C++
 
 Embracing Modern C++ Safely shows you how to make effective use of the new and enhanced language features of modern C++ without falling victim to their potential pitfalls.
@@ -1324,7 +1324,7 @@ Seasoned C++ developers, team leads, and technical managers who want to improve 
 
 Register your book for convenient access to downloads, updates, and/or corrections as they become available. See inside book for details.
 
-Read more",404ede4a30fe2b617400e937cbcb9acfbae7e43d6312a6ee0c08c882f8c97ed7,0312293240,978-0137380350,"December 23, 2021","['C++ Programming Language', 'Computer Programming Languages']",Embracing Modern C++ Safely,https://www.amazon.com/dp/0137380356,2021
+Read more",404ede4a30fe2b617400e937cbcb9acfbae7e43d6312a6ee0c08c882f8c97ed7,0312293240,978-0137380350,"December 23, 2021",amazon,"['C++ Programming Language', 'Computer Programming Languages']",Embracing Modern C++ Safely,https://www.amazon.com/dp/0137380356,2021
 ['Robert C. Seacord'],"Learn the Root Causes of Software Vulnerabilities and How to Avoid Them
 
  
@@ -1362,14 +1362,14 @@ Secure Coding in C and C++, Second Edition, presents hundreds of examples of sec
 
  
 
-Read more",f350a4831486f307c839a938a1fb0de265f506170056edcbf361c3ba5979814a,,,"March 23, 2013","['C Programming', 'C++ Programming', 'C Programming Language']",Secure Coding in C and C++ (SEI Series in Software Engineering),https://www.amazon.com/dp/B00C0OBZI0,2013
+Read more",f350a4831486f307c839a938a1fb0de265f506170056edcbf361c3ba5979814a,,,"March 23, 2013",amazon,"['C Programming', 'C++ Programming', 'C Programming Language']",Secure Coding in C and C++ (SEI Series in Software Engineering),https://www.amazon.com/dp/B00C0OBZI0,2013
 "['Jeffrey M. Richter', 'Christophe Nasarre', 'Mark Russinovich']","Master the intricacies of application development with unmanaged C++ code - with advice straight from the experts. Jeffrey Richter's book is now fully revised for Windows XP, Windows Vista, and Windows Server 2008. You get in-depth, comprehensive guidance, advanced techniques, and extensive code samples to help you program Windows-based applications.
 You'll discover how to: architect and implement your applications for both 32-bit and 64-bit Windows; create and manipulate processes and jobs; schedule, manage, synchronize, and destroy threads; perform asynchronous and synchronous device I/O operations with the I/O completion port; allocate memory using various techniques including virtual memory, memory-mapped files, and heaps; manipulate the default committed physical storage of thread stacks; build DLLs for delay-loading, API hooking, and process injection; and use structured exception handling, Windows Error Recovery, and Application Restart.
-Read more",a98b9a00d67593867ef95473a09c22cde26987300a786e86eb33cabe8c8f66a2,0735624240,978-0735624245,"November 28, 2007","['C Programming Language', 'C++ Programming Language', 'Object-Oriented Design']",Windows via C/C++,https://www.amazon.com/dp/0735624240,2007
+Read more",a98b9a00d67593867ef95473a09c22cde26987300a786e86eb33cabe8c8f66a2,0735624240,978-0735624245,"November 28, 2007",amazon,"['C Programming Language', 'C++ Programming Language', 'Object-Oriented Design']",Windows via C/C++,https://www.amazon.com/dp/0735624240,2007
 "['Pavel Yosifovich', 'Jeffrey Richter']","This is an advanced guide to modern Windows system programming with C and C++ for experienced developers. Thoroughly updated for Windows 10, 8.x, and 7, it offers expert guidance for leveraging Windows foundations to build robust, highly-secure programs. Leading Windows developers Pavel Yosifovich (co-author, Windows Internals, 7th Edition) and Microsoft Partner Architect Jeffrey Richter (author, Windows Runtime via C#) drill down to offer in-depth tutorials and explanations of how Windows works and how to make the most of its capabilities using the Windows APIs. Packed with modern code examples, it covers Windows system architecture, compilation, error handling, processes, advanced threads and synchronization, jobs, sophisticated memory management techniques, device I/O, security, Windows programming patterns, services, the Registry, security, and much more.
-Read more",ccce8ec921e58dc82905802f62c2b6df5d5083e4042143e2da263d2ca3a273ef,0135953391,978-0135953396,"December 9, 2019",[],Windows Via C/C++,https://www.amazon.com/dp/0135953391,2019
+Read more",ccce8ec921e58dc82905802f62c2b6df5d5083e4042143e2da263d2ca3a273ef,0135953391,978-0135953396,"December 9, 2019",amazon,[],Windows Via C/C++,https://www.amazon.com/dp/0135953391,2019
 ['Pavel Yosifovich'],"Delve into programming the Windows operating system through the Windows API in with C++. Use the power of the Windows API to working with processes, threads, jobs, memory, I/O and more. The book covers current Windows 10 versions, allowing you to get the most of what Windows has to offer to developers in terms of productivity, performance and scalability.
-Read more",7c9bfd6b1d3df76fa122a5a056df4a9922e1df3001a30cc01234c586bc2bb7d7,,979-8634170381,"April 11, 2020","['Windows 10 Guides', 'Microsoft C & C++ Windows Programming', 'Schools & Teaching']","Windows 10 System Programming, Part 1",https://www.amazon.com/dp/B086Y6M7LH,2020
+Read more",7c9bfd6b1d3df76fa122a5a056df4a9922e1df3001a30cc01234c586bc2bb7d7,,979-8634170381,"April 11, 2020",amazon,"['Windows 10 Guides', 'Microsoft C & C++ Windows Programming', 'Schools & Teaching']","Windows 10 System Programming, Part 1",https://www.amazon.com/dp/B086Y6M7LH,2020
 ['Charles Petzold'],"Reimagined for full-screen and touch-optimized apps, Windows 8 provides a platform for reaching new users in new ways. In response, programming legend Charles Petzold is rewriting his classic Programming Windows—one of the most popular programming books of all time—to show developers how to use existing skills and tools to build Windows 8 apps.
 
 Programming Windows, Sixth Edition focuses on creating Windows 8 apps accessing the Windows Runtime with XAML and C#. The book also provides C++ code samples. The Sixth Edition is organized in two parts:
@@ -1379,7 +1379,7 @@ Programming Windows, Sixth Edition focuses on creating Windows 8 apps accessing 
 Part I, “Elementals,” begins with the interrelationship between code and XAML, basic event handling, dynamic layout, controls, templates, asynchronous processing, the application bar, control customization, and collections. You should emerge from Part I ready to create sophisticated page-oriented collection-based user interfaces using the powerful ListView and GridView controls.
 
 Part II, “Specialties,” explores topics you might not need for every program but are essential to a well-rounded education in Windows 8. These include multitouch, bitmap graphics, interfacing with share and search facilities, printing, working with the sensors (GPS and orientation), text, obtaining input from the stylus (including handwriting recognition), accessing web services, calling Win32 and DirectX functions, and bringing your application to the Windows 8 app store.
-Read more",b5c11a8f24c622e8e22523d1cbaf15d342080517696daf87ff6c66e1b6327e3b,,,"January 15, 2013","['C# Programming (Kindle Store)', 'Microsoft Programming (Kindle Store)', 'C# Programming']",Programming Windows (Developer Reference),https://www.amazon.com/dp/B00JDMPJ8E,2013
+Read more",b5c11a8f24c622e8e22523d1cbaf15d342080517696daf87ff6c66e1b6327e3b,,,"January 15, 2013",amazon,"['C# Programming (Kindle Store)', 'Microsoft Programming (Kindle Store)', 'C# Programming']",Programming Windows (Developer Reference),https://www.amazon.com/dp/B00JDMPJ8E,2013
 ['Johnson M. Hart'],"“If you’re writing a native Win32 program or just want to know what the OS is really doing underneath, you need John’s book. He covers the stuff that real systems programmers absolutely must know. Recommended.”
 
 –Chris Sells, Microsoft Corporation
@@ -1405,9 +1405,9 @@ Windows performance-enhancing API features available starting with Windows Vista
 
 A companion Web site, jmhartsoftware.com, contains all sample code, Visual Studio projects, additional examples, errata, reader comments, and Windows commentary and discussion.
 
-Read more",6cd9b7f220be8a98604546305c8069c7a5bfb8b58d96e3bfd24add7bad5a245d,0321657748,978-0321657749,"January 1, 2010","['Computer Operating Systems', 'Microsoft C & C++ Windows Programming', 'Microsoft OS Guides']",Windows System Programming (Addison-Wesley Microsoft Technology Series),https://www.amazon.com/dp/0321657748,2010
+Read more",6cd9b7f220be8a98604546305c8069c7a5bfb8b58d96e3bfd24add7bad5a245d,0321657748,978-0321657749,"January 1, 2010",amazon,"['Computer Operating Systems', 'Microsoft C & C++ Windows Programming', 'Microsoft OS Guides']",Windows System Programming (Addison-Wesley Microsoft Technology Series),https://www.amazon.com/dp/0321657748,2010
 ['Keith Brown'],"A guide to computer security for software developers demonstrates techniques for writing secure applications, covering cryptography, authentication, access control, and credentials.
-Read more",09cb2952d0a8088db920034797624611f95382bb5fb6ae6db7ea17611d8c1c16,0201604426,978-0201604429,"July 5, 2000","['Windows Server Guides', 'CompTIA Certification Guides', 'Computer Operating Systems']",Programming Windows Security: The Developers Guide (DevelopMentor),https://www.amazon.com/dp/0201604426,2000
+Read more",09cb2952d0a8088db920034797624611f95382bb5fb6ae6db7ea17611d8c1c16,0201604426,978-0201604429,"July 5, 2000",amazon,"['Windows Server Guides', 'CompTIA Certification Guides', 'Computer Operating Systems']",Programming Windows Security: The Developers Guide (DevelopMentor),https://www.amazon.com/dp/0201604426,2000
 ['Robert Dunne'],"Windows® 64-bit Assembly Language Programming Quick Start is a complete tutorial using the free Community Edition of Microsoft® Visual Studio 17 to introduce the novice to the Intel® X86-64 architecture and the Windows X64 Calling Convention.
 
 
@@ -1440,7 +1440,7 @@ Learning computer hardware and software architectures through hands-on assembly 
 
 
 
-Read more",0540a81597a8f4048a38eb63b72b0dab1f5a5aaa4e70014b5107d89b9d49d34c,,,"July 31, 2018","['Assembly Language Programming', 'PC Hardware', 'Computer Hardware']","Windows 64-bit Assembly Language Programming Quick Start: Intel X86-64, SSE, AVX",https://www.amazon.com/dp/B07G2WJFZK,2018
+Read more",0540a81597a8f4048a38eb63b72b0dab1f5a5aaa4e70014b5107d89b9d49d34c,,,"July 31, 2018",amazon,"['Assembly Language Programming', 'PC Hardware', 'Computer Hardware']","Windows 64-bit Assembly Language Programming Quick Start: Intel X86-64, SSE, AVX",https://www.amazon.com/dp/B07G2WJFZK,2018
 ['Tarik Soulami'],"Use Windows debuggers throughout the development cycle―and build better software
 
 Rethink your use of Windows debugging and tracing tools―and learn how to make them a key part of test-driven software development. Led by a member of the Windows Fundamentals Team at Microsoft, you’ll apply expert debugging and tracing techniques―and sharpen your C++ and C# code analysis skills―through practical examples and common scenarios. Learn why experienced developers use debuggers in every step of the development process, and not just when bugs appear.
@@ -1456,11 +1456,11 @@ Debug the concurrency and security aspects of your software
 Use debuggers to analyze interactions between your code and the operating system
 Analyze software behavior with Xperf and the Event Tracing for Windows (ETW) framework
 
-Read more",2786694f8530e7bb50cb05148534e2d195d4521615673d548dd28184ca4f5275,0735662789,978-0735662780,"May 15, 2012","['Computer Programming Debugging', 'Computer Programming Logic', 'Software Development']",Inside Windows Debugging (Developer Reference),https://www.amazon.com/dp/0735662789,2012
+Read more",2786694f8530e7bb50cb05148534e2d195d4521615673d548dd28184ca4f5275,0735662789,978-0735662780,"May 15, 2012",amazon,"['Computer Programming Debugging', 'Computer Programming Logic', 'Software Development']",Inside Windows Debugging (Developer Reference),https://www.amazon.com/dp/0735662789,2012
 "['Jeffrey Richter', 'Jason Clark']","Enterprise developers take an in-depth tour of Windows 2000 services -- the powerful features and subsystems designed specifically to handle mission-critical data processing needs -- and get expert guidance for building applications that exploit their capabilities. Covering the Service Control Manager, Registry, performance monitoring, event logging, security, asynchronous I/O, and other key topics -- and featuring a CD-ROM packed with next-generation 64-bit code examples -- this book provides timely and substantive instruction for creating a powerful new class of enterprise solutions.
-Read more",47c8ff90fdf4e610d40143320148e6f3c2164d295efd656effb29eeccd2513e2,0735607532,978-0735607538,"April 22, 2000","['Computer Operating Systems', 'Microsoft OS Guides', 'Software Design & Engineering']",Programming Server-Side Applications for Microsoft Windows 2000 (Dv-Mps Programming),https://www.amazon.com/dp/0735607532,2000
+Read more",47c8ff90fdf4e610d40143320148e6f3c2164d295efd656effb29eeccd2513e2,0735607532,978-0735607538,"April 22, 2000",amazon,"['Computer Operating Systems', 'Microsoft OS Guides', 'Software Design & Engineering']",Programming Server-Side Applications for Microsoft Windows 2000 (Dv-Mps Programming),https://www.amazon.com/dp/0735607532,2000
 "['Pavel Yosifovich', 'Mark E. Russinovich', 'David A. Solomon']","Delve inside Windows architecture and internals - and see how core components work behind the scenes. This classic guide has been fully updated for Windows 10 and Windows Server 2016, and now presents its coverage in two parts.
-Read more",663f9c2116cfd0c76c1b110c150e0fc4a56b991e8cb0b63f342e524d690d89b3,0738758841,978-0735684188,"May 5, 2017","['Windows Server Guides', 'Microsoft C & C++ Windows Programming', 'Windows Administration']","Windows Internals: System architecture, processes, threads, memory management, and more, Part 1 (Developer Reference)",https://www.amazon.com/dp/0735684189,2017
+Read more",663f9c2116cfd0c76c1b110c150e0fc4a56b991e8cb0b63f342e524d690d89b3,0738758841,978-0735684188,"May 5, 2017",amazon,"['Windows Server Guides', 'Microsoft C & C++ Windows Programming', 'Windows Administration']","Windows Internals: System architecture, processes, threads, memory management, and more, Part 1 (Developer Reference)",https://www.amazon.com/dp/0735684189,2017
 "['Andrea Allievi', 'Mark Russinovich', 'Alex Ionescu']","The definitive guide to modern Windows internals: new coverage of virtualization, file systems, boot, security, and more.
 
 For advanced computing professionals, this is the definitive up-to-date guide to how Windows core components behave “under the hood.” Using it, experienced developers can build more powerful and scalable software, administrators can debug complex system and performance problems, and security researchers can harden their systems. This Seventh Edition is fully updated through the May 2021 (21H1/2104) updates to Windows 10 and Windows Server (2022, 2019, and 2016). It adds extensive content on Hyper-V, plus fully rewritten chapters on the boot process, new storage technologies, and Windows system and management mechanisms. As always, it delivers unparalleled insight based on insider access to Microsoft source code, with hands-on experiments using the latest debugging tools to show you Windows’ internal behaviors firsthand. With Windows 11 introducing new user interface design elements that build upon the same core technologies as Windows 10, readers will be well-prepared for this new chapter of computing.
@@ -1491,9 +1491,9 @@ About This Book
 
 • Assumes you are a Windows power user
 
-Read more",4e635a0a7e9f945b5be8dc7a8d5b7d1179506b85c5b59c2b921e78d880d5f4d8,0135462401,978-0738772714,"October 1, 2021","['Windows 10 Guides', 'Software Design & Engineering', 'Software Development']","Windows Internals, Part 2 (Developer Reference)",https://www.amazon.com/dp/0135462401,2021
+Read more",4e635a0a7e9f945b5be8dc7a8d5b7d1179506b85c5b59c2b921e78d880d5f4d8,0135462401,978-0738772714,"October 1, 2021",amazon,"['Windows 10 Guides', 'Software Design & Engineering', 'Software Development']","Windows Internals, Part 2 (Developer Reference)",https://www.amazon.com/dp/0135462401,2021
 ['Pavel Yosifovich'],"There is nothing like the power of the kernel in Windows - but how do you write kernel drivers to take advantage of that power? This book will show you how.The book describes software kernel drivers programming for Windows. These drivers don't deal with hardware, but rather with the system itself: processes, threads, modules, registry and more. Kernel code can be used for monitoring important events, preventing some from occurring if needed. Various filters can be written that can intercept calls that a driver may be interested in.
-Read more",1d0d504b088a227420a75115ba41248e306197bb4f86ff5bfefd429a4e17a5ee,,979-8711428220,"February 21, 2021","['Computer Hardware Design & Architecture', 'Microsoft C & C++ Windows Programming']",Windows Kernel Programming,https://www.amazon.com/dp/B08WZHBQYC,2021
+Read more",1d0d504b088a227420a75115ba41248e306197bb4f86ff5bfefd429a4e17a5ee,,979-8711428220,"February 21, 2021",amazon,"['Computer Hardware Design & Architecture', 'Microsoft C & C++ Windows Programming']",Windows Kernel Programming,https://www.amazon.com/dp/B08WZHBQYC,2021
 ['Jack-Benny Persson'],"Find solutions to all your problems related to Linux system programming using practical recipes for developing your own system programs
 
 
@@ -1541,7 +1541,7 @@ Who this book is for:
 
 This book is for anyone who wants to develop system programs for Linux and gain a deeper understanding of the Linux system. The book is beneficial for anyone who is facing issues related to a particular part of Linux system programming and is looking for specific recipes or solutions.
 
-Read more",f157ffed1de476e456c37f0c50353ebd15860b5edc938947999427ca86d45a1e,1789951283,978-1789951288,"May 7, 2021","['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Linux System Programming Techniques: Become a proficient Linux system programmer using expert recipes and techniques,https://www.amazon.com/dp/1789951283,2021
+Read more",f157ffed1de476e456c37f0c50353ebd15860b5edc938947999427ca86d45a1e,1789951283,978-1789951288,"May 7, 2021",amazon,"['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Linux System Programming Techniques: Become a proficient Linux system programmer using expert recipes and techniques,https://www.amazon.com/dp/1789951283,2021
 ['Michael Kerrisk'],"The Linux Programming Interface (TLPI) is the definitive guide to the Linux and UNIX programming interface—the interface employed by nearly every application that runs on a Linux or UNIX system.
 
 In this authoritative work, Linux programming expert Michael Kerrisk provides detailed descriptions of the system calls and library functions that you need in order to master the craft of system programming, and accompanies his explanations with clear, complete example programs.
@@ -1559,7 +1559,7 @@ You'll find descriptions of over 500 system calls and library functions, and mor
 While The Linux Programming Interface covers a wealth of Linux-specific features, including epoll, inotify, and the /proc file system, its emphasis on UNIX standards (POSIX.1-2001/SUSv3 and POSIX.1-2008/SUSv4) makes it equally valuable to programmers working on other UNIX platforms.
 
 The Linux Programming Interface is the most comprehensive single-volume work on the Linux and UNIX programming interface, and a book that's destined to become a new classic.
-Read more",f26517329b66feccd3653c1f0225cc52b20ccbd3806595346946af61774401e4,1593272200,978-1593272203,"October 28, 2010","['Unix Programming', 'Linux Programming', 'Linux Networking & System Administration']",The Linux Programming Interface: A Linux and UNIX System Programming Handbook,https://www.amazon.com/dp/1593272200,2010
+Read more",f26517329b66feccd3653c1f0225cc52b20ccbd3806595346946af61774401e4,1593272200,978-1593272203,"October 28, 2010",amazon,"['Unix Programming', 'Linux Programming', 'Linux Networking & System Administration']",The Linux Programming Interface: A Linux and UNIX System Programming Handbook,https://www.amazon.com/dp/1593272200,2010
 "['W. Stevens', 'Stephen Rago']","Practical, in-depth knowledge of the system programming interfaces that drive the UNIX and Linux kernels
 
 Building on W. Rich Stevens’ pioneering work, this third edition of the classic was updated by Steve Rago, a colleague of Stevens, to reflect technical advances and best practices aligning with Version 4 of the Single UNIX Specification.
@@ -1575,9 +1575,9 @@ Steve carefully retains the spirit and approach that have made this book so valu
 
 Filled with examples, case-studies, and access to thousands of lines of downloadable code, Advanced Programming in the UNIX® Environment has helped generations of programmers write code with exceptional power, performance, and reliability.
 
-Read more",f35ea7ce2ee7c998c6eb75ffc7e0b2feb36fc00724908cd5bf255517474aefca,0321637739,978-0321637734,"May 14, 2013","['Unix Programming', 'Unix Operating System', 'Computer Operating Systems']","Advanced Programming in the UNIX Environment, 3rd Edition",https://www.amazon.com/dp/0321637739,2013
+Read more",f35ea7ce2ee7c998c6eb75ffc7e0b2feb36fc00724908cd5bf255517474aefca,0321637739,978-0321637734,"May 14, 2013",amazon,"['Unix Programming', 'Unix Operating System', 'Computer Operating Systems']","Advanced Programming in the UNIX Environment, 3rd Edition",https://www.amazon.com/dp/0321637739,2013
 "['Neil Matthew', 'Richard Stones']","Beginning Linux Programming, Fourth Edition continues its unique approach to teaching UNIX programming in a simple and structured way on the Linux platform. Through the use of detailed and realistic examples, students learn by doing, and are able to move from being a Linux beginner to creating custom applications in Linux. The book introduces fundamental concepts beginning with the basics of writing Unix programs in C, and including material on basic system calls, file I/O, interprocess communication (for getting programs to work together), and shell programming. Parallel to this, the book introduces the toolkits and libraries for working with user interfaces, from simpler terminal mode applications to X and GTK+ for graphical user interfaces. Advanced topics are covered in detail such as processes, pipes, semaphores, socket programming, using MySQL, writing applications for the GNOME or the KDE desktop, writing device drivers, POSIX Threads, and kernel programming for the latest Linux Kernel.
-Read more",a03bdbaf24f7aedb15f39500643137843df522c4f8de410707290846dd2d8dc1,0470147628,978-0470147627,"November 5, 2007","['Linux Programming', 'Computer Operating Systems', 'Introductory & Beginning Programming']",Beginning Linux Programming,https://www.amazon.com/dp/0470147628,2007
+Read more",a03bdbaf24f7aedb15f39500643137843df522c4f8de410707290846dd2d8dc1,0470147628,978-0470147627,"November 5, 2007",amazon,"['Linux Programming', 'Computer Operating Systems', 'Introductory & Beginning Programming']",Beginning Linux Programming,https://www.amazon.com/dp/0470147628,2007
 ['Robert Love'],"Write software that draws directly on services offered by the Linux kernel and core system libraries. With this comprehensive book, Linux kernel contributor Robert Love provides you with a tutorial on Linux system programming, a reference manual on Linux system calls, and an insider’s guide to writing smarter, faster code.
 
 Love clearly distinguishes between POSIX standard functions and special services offered only by Linux. With a new chapter on multithreading, this updated and expanded edition provides an in-depth look at Linux from both a theoretical and applied perspective over a wide range of programming topics, including:
@@ -1593,10 +1593,10 @@ Interfaces for allocating memory and optimizing memory access
 Basic and advanced signal interfaces, and their role on the system
 Clock management, including POSIX clocks and high-resolution timers
 
-Read more",a329493b5714b7fc647a728610540e65ec1490d119531c44ac2146fa188df36d,1449339530,978-1449339531,"July 2, 2013","['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Linux System Programming: Talking Directly to the Kernel and C Library,https://www.amazon.com/dp/1449339530,2013
+Read more",a329493b5714b7fc647a728610540e65ec1490d119531c44ac2146fa188df36d,1449339530,978-1449339531,"July 2, 2013",amazon,"['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Linux System Programming: Talking Directly to the Kernel and C Library,https://www.amazon.com/dp/1449339530,2013
 ['Eric Raymond'],"The Art of UNIX Programming poses the belief that understanding the unwritten UNIX engineering tradition and mastering its design patterns will help programmers of all stripes to become better programmers. This book attempts to capture the engineering wisdom and design philosophy of the UNIX, Linux, and Open Source software development community as it has evolved over the past three decades, and as it is applied today by the most experienced programmers. Eric Raymond offers the next generation of ""hackers"" the unique opportunity to learn the connection between UNIX philosophy and practice through careful case studies of the very best UNIX/Linux programs.
 
-Read more",ae19f2e0af3100141876ae0d76e7c03bfae4866117b4e827049d823d61f7e7ea,0131429019,978-0131429017,"September 23, 2003","['Unix Programming', 'Computer Systems Analysis & Design', 'Computer Software']",The Art of UNIX Programming (The Addison-Wesley Professional Computng Series),https://www.amazon.com/dp/0131429019,2003
+Read more",ae19f2e0af3100141876ae0d76e7c03bfae4866117b4e827049d823d61f7e7ea,0131429019,978-0131429017,"September 23, 2003",amazon,"['Unix Programming', 'Computer Systems Analysis & Design', 'Computer Software']",The Art of UNIX Programming (The Addison-Wesley Professional Computng Series),https://www.amazon.com/dp/0131429019,2003
 ['Dr. Rian Quinn'],"A hands-on guide to making system programming with C++ easy
 
 Key Features
@@ -1638,7 +1638,7 @@ Programming POSIX Sockets using C++
 Time Interfaces in Unix
 Learn to Program POSIX and C++ Threads
 Error Handling with Exceptions
-Read more",f1c8f047b0a51c55fd263c240e40a3c1abfcbb906c2ecbf6c0e8acf87349cd33,,,"December 26, 2018","['C++ Programming', 'Linux', 'Computer Systems Analysis & Design (Kindle Store)']",Hands-On System Programming with C++: Build performant and concurrent Unix and Linux systems with C++17,https://www.amazon.com/dp/B07GVNFTWD,2018
+Read more",f1c8f047b0a51c55fd263c240e40a3c1abfcbb906c2ecbf6c0e8acf87349cd33,,,"December 26, 2018",amazon,"['C++ Programming', 'Linux', 'Computer Systems Analysis & Design (Kindle Store)']",Hands-On System Programming with C++: Build performant and concurrent Unix and Linux systems with C++17,https://www.amazon.com/dp/B07GVNFTWD,2018
 ['Kaiwan N Billimoria'],"Get up and running with system programming concepts in Linux
 
 Key Features
@@ -1686,7 +1686,7 @@ Advanced File I/O
 Troubleshooting and Best Practices
 File IO Essentials
 Daemon Processes
-Read more",1bb1cbcba6dd8e05a3fbda235bea3e706d02e9795e9a8cfc2c57e229f21cc994,1788998472,978-1788998475,"October 31, 2018","['Linux Programming', 'C Programming Language', 'Computer Programming Languages']","Hands-On System Programming with Linux: Explore Linux system programming interfaces, theory, and practice",https://www.amazon.com/dp/1788998472,2018
+Read more",1bb1cbcba6dd8e05a3fbda235bea3e706d02e9795e9a8cfc2c57e229f21cc994,1788998472,978-1788998475,"October 31, 2018",amazon,"['Linux Programming', 'C Programming Language', 'Computer Programming Languages']","Hands-On System Programming with Linux: Explore Linux system programming interfaces, theory, and practice",https://www.amazon.com/dp/1788998472,2018
 ['Robert Love'],"Linux Kernel Development details the design and implementation of the Linux kernel, presenting the content in a manner that is beneficial to those writing and developing kernel code, as well as to programmers seeking to better understand the operating system and become more efficient and productive in their coding.
 
 The book details the major subsystems and features of the Linux kernel, including its design, implementation, and interfaces. It covers the Linux kernel with both a practical and theoretical eye, which should appeal to readers with a variety of interests and needs.
@@ -1701,12 +1701,12 @@ Extended coverage of virtual memory and memory allocation
 Tips on debugging the Linux kernel
 In-depth coverage of kernel synchronization and locking
 Useful insight into submitting kernel patches and working with the Linux kernel community
-Read more",d3fdd37c577b2a11f715e098b6b2f65fb714083f7af7b6334e460df95b85a2b0,0672329468,978-0672329463,"June 22, 2010","['Linux Kernel & Peripherals', 'Linux Programming', 'C Programming Language']",Linux Kernel Development,https://www.amazon.com/dp/0672329468,2010
+Read more",d3fdd37c577b2a11f715e098b6b2f65fb714083f7af7b6334e460df95b85a2b0,0672329468,978-0672329463,"June 22, 2010",amazon,"['Linux Kernel & Peripherals', 'Linux Programming', 'C Programming Language']",Linux Kernel Development,https://www.amazon.com/dp/0672329468,2010
 ['Rami Rosen'],"Linux Kernel Networking takes you on a guided in-depth tour of the current Linux networking implementation and the theory behind it. Linux kernel networking is a complex topic, so the book won't burden you with topics not directly related to networking. This book will also not overload you with cumbersome line-by-line code walkthroughs not directly related to what you're searching for; you'll find just what you need, with in-depth explanations in each chapter and a quick reference at the end of each chapter.
 
 Linux Kernel Networking is the only up-to-date reference guide to understanding how networking is implemented, and it will be indispensable in years to come since so many devices now use Linux or operating systems based on Linux, like Android, and since Linux is so prevalent in the data center arena, including Linux-based virtualization technologies like Xen and KVM.
 
-Read more",26eb537a45558a2b12d5af70dfeee13beb6208c4effe6430cf5a6ee4cdaf3dca,143026196X,978-1430261964,"December 24, 2013","['Linux Programming', 'Linux Networking & System Administration', 'Software Development']",Linux Kernel Networking: Implementation and Theory (Expert's Voice in Open Source),https://www.amazon.com/dp/143026196X,2013
+Read more",26eb537a45558a2b12d5af70dfeee13beb6208c4effe6430cf5a6ee4cdaf3dca,143026196X,978-1430261964,"December 24, 2013",amazon,"['Linux Programming', 'Linux Networking & System Administration', 'Software Development']",Linux Kernel Networking: Implementation and Theory (Expert's Voice in Open Source),https://www.amazon.com/dp/143026196X,2013
 ['Kaiwan N. Billimoria'],"Gain a solid practical understanding and sufficient theoretical insight into Linux kernel internals while learning to write high-quality kernel module code and understanding the complexities of kernel synchronization
 
 Purchase of the print or Kindle book includes a free eBook in PDF format.
@@ -1752,7 +1752,7 @@ The CPU Scheduler - Part 1
 The CPU Scheduler - Part 2
 Kernel Synchronization - Part 1
 Kernel Synchronization - Part 2
-Read more",08b235c17df65641cf96149c17615b763faa0aab9b91c42e82649cf33bd91c08,1803232226,978-1803232225,"February 29, 2024","['Linux & UNIX Administration', 'Linux Networking & System Administration', 'Linux Programming']","Linux Kernel Programming: A comprehensive and practical guide to kernel internals, writing modules, and kernel synchronization",https://www.amazon.com/dp/1803232226,2024
+Read more",08b235c17df65641cf96149c17615b763faa0aab9b91c42e82649cf33bd91c08,1803232226,978-1803232225,"February 29, 2024",amazon,"['Linux & UNIX Administration', 'Linux Networking & System Administration', 'Linux Programming']","Linux Kernel Programming: A comprehensive and practical guide to kernel internals, writing modules, and kernel synchronization",https://www.amazon.com/dp/1803232226,2024
 ['Kaiwan N Billimoria'],"Discover how to write high-quality character driver code, interface with userspace, work with chip memory, and gain an in-depth understanding of working with hardware interrupts and kernel synchronization
 
 
@@ -1802,7 +1802,7 @@ Who this book is for:
 
 An understanding of the topics covered in the Linux Kernel Programming book is highly recommended to make the most of this book. This book is for Linux programmers beginning to find their way with device driver development. Linux device driver developers looking to overcome frequent and common kernel/driver development issues, as well as perform common driver tasks such as user-kernel interfaces, performing peripheral I/O, handling hardware interrupts, and dealing with concurrency will benefit from this book. A basic understanding of Linux kernel internals (and common APIs), kernel module development, and C programming is required.
 
-Read more",f01e9759c739bf81ca8cb5a7ca3f27fec5a91dc5345a2b209bf1bbd5970d7d8f,180107951X,978-1801079518,"March 19, 2021","['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']","Linux Kernel Programming Part 2 - Char Device Drivers and Kernel Synchronization: Create user-kernel interfaces, work with peripheral I/O, and handle hardware interrupts",https://www.amazon.com/dp/180107951X,2021
+Read more",f01e9759c739bf81ca8cb5a7ca3f27fec5a91dc5345a2b209bf1bbd5970d7d8f,180107951X,978-1801079518,"March 19, 2021",amazon,"['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']","Linux Kernel Programming Part 2 - Char Device Drivers and Kernel Synchronization: Create user-kernel interfaces, work with peripheral I/O, and handle hardware interrupts",https://www.amazon.com/dp/180107951X,2021
 ['Kaiwan N Billimoria'],"Effectively debug kernel modules, device drivers, and the kernel itself by gaining a solid understanding of powerful open source tools and advanced kernel debugging techniques
 
 Key Features
@@ -1843,7 +1843,7 @@ Tracing the Kernel Flow
 Kernel Panic, Lockups, and Hangs
 Using Kernel GDB (KGDB)
 A Few More Kernel Debugging Approaches
-Read more",1b9dea97d6be090bddc48af77a5ede8c0bfa29ba6bd1ee1d11d0fde8062293ca,1801075034,978-1801075039,"August 5, 2022","['Linux Programming', 'Linux Networking & System Administration', 'Software Development']",Linux Kernel Debugging: Leverage proven tools and advanced techniques to effectively debug Linux kernels and kernel modules,https://www.amazon.com/dp/1801075034,2022
+Read more",1b9dea97d6be090bddc48af77a5ede8c0bfa29ba6bd1ee1d11d0fde8062293ca,1801075034,978-1801075039,"August 5, 2022",amazon,"['Linux Programming', 'Linux Networking & System Administration', 'Software Development']",Linux Kernel Debugging: Leverage proven tools and advanced techniques to effectively debug Linux kernels and kernel modules,https://www.amazon.com/dp/1801075034,2022
 ['John Madieu'],"Master the art of developing customized device drivers for your embedded Linux systems
 
 
@@ -1891,7 +1891,7 @@ Who This Book Is For:
 
 ﻿This book is for embedded developers, Linux system engineers, and system programmers who want to explore Linux kernel frameworks and subsystems. C programming skills and a basic understanding of driver development are necessary to get started with this book.
 
-Read more",c118242be0a47f10bfd230563161561a26deb708d2261e24e3f5173d569651b5,178934204X,978-1789342048,"January 8, 2021","['Device Drivers', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Mastering Linux Device Driver Development: Write custom device drivers to support computer peripherals in Linux operating systems,https://www.amazon.com/dp/178934204X,2021
+Read more",c118242be0a47f10bfd230563161561a26deb708d2261e24e3f5173d569651b5,178934204X,978-1789342048,"January 8, 2021",amazon,"['Device Drivers', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Mastering Linux Device Driver Development: Write custom device drivers to support computer peripherals in Linux operating systems,https://www.amazon.com/dp/178934204X,2021
 ['John Madieu'],"Get up to speed with the most important concepts in driver development and focus on common embedded system requirements such as memory management, interrupt management, and locking mechanisms
 
 
@@ -1941,7 +1941,7 @@ Who this book is for:
 
 This Linux OS book is for embedded system and embedded Linux enthusiasts/developers who want to get started with Linux kernel development and leverage its subsystems. Electronic hackers and hobbyists interested in Linux kernel development as well as anyone looking to interact with the platform using GPIO, IIO, and input subsystems will also find this book useful.
 
-Read more",0b062146be4d24a5bd6e1174d29a8ac5083feddcecf28e04c9aa31a347741606,1803240067,978-1803240060,"April 21, 2022","['Device Drivers', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Linux Device Driver Development - Second Edition: Everything you need to start with device driver development for Linux kernel and embedded Linux,https://www.amazon.com/dp/1803240067,2022
+Read more",0b062146be4d24a5bd6e1174d29a8ac5083feddcecf28e04c9aa31a347741606,1803240067,978-1803240060,"April 21, 2022",amazon,"['Device Drivers', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Linux Device Driver Development - Second Edition: Everything you need to start with device driver development for Linux kernel and embedded Linux,https://www.amazon.com/dp/1803240067,2022
 ['Rodolfo Giometti'],"Over 30 recipes to develop custom drivers for your embedded Linux applications.
 
 Key Features
@@ -1981,7 +1981,7 @@ Advanced Char Driver Operations
 (Appendix C): Additional Information on managing Interrupts and Concurrency on
 (Appendix D): Additional Information on miscellaneous Kernel Internals
 (Appendix E): Additional Information on advanced Char Driver Operations
-Read more",4ba59664f544b79e7175ccf6ed023dda0550c9c91fc6576574a2989b2b24f069,1838558802,978-1838558802,"May 31, 2019","['Linux Applications', 'Device Drivers', 'Computer Software']",Linux Device Driver Development Cookbook: Develop custom drivers for your embedded Linux applications,https://www.amazon.com/dp/1838558802,2019
+Read more",4ba59664f544b79e7175ccf6ed023dda0550c9c91fc6576574a2989b2b24f069,1838558802,978-1838558802,"May 31, 2019",amazon,"['Linux Applications', 'Device Drivers', 'Computer Software']",Linux Device Driver Development Cookbook: Develop custom drivers for your embedded Linux applications,https://www.amazon.com/dp/1838558802,2019
 "['Frank Vasquez', 'Chris Simmonds']","Harness the power of Linux to create versatile and robust embedded solutions
 
 Key Features
@@ -2030,7 +2030,7 @@ Managing Memory
 Debugging with GDB
 Profiling and Tracing
 Real-Time Programming
-Read more",13ab1d6ec4aa5e5c9193c9c73b4ad9ef30d0ef5d3ccbf9e47339c50f9b1ac62e,1789530385,978-1789530384,"May 14, 2021","['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']","Mastering Embedded Linux Programming: Create fast and reliable embedded solutions with Linux 5.4 and the Yocto Project 3.1 (Dunfell), 3rd Edition",https://www.amazon.com/dp/1789530385,2021
+Read more",13ab1d6ec4aa5e5c9193c9c73b4ad9ef30d0ef5d3ccbf9e47339c50f9b1ac62e,1789530385,978-1789530384,"May 14, 2021",amazon,"['Linux Programming', 'Linux & UNIX Administration', 'Linux Networking & System Administration']","Mastering Embedded Linux Programming: Create fast and reliable embedded solutions with Linux 5.4 and the Yocto Project 3.1 (Dunfell), 3rd Edition",https://www.amazon.com/dp/1789530385,2021
 ['Alex González'],"Over 79 hands-on recipes for professional embedded Linux developers to optimize and boost their Yocto Project know-how
 
 Key Features
@@ -2056,7 +2056,7 @@ Optimize your production systems by reducing the size of both the Linux kernel a
 Explore the mechanisms to increase the root filesystem security
 Understand the open source licensing requirements and how to comply with them when cohabiting with proprietary programs
 Create recipes, and build and run applications in C, C++, Python, Node.js, and Java
-Read more",8f7e37d1679c65006beda6e0b4d3ee89bb8cc2cf281088c7d5e5e25f12524b12,1788399218,978-1788399210,"January 25, 2018","['Computer Hardware Embedded Systems', 'Computer Operating Systems', 'Linux Networking & System Administration']",Embedded Linux Development Using Yocto Project Cookbook: Practical recipes to help you leverage the power of Yocto to build exciting Linux-based systems,https://www.amazon.com/dp/1788399218,2018
+Read more",8f7e37d1679c65006beda6e0b4d3ee89bb8cc2cf281088c7d5e5e25f12524b12,1788399218,978-1788399210,"January 25, 2018",amazon,"['Computer Hardware Embedded Systems', 'Computer Operating Systems', 'Linux Networking & System Administration']",Embedded Linux Development Using Yocto Project Cookbook: Practical recipes to help you leverage the power of Yocto to build exciting Linux-based systems,https://www.amazon.com/dp/1788399218,2018
 ['Rudolf Streif'],"Build Complete Embedded Linux Systems Quickly and Reliably
 
 Developers are increasingly integrating Linux into their embedded systems: It supports virtually all hardware architectures and many peripherals, scales well, offers full source code, and requires no royalties. The Yocto Project makes it much easier to customize Linux for embedded systems. If you’re a developer with working knowledge of Linux, Embedded Linux Systems with the Yocto ProjectTM will help you make the most of it.
@@ -2080,7 +2080,7 @@ Provide Application Development Toolkits (ADT) for round-trip development
 Remotely run and debug applications on actual hardware targets
 Ensure open-source license compliance
 Scale team-based projects with Toaster, Build History, Source Mirrors, and Autobuilder
-Read more",9537f3b628876b88d3ec238181563a84b214ec5dc3fd51850d3b7964a9a83844,0133443248,978-0133443240,"May 2, 2016","['Linux Programming', 'Computer Hardware Embedded Systems', 'Single Board Computers']",Embedded Linux Systems with the Yocto Project (Pearson Open Source Software Development Series),https://www.amazon.com/dp/0133443248,2016
+Read more",9537f3b628876b88d3ec238181563a84b214ec5dc3fd51850d3b7964a9a83844,0133443248,978-0133443240,"May 2, 2016",amazon,"['Linux Programming', 'Computer Hardware Embedded Systems', 'Single Board Computers']",Embedded Linux Systems with the Yocto Project (Pearson Open Source Software Development Series),https://www.amazon.com/dp/0133443248,2016
 ['Lloyd Brombach'],"Learn how to build and program real autonomous robots
 
 Key Features
@@ -2136,7 +2136,7 @@ Facebook Profile: www.facebook.com/practicalrobotics
 Youtube: www.youtube.com/practicalrobotics
 LinkedIn Profile: https://www.linkedin.com/in/lbrombach
 
-Read more",0e3c57f88955175b699e8c7debad599d8bb887f73db8e025bcbac9c3bb48f198,9389423465,978-9389423464,"January 29, 2021","['Single Board Computers', 'C++ Programming Language', 'Computer Programming Languages']",Practical Robotics in C++: Build and Program Real Autonomous Robots Using Raspberry Pi (English Edition),https://www.amazon.com/dp/9389423465,2021
+Read more",0e3c57f88955175b699e8c7debad599d8bb887f73db8e025bcbac9c3bb48f198,9389423465,978-9389423464,"January 29, 2021",amazon,"['Single Board Computers', 'C++ Programming Language', 'Computer Programming Languages']",Practical Robotics in C++: Build and Program Real Autonomous Robots Using Raspberry Pi (English Edition),https://www.amazon.com/dp/9389423465,2021
 ['Daniele Lacamera'],"Learn to design and develop safe and reliable embedded systems
 
 Key Features
@@ -2162,7 +2162,7 @@ Write memory-safe code
 Understand the architecture behind the communication interfaces
 Understand the design and development patterns for connected and distributed devices in the IoT
 Master multitask parallel execution patterns and real-time operating systems
-Read more",a2e4ec21b0940d25a431482486cbe77934072cc893e7d44c4001f1055754d9ca,1788832507,978-1788832502,"May 29, 2018","['Computer Hardware Embedded Systems', 'C Programming Language', 'Computer Programming Languages']","Embedded Systems Architecture: Explore architectural concepts, pragmatic design patterns, and best practices to produce robust systems",https://www.amazon.com/dp/1788832507,2018
+Read more",a2e4ec21b0940d25a431482486cbe77934072cc893e7d44c4001f1055754d9ca,1788832507,978-1788832502,"May 29, 2018",amazon,"['Computer Hardware Embedded Systems', 'C Programming Language', 'Computer Programming Languages']","Embedded Systems Architecture: Explore architectural concepts, pragmatic design patterns, and best practices to produce robust systems",https://www.amazon.com/dp/1788832507,2018
 ['Lewis Van Winkle'],"A comprehensive guide to programming with network sockets, implementing Internet protocols, designing IoT devices, and much more with C
 
 Key Features
@@ -2211,7 +2211,7 @@ Setting Up Your C Compiler on Windows
 Setting Up Your C Compiler on Linux
 Setting Up Your C Compiler on macOS
 Example Programs
-Read more",d071cf84c59ce12ce21c81c1898a78970bf8a3d2da5d9f82a3baae88a318b1a7,1789349869,978-1789349863,"May 13, 2019","['C Programming Language', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Hands-On Network Programming with C: Learn socket programming in C and write secure and optimized network code,https://www.amazon.com/dp/1789349869,2019
+Read more",d071cf84c59ce12ce21c81c1898a78970bf8a3d2da5d9f82a3baae88a318b1a7,1789349869,978-1789349863,"May 13, 2019",amazon,"['C Programming Language', 'Linux & UNIX Administration', 'Linux Networking & System Administration']",Hands-On Network Programming with C: Learn socket programming in C and write secure and optimized network code,https://www.amazon.com/dp/1789349869,2019
 ['Christian Benvenuti'],"If you've ever wondered how Linux carries out the complicated tasks assigned to it by the IP protocols -- or if you just want to learn about modern networking through real-life examples -- Understanding Linux Network Internals is for you.
 
 Like the popular O'Reilly book, Understanding the Linux Kernel, this book clearly explains the underlying concepts and teaches you how to follow the actual C code that implements it. Although some background in the TCP/IP protocols is helpful, you can learn a great deal from this text about the protocols themselves and their uses. And if you already have a base knowledge of C, you can use the book's code walkthroughs to figure out exactly what this sophisticated part of the Linux kernel is doing.
@@ -2230,7 +2230,7 @@ ICMP
 
 Author Christian Benvenuti, an operating system designer specializing in networking, explains much more than how Linux code works. He shows the purposes of major networking features and the trade-offs involved in choosing one solution over another. A large number of flowcharts and other diagrams enhance the book's understandability.
 
-Read more",07390cd39991cdc215bc6ecd9f8a252217f72d5c9928f568f2f8af06c9e2240e,9780596002558,978-0596002558,"February 7, 2006","['Software Design & Engineering', 'Linux Networking & System Administration', 'Software Development']",Understanding Linux Network Internals: Guided Tour to Networking on Linux,https://www.amazon.com/dp/0596002556,2006
+Read more",07390cd39991cdc215bc6ecd9f8a252217f72d5c9928f568f2f8af06c9e2240e,9780596002558,978-0596002558,"February 7, 2006",amazon,"['Linux Networking & System Administration', 'Software Design & Engineering', 'Software Development']",Understanding Linux Network Internals: Guided Tour to Networking on Linux,https://www.amazon.com/dp/0596002556,2006
 ['David Wolff'],"Over 70 recipes that cover advanced techniques for 3D programming such as lighting, shading, textures, particle systems, and image processing with OpenGL 4.6
 
 Key Features
@@ -2272,9 +2272,9 @@ Shadows
 Using Noise in Shaders
 Particle Systems and Animation
 Using Compute Shaders
-Read more",18cb502bb333533b3b163458bdccee3dff676d4add2cb98f63d0842469392a5a,1789342252,978-1789342253,"September 28, 2018","['OpenGL Software Programming', '3D Graphic Design', 'Game Programming']","OpenGL 4 Shading Language Cookbook: Build high-quality, real-time 3D graphics with OpenGL 4.6, GLSL 4.6 and C++17, 3rd Edition",https://www.amazon.com/dp/1789342252,2018
+Read more",18cb502bb333533b3b163458bdccee3dff676d4add2cb98f63d0842469392a5a,1789342252,978-1789342253,"September 28, 2018",amazon,"['OpenGL Software Programming', '3D Graphic Design', 'Game Programming']","OpenGL 4 Shading Language Cookbook: Build high-quality, real-time 3D graphics with OpenGL 4.6, GLSL 4.6 and C++17, 3rd Edition",https://www.amazon.com/dp/1789342252,2018
 "['V. Scott Gordon', 'John Clevenger']","This updated edition includes step-by-step instruction on modern OpenGL 4.0+ GLSL shader programming with C++, along with the theoretical foundations of 3D computer graphics. Every shader stage is explored, from the basics of modeling, textures, lighting, shadows, etc., through advanced techniques such as tessellation, noise maps, water, and stereoscopy. This new edition includes expanded coverage of camera control, refraction, and a new chapter on ray tracing with bounding volume hierarchies for complex models. The companion files include all the source code, shaders, model files, skyboxes, etc., needed to run every example in the book.
-Read more",609f40049c7cfea4c26b3a46c4614194e93828a14f4f6c00fe32f9bcc1ca7f2e,1501522590,978-1501522598,"March 9, 2024","['OpenGL Software Programming', 'Rendering & Ray Tracing', '3D Graphic Design']",Computer Graphics Programming in OpenGL with C++,https://www.amazon.com/dp/1501522590,2024
+Read more",609f40049c7cfea4c26b3a46c4614194e93828a14f4f6c00fe32f9bcc1ca7f2e,1501522590,978-1501522598,"March 9, 2024",amazon,"['OpenGL Software Programming', 'Rendering & Ray Tracing', '3D Graphic Design']",Computer Graphics Programming in OpenGL with C++,https://www.amazon.com/dp/1501522590,2024
 ['Joey de Vries'],"Graphics programmers are often coined the 'wizards' of the game industry. As every magician knows, terms like wizardry and magic are often somewhat exaggerated. Yet, there is a certain charm to graphics programming: the ability to conjure up complete living worlds at our fingertips.
 
 
@@ -2292,7 +2292,7 @@ Graphics programming isn't as hard as many people make it out to be... you just 
 
 
 
-Read more",e675f06e1051fa8d709d56042f662872ebf68120a927a8f8d5f39ccc8a66f0e4,9090332561,978-9090332567,"June 17, 2020","['OpenGL Software Programming', 'Game Programming', 'Introductory & Beginning Programming']",Learn OpenGL: Learn modern OpenGL graphics programming in a step-by-step fashion.,https://www.amazon.com/dp/9090332561,2020
+Read more",e675f06e1051fa8d709d56042f662872ebf68120a927a8f8d5f39ccc8a66f0e4,9090332561,978-9090332567,"June 17, 2020",amazon,"['OpenGL Software Programming', '3D Graphic Design', 'Game Programming']",Learn OpenGL: Learn modern OpenGL graphics programming in a step-by-step fashion.,https://www.amazon.com/dp/9090332561,2020
 ['Justin Stenning'],"50 practical recipes to guide you through the advanced rendering techniques in Direct3D to help bring your 3D graphics project to life
 About This Book
 
@@ -2351,9 +2351,9 @@ Direct3D Rendering Cookbook provides detailed .NET examples covering a wide rang
 
 After covering a few introductory topics about Direct3D 11.2 and working with the API using C# and SharpDX, we quickly ramp up to the implementation of a range of advanced rendering techniques, building upon the projects we create and the skills we learn in each subsequent chapter. Topics covered include using the new Visual Studio 2012 graphics content pipeline and graphics debugger, texture sampling, normal mapping, lighting and materials, loading meshes, character animation (vertex skinning), hardware tessellation, displacement mapping, using compute shaders for post-process effects, deferred rendering, and finally bringing all of this to Windows Store Apps for PC and mobile. After completing the recipes within Direct3D Rendering Cookbook, you will have an in-depth understanding of a range of advanced Direct3D rendering topics.
 
-Read more",65f1b474d61e9e71d53b4663336375c9e93954adcf4644dc0c76bfd76d9e9e0a,,,"January 20, 2014","['DirectX Software Programming', 'Rendering & Ray Tracing', 'C# Programming (Kindle Store)']",Direct3D Rendering Cookbook,https://www.amazon.com/dp/B00HYQFGYI,2014
+Read more",65f1b474d61e9e71d53b4663336375c9e93954adcf4644dc0c76bfd76d9e9e0a,,,"January 20, 2014",amazon,"['DirectX Software Programming', 'Rendering & Ray Tracing', 'C# Programming (Kindle Store)']",Direct3D Rendering Cookbook,https://www.amazon.com/dp/B00HYQFGYI,2014
 ['Frank Luna'],"No detailed description available for ""Introduction to 3D Game Programming with DirectX 12"".
-Read more",8038026b6c62cd69499b00253370e4a40d129529a9243c2c442fd1ffb306cb18,1942270062,978-1942270065,"April 7, 2016","['DirectX Software Programming', 'Game Programming', 'Introductory & Beginning Programming']",Introduction to 3D Game Programming with DirectX 12,https://www.amazon.com/dp/1942270062,2016
+Read more",8038026b6c62cd69499b00253370e4a40d129529a9243c2c442fd1ffb306cb18,1942270062,978-1942270065,"April 7, 2016",amazon,"['DirectX Software Programming', 'Game Programming', 'Introductory & Beginning Programming']",Introduction to 3D Game Programming with DirectX 12,https://www.amazon.com/dp/1942270062,2016
 ['Siddharth Shekar'],"Explore modern game programming and rendering techniques to build games using C++ programming language and its popular libraries
 
 Key Features
@@ -2392,12 +2392,12 @@ Getting started with Vulkan
 Preparing the Clear Screen
 Creating Object Resources
 Drawing Vulkan Objects
-Read more",b4a940496a44bc23bf2cb8ae4c5ed64232366ed16b591f410d08197b99cf45d3,,,"May 3, 2019","['C++ Programming', 'Computer Games Programming', 'C++ Programming Language']","C++ Game Development By Example: Learn to build games and graphics with SFML, OpenGL, and Vulkan using C++ programming",https://www.amazon.com/dp/B07RG9H8CR,2019
+Read more",b4a940496a44bc23bf2cb8ae4c5ed64232366ed16b591f410d08197b99cf45d3,,,"May 3, 2019",amazon,"['C++ Programming', 'Computer Games Programming', 'C++ Programming Language']","C++ Game Development By Example: Learn to build games and graphics with SFML, OpenGL, and Vulkan using C++ programming",https://www.amazon.com/dp/B07RG9H8CR,2019
 ['Robert Nystrom'],"The biggest challenge facing many game programmers is completing their game. Most game projects fizzle out, overwhelmed by the complexity of their own code. Game Programming Patterns tackles that exact problem. Based on years of experience in shipped AAA titles, this book collects proven patterns to untangle and optimize your game, organized as independent recipes so you can pick just the patterns you need.
 
 You will learn how to write a robust game loop, how to organize your entities using components, and take advantage of the CPUs cache to improve your performance. You'll dive deep into how scripting engines encode behavior, how quadtrees and other spatial partitions optimize your engine, and how other classic design patterns can be used in games.
 
-Read more",b0d328da1c491daf577664ab207da27a6def512497a473604dddb4399a16f10c,0990582906,978-0990582908,"November 2, 2014","['Game Programming', 'Software Development', 'Video & Computer Games']",Game Programming Patterns,https://www.amazon.com/dp/0990582906,2014
+Read more",b0d328da1c491daf577664ab207da27a6def512497a473604dddb4399a16f10c,0990582906,978-0990582908,"November 2, 2014",amazon,"['Game Programming', 'Software Development', 'Video & Computer Games']",Game Programming Patterns,https://www.amazon.com/dp/0990582906,2014
 ['Gabor Szauer'],"Learn animation programming from first principles and implement modern animation techniques that can be integrated into any game development workflow
 
 Key Features
@@ -2440,7 +2440,7 @@ Blending between Animations
 Implementing Inverse Kinematics
 Using Dual Quaternions for Skinning
 Rendering Instanced Crowds
-Read more",bab879516dc75a72364576fc26a848fd3703c76d9be7434b6fd10b7cd76a6369,1800208081,978-1800208087,"June 12, 2020","['C++ Programming Language', 'Game Programming', 'Introductory & Beginning Programming']",Hands-On C++ Game Animation Programming: Learn modern animation techniques from theory to implementation with C++ and OpenGL,https://www.amazon.com/dp/1800208081,2020
+Read more",bab879516dc75a72364576fc26a848fd3703c76d9be7434b6fd10b7cd76a6369,1800208081,978-1800208087,"June 12, 2020",amazon,"['C++ Programming Language', 'Game Programming', 'Introductory & Beginning Programming']",Hands-On C++ Game Animation Programming: Learn modern animation techniques from theory to implementation with C++ and OpenGL,https://www.amazon.com/dp/1800208081,2020
 ['Sanjay Madhav'],"Program 3D Games in C++: The #1 Language at Top Game Studios Worldwide
 
 C++ remains the key language at many leading game development studios. Since it’s used throughout their enormous code bases, studios use it to maintain and improve their games, and look for it constantly when hiring new developers. Game Programming in C++ is a practical, hands-on approach to programming 3D video games in C++. Modeled on Sanjay Madhav’s game programming courses at USC, it’s fun, easy, practical, hands-on, and complete.
@@ -2461,7 +2461,7 @@ Load and save levels and binary game data
 Whether you’re a working developer or a student with prior knowledge of C++ and data structures, Game Programming in C++ will prepare you to solve real problems with C++ in roles throughout the game development lifecycle. You’ll master the language that top studios are hiring for―and that’s a proven route to success.
 
 
-Read more",535e8d145421c9c7eb0f8c6a87dd8ff858eb18d36a8c8c0b298e244c7956a33e,0134597206,978-0134597201,"March 28, 2018","['C++ Programming Language', 'Game Programming', 'Software Development']",Game Programming in C++: Creating 3D Games (Game Design),https://www.amazon.com/dp/0134597206,2018
+Read more",535e8d145421c9c7eb0f8c6a87dd8ff858eb18d36a8c8c0b298e244c7956a33e,0134597206,978-0134597201,"March 28, 2018",amazon,"['C++ Programming Language', 'Game Programming', 'Software Development']",Game Programming in C++: Creating 3D Games (Game Design),https://www.amazon.com/dp/0134597206,2018
 ['Rachel Cordone'],"Learn how to use Unreal Engine 4 by building 3D and multiplayer games using Blueprints
 
 Key Features
@@ -2495,7 +2495,7 @@ Animation Blueprints
 AI with Behavior Tree and Blackboard
 Multiplayer Games
 Optimization, Testing, and Packaging
-Read more",dc7d9bc4da424b4a24378f2ff9035175e395ed1668fe48ba6b9586f502096e21,1789950686,978-1789950687,"May 31, 2019","['Computer Algorithms', 'Computer Graphics', 'Design & Graphics Software Books']",Unreal Engine 4 Game Development Quick Start Guide: Programming professional 3D games with Unreal Engine 4,https://www.amazon.com/dp/1789950686,2019
+Read more",dc7d9bc4da424b4a24378f2ff9035175e395ed1668fe48ba6b9586f502096e21,1789950686,978-1789950687,"May 31, 2019",amazon,"['Computer Algorithms', 'Computer Graphics', 'Design & Graphics Software Books']",Unreal Engine 4 Game Development Quick Start Guide: Programming professional 3D games with Unreal Engine 4,https://www.amazon.com/dp/1789950686,2019
 "['Kevin Mack', 'Robert Ruud']","Learn to design and build Virtual Reality experiences, applications, and games in Unreal Engine 4 through a series of practical, hands-on projects that teach you to create controllable avatars, user interfaces, and more.
 
 Key Features
@@ -2536,9 +2536,9 @@ Taking VR Further: Extending Unreal Engine
 Where to Go from Here
 A: Useful Mind Hacks
 B: Research and Further Reading
-Read more",e95c6f75ec7341906cbe4c2a2c00637d41f775495bad91c901dd8afafcfa046d,1789132878,978-1789132878,"April 30, 2019","['C++ Programming Language', 'Game Programming', 'Video & Computer Games']",Unreal Engine 4 Virtual Reality Projects,https://www.amazon.com/dp/1789132878,2019
+Read more",e95c6f75ec7341906cbe4c2a2c00637d41f775495bad91c901dd8afafcfa046d,1789132878,978-1789132878,"April 30, 2019",amazon,"['C++ Programming Language', 'Game Programming', 'Video & Computer Games']",Unreal Engine 4 Virtual Reality Projects,https://www.amazon.com/dp/1789132878,2019
 ['Stephen Seth Ulibarri'],"Prepare for Unreal Engine 5! Learn the fundamentals of the C++ programming language as well as Unreal Engine’s code base for creating and packaging a complete hack and slash action game. Implement combat, AI and Behavior Trees, animation, gameplay mechanics, interfaces and delegates, collision and physics, ray casting, game saving, menu and HUD creation via UMG, and much more.
-Read more",9f146e0f0bd7215f0d315b7c81938c82a09b586c035cb84893b835bdd87bbf22,8648492513,978-8648492517,"June 7, 2020","['C++ Programming Language', 'Game Programming', 'Computer Programming Languages']",Unreal Engine C++ the Ultimate Developer's Handbook: Learn C++ and Unreal Engine by Creating a Complete Action Game,https://www.amazon.com/dp/B089M2H7J1,2020
+Read more",9f146e0f0bd7215f0d315b7c81938c82a09b586c035cb84893b835bdd87bbf22,8648492513,978-8648492517,"June 7, 2020",amazon,"['C++ Programming Language', 'Game Programming', 'Computer Programming Languages']",Unreal Engine C++ the Ultimate Developer's Handbook: Learn C++ and Unreal Engine by Creating a Complete Action Game,https://www.amazon.com/dp/B089M2H7J1,2020
 ['Zhenyu George Li'],"Expand your UE5 game development skills by leveraging C++ scripting and improve your game development abilities by building a game from scratch
 
 Purchase of the print or Kindle book includes a free PDF eBook
@@ -2605,7 +2605,7 @@ Table of Contents
 
 - Polishing and Packaging the Game
 
-Read more",72bc8b976f11c2ca2218d93b463db4d05b95b585772e0ffa0c8d16e6fbf931bc,1804613932,978-1804613931,"August 30, 2023","['Functional Software Programming', 'C++ Programming Language', 'Game Programming']","Unreal Engine 5 Game Development with C++ Scripting: Become a professional game developer and create fully functional, high-quality games",https://www.amazon.com/dp/1804613932,2023
+Read more",72bc8b976f11c2ca2218d93b463db4d05b95b585772e0ffa0c8d16e6fbf931bc,1804613932,978-1804613931,"August 30, 2023",amazon,"['Functional Software Programming', 'C++ Programming Language', 'Game Programming']","Unreal Engine 5 Game Development with C++ Scripting: Become a professional game developer and create fully functional, high-quality games",https://www.amazon.com/dp/1804613932,2023
 "['Stuart Butler', 'Tom Oliver']","Improve your game's code with design patterns to make it more readable, reusable, modular, and optimized, guided by an Unreal Authorized Instructor to enhance your overall use of C++ with Unreal Engine
 
 Key Features
@@ -2647,7 +2647,7 @@ A perfectly decoupled system
 Building Design Patterns: Singleton, Command and State
 Structuring Code with Behavioural Patterns: Template, Subclass Sandbox and Type Object
 Optimisation Through Patterns
-Read more",ab67008361c138ce20f93bc3ae3361ac8c0eec9c23b63c41b1cfee3a608535bc,1803243252,978-1803243252,"January 5, 2024","['C++ Programming Language', 'Game Programming', 'Computer Programming Languages']",Game Development Patterns with Unreal Engine 5: Build maintainable and scalable systems with C++ and Blueprint,https://www.amazon.com/dp/1803243252,2024
+Read more",ab67008361c138ce20f93bc3ae3361ac8c0eec9c23b63c41b1cfee3a608535bc,1803243252,978-1803243252,"January 5, 2024",amazon,"['C++ Programming Language', 'Game Programming', 'Computer Programming Languages']",Game Development Patterns with Unreal Engine 5: Build maintainable and scalable systems with C++ and Blueprint,https://www.amazon.com/dp/1803243252,2024
 ['Daniel J. Duffy'],"An integrated guide to C++ and computational finance
 
 This complete guide to C++ and computational finance is a follow-up and major extension to Daniel J. Duffy's 2004 edition of Financial Instrument Pricing Using C++. Both C++ and computational finance have evolved and changed dramatically in the last ten years and this book documents these improvements. Duffy focuses on these developments and the advantages for the quant developer by:
@@ -2678,7 +2678,7 @@ HOW TO RECEIVE THE SOURCE CODE
 
 Once you have purchased a copy of the book please send an email to the author dduffyATdatasim.nl requesting your personal and non-transferable copy of the source code. Proof of purchase is needed. The subject of the mail should be “C++ Book Source Code Request”. You will receive a reply with a zip file attachment.
 
-Read more",952fc8d89878c035a3f1fa7e6cff522846e39c71f162813271eeaf099f1e1630,,,"September 5, 2018","['Financial Engineering (Kindle Store)', 'C++ Programming', 'Financial Engineering']",Financial Instrument Pricing Using C++ (Wiley Finance),https://www.amazon.com/dp/B07H51DPQP,2018
+Read more",952fc8d89878c035a3f1fa7e6cff522846e39c71f162813271eeaf099f1e1630,,,"September 5, 2018",amazon,"['Financial Engineering (Kindle Store)', 'C++ Programming', 'Financial Engineering']",Financial Instrument Pricing Using C++ (Wiley Finance),https://www.amazon.com/dp/B07H51DPQP,2018
 ['Erik Schlogl'],"Quantitative Finance: An Object-Oriented Approach in C++ provides readers with a foundation in the key methods and models of quantitative finance. Keeping the material as self-contained as possible, the author introduces computational finance with a focus on practical implementation in C++.
 
 Through an approach based on C++ classes and templates, the text highlights the basic principles common to various methods and models while the algorithmic implementation guides readers to a more thorough, hands-on understanding. By moving beyond a purely theoretical treatment to the actual implementation of the models using C++, readers greatly enhance their career opportunities in the field.
@@ -2687,9 +2687,9 @@ The book also helps readers implement models in a trading or research environmen
 
 Web ResourceThe author’s website provides fully functional C++ code, including additional C++ source files and examples. Although the code is used to illustrate concepts (not as a finished software product), it nevertheless compiles, runs, and deals with full, rather than toy, problems. The website also includes a suite of practical exercises for each chapter covering a range of difficulty levels and problem complexity.
 
-Read more",e74763b132defbb18870fcff46200275b5a7462c2c41207dea7a5cc309696630,1584884797,978-1584884798,"November 19, 2013","['Business Pricing', 'Object-Oriented Design', 'Probability & Statistics']",Quantitative Finance (Chapman and Hall/CRC Financial Mathematics Series),https://www.amazon.com/dp/1584884797,2013
+Read more",e74763b132defbb18870fcff46200275b5a7462c2c41207dea7a5cc309696630,1584884797,978-1584884798,"November 19, 2013",amazon,"['Business Pricing', 'Object-Oriented Design', 'Probability & Statistics']",Quantitative Finance (Chapman and Hall/CRC Financial Mathematics Series),https://www.amazon.com/dp/1584884797,2013
 ['Robert Brooks'],"There are numerous good books related to quantitative finance. There are also numerous good books related to programming in C++. The goal here is to bridge the gap between quantitative finance and C++. In many ways C++ has gotten both easier and harder over the past several years. We focus only on the easier techniques in C++. We do not attempt to provide state-of-the-art C++ programming. Rather we provide elementary techniques that are easy for the non-computer programming professional to understand. Specifically, we seek to aid the professional quantitative finance person in their quest to express their innovative ideas using elementary C++. As a consequence, this work should provide an aid to the professional computer programmer in their quest to understand quantitative finance.
-Read more",b56e8137ed7a1bbda0d0eda1a938a745078168b17c0532ffa725d4c47f664613,,978-1478350750,"January 11, 2013","['Risk Management', 'Finance']",Building Financial Risk Management Applications with C++,https://www.amazon.com/dp/147835075X,2013
+Read more",b56e8137ed7a1bbda0d0eda1a938a745078168b17c0532ffa725d4c47f664613,147835075X,978-1478350750,"January 11, 2013",amazon,"['Risk Management', 'Finance']",Building Financial Risk Management Applications with C++,https://www.amazon.com/dp/147835075X,2013
 ['John Armstrong'],"If you know a little bit about financial mathematics but don’t yet know a lot about programming, then C++ for Financial Mathematics is for you.
 
 C++ is an essential skill for many jobs in quantitative finance, but learning it can be a daunting prospect. This book gathers together everything you need to know to price derivatives in C++ without unnecessary complexities or technicalities. It leads the reader step-by-step from programming novice to writing a sophisticated and flexible financial mathematics library. At every step, each new idea is motivated and illustrated with concrete financial examples.
@@ -2698,7 +2698,7 @@ As employers understand, there is more to programming than knowing a computer la
 
 The book teaches everything you need to know to solve realistic financial problems in C++. It can be used for self-study or as a textbook for an advanced undergraduate or master’s level course.
 
-Read more",afb90e96f089813615886c9136e0f9882f637186ed262507f6444e35a1412a60,,,"January 6, 2017","['Probability & Statistics (Kindle Store)', 'Finance (Kindle Store)', 'Probability & Statistics']",C++ for Financial Mathematics (Chapman and Hall/CRC Financial Mathematics Series),https://www.amazon.com/dp/B01N4V75RJ,2017
+Read more",afb90e96f089813615886c9136e0f9882f637186ed262507f6444e35a1412a60,,,"January 6, 2017",amazon,"['Probability & Statistics (Kindle Store)', 'Finance (Kindle Store)', 'Probability & Statistics']",C++ for Financial Mathematics (Chapman and Hall/CRC Financial Mathematics Series),https://www.amazon.com/dp/B01N4V75RJ,2017
 "['Paul Darbyshire', 'David Hampton']","Use powerful C++ algorithms and Object Oriented Programming (OOP) to aid in hedge fund decision making
 
 Low interest rates, overcrowded markets and greater regulatory oversight are just some of the many reasons it is close to impossible for hedge funds to draw competitive returns. The solution for many hedge fund managers, quantitative investment analysts and risk managers is to adopt new technologies, platforms and programming languages to better manage their risks and maximise the benefits of their return profiles.
@@ -2713,7 +2713,7 @@ A companion website offering additional C++ programs, algorithms and data to dow
 
 Make reading Hedge Fund Modelling and Analysis your new routine and gain all the insight and relevant information you need to beat the markets.
 
-Read more",2ed7cb0a3533161d07c67c473252ebe0ef874d4a5ad86e2e4ad4e3f5914044ab,,,"October 26, 2016","['Object-Oriented Design', 'Finance (Kindle Store)', 'Finance']",Hedge Fund Modelling and Analysis: An Object Oriented Approach Using C++ (The Wiley Finance Series),https://www.amazon.com/dp/B01M2A5XWX,2016
+Read more",2ed7cb0a3533161d07c67c473252ebe0ef874d4a5ad86e2e4ad4e3f5914044ab,,,"October 26, 2016",amazon,"['Object-Oriented Design', 'Finance (Kindle Store)', 'Finance']",Hedge Fund Modelling and Analysis: An Object Oriented Approach Using C++ (The Wiley Finance Series),https://www.amazon.com/dp/B01M2A5XWX,2016
 "['David C. Black', 'Jack Donovan', 'Bill Bunton']","SystemC provides a robust set of extensions to the C++ language that enables rapid development of complex models of hardware and software systems. The authors focus on practical use of the language for modeling real systems, showing:
 
 
@@ -2764,7 +2764,7 @@ New chapters have been added on the SystemC Verification Library and the Transac
 
 David Black and Jack Donovan, well known consultants in the EDA industry, have teamed with Bill Bunton and Anna Keist, experienced SystemC modeling engineers, to write the second edition of this highly popular classic. As a team the authors bring over 100 years of ASIC and system design experience together to make a very readable introduction to SystemC.
 
-Read more",0dfa78fa57fcd08bf0894fe6d24c803bc969eceb98c693ebc42baea5259e4682,,,"December 18, 2009","['Computer Systems Analysis & Design (Kindle Store)', 'Electricity Principles', 'CAD Graphic Design Guides']","SystemC: From the Ground Up, Second Edition",https://www.amazon.com/dp/B008BBVWPW,2009
+Read more",0dfa78fa57fcd08bf0894fe6d24c803bc969eceb98c693ebc42baea5259e4682,,,"December 18, 2009",amazon,"['Computer Systems Analysis & Design (Kindle Store)', 'Electricity Principles', 'CAD Graphic Design Guides']","SystemC: From the Ground Up, Second Edition",https://www.amazon.com/dp/B008BBVWPW,2009
 ['Robert C. Seacord'],"A detailed introduction to the C programming language for experienced programmers.
 
 The world runs on code written in the C programming language, yet most schools begin the curriculum with Python or Java. Effective C bridges this gap and brings C into the modern era--covering the modern C17 Standard as well as potential C2x features. With the aid of this instant classic, you'll soon be writing professional, portable, and secure C programs to power robust systems and solve real-world problems.
@@ -2782,7 +2782,7 @@ How to understand the C compiler's translation phases and the role of the prepro
 How to test, debug, and analyze C programs
 
 Effective C will teach you how to write professional, secure, and portable C code that will stand the test of time and help strengthen the foundation of the computing world.
-Read more",27efdfd75b0ab617412a45a8149416475be393557b852265bd3da98a28710285,1718501048,978-1718501041,"August 4, 2020","['C Programming Language', 'Software Testing', 'Introductory & Beginning Programming']",Effective C: An Introduction to Professional C Programming,https://www.amazon.com/dp/1718501048,2020
+Read more",27efdfd75b0ab617412a45a8149416475be393557b852265bd3da98a28710285,1718501048,978-1718501041,"August 4, 2020",amazon,"['C Programming Language', 'Software Testing', 'Introductory & Beginning Programming']",Effective C: An Introduction to Professional C Programming,https://www.amazon.com/dp/1718501048,2020
 ['Jens Gustedt'],"Summary
 Modern C focuses on the new and unique features of modern C programming. The book is based on the latest C standards and offers an up-to-date perspective on this tried-and-true language.
 
@@ -2806,7 +2806,7 @@ For programmers comfortable writing simple programs in a language like Java, Pyt
 
 About the author
 Jens Gustedt is a senior scientist at the French National Institute for Computer Science and Control (INRIA) and co-editor of the ISO C standard.
-Read more",8c9d38a124e7e168b32d49a19f3569fe41c4d5780ca3aeb485c0f3122d8f414b,1617295817,978-1617295812,"October 7, 2019","['Compiler Design', 'Software Programming Compilers', 'C Programming Language']",Modern C,https://www.amazon.com/dp/1617295817,2019
+Read more",8c9d38a124e7e168b32d49a19f3569fe41c4d5780ca3aeb485c0f3122d8f414b,1617295817,978-1617295812,"October 7, 2019",amazon,"['Compiler Design', 'Software Programming Compilers', 'C Programming Language']",Modern C,https://www.amazon.com/dp/1617295817,2019
 ['Kamran Amini'],"Push the limits of what C - and you - can do, with this high-intensity guide to the most advanced capabilities of C
 
 Key Features
@@ -2858,15 +2858,15 @@ Socket Programming
 Integration with Other Languages
 Unit Testing and Debugging
 Build Systems
-Read more",f6532599b47e5f9907cad8a55205398bdc8bbbf13dea2f7f692fe43acabcd309,,978-1789343625,"October 31, 2019","['C Programming Language', 'Computer Programming Languages', 'Microsoft Programming']","Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C",https://www.amazon.com/dp/1789343623,2019
+Read more",f6532599b47e5f9907cad8a55205398bdc8bbbf13dea2f7f692fe43acabcd309,1789343623,978-1789343625,"October 31, 2019",amazon,"['C Programming Language', 'Computer Programming Languages', 'Microsoft Programming']","Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C",https://www.amazon.com/dp/1789343623,2019
 ['K. N. King'],"The first edition of C Programming: A Modern Approach was popular with students and faculty alike because of its clarity and comprehensiveness as well as its trademark Q&A sections.
 
 Professor King's spiral approach made it accessible to a broad range of readers, from beginners to more advanced students. With adoptions at over 225 colleges, the first edition was one of the leading C textbooks of the last ten years. The second edition maintains all the book's popular features and brings it up to date with coverage of the C99 standard. The new edition also adds a significant number of exercises and longer programming projects, and includes extensive revisions and updates.
-Read more",4294d959d501d0c41fe37de55356d3738b2f2f01c27addb6c1446c5532d6ebbf,0393979504,978-0393979503,"April 19, 2008","['C Programming Language', 'Computer Programming Languages', 'Computer Software']","C Programming: A Modern Approach, 2nd Edition",https://www.amazon.com/dp/0393979504,2008
+Read more",4294d959d501d0c41fe37de55356d3738b2f2f01c27addb6c1446c5532d6ebbf,0393979504,978-0393979503,"April 19, 2008",amazon,"['C Programming Language', 'Computer Programming Languages', 'Computer Software']","C Programming: A Modern Approach, 2nd Edition",https://www.amazon.com/dp/0393979504,2008
 ['Axel Schreiner'],"A do-it-yourself guide to object-oriented programming using ANSI-C with detailed examples and a preprocessor (written in awk) to simplify coding.
-Read more",136c0101b3e63449c9639fc113b8f87560c004da593e9380cef9d90f883a2910,,978-1105105685,"October 1, 2011",[],Object-Oriented Programming With ANSI-C,https://www.amazon.com/dp/B00930I6TK,2011
+Read more",136c0101b3e63449c9639fc113b8f87560c004da593e9380cef9d90f883a2910,1105105687,978-1105105685,"October 1, 2011",amazon,[],Object-Oriented Programming With ANSI-C,https://www.amazon.com/dp/B00930I6TK,2011
 ['Scott Meyers'],"This definitive guide to C++ has been updated to reflect the latest ANSI/ISO standard. With more than 50,000 copies sold, the first edition has helped thousands of developers improve their C++ programming skills. Continuing in this tradition, Meyers has reworked every item in the book and has liberally placed cross-references throughout the text.
-Read more",8c5838b76ddfa3174caf93de13f21c89ce9d3f5d4a3bc82bd44d202298a233c1,0201924889,978-0201924886,"January 1, 1997","['C Programming Language', 'Computer Software', 'Mathematics']",Effective C++: 50 Specific Ways to Improve Your Programs and Designs (Addison-Wesley Professional Computing Series),https://www.amazon.com/dp/0201924889,1997
+Read more",8c5838b76ddfa3174caf93de13f21c89ce9d3f5d4a3bc82bd44d202298a233c1,0201924889,978-0201924886,"January 1, 1997",amazon,"['C Programming Language', 'Computer Software', 'Mathematics']",Effective C++: 50 Specific Ways to Improve Your Programs and Designs (Addison-Wesley Professional Computing Series),https://www.amazon.com/dp/0201924889,1997
 ['Scott Meyers'],"More than 150,000 copies in print!
 
 Praise for Scott Meyers’ first book, Effective C++:
@@ -2888,11 +2888,11 @@ Practical treatments of new language features, including bool, mutable, explicit
 
 More Effective C++ is filled with pragmatic, down-to-earth advice you’ll use every day. Like Effective C++ before it, More Effective C++ is essential reading for anyone working with C++.
 
-Read more",7cffdfeda9a4b3a764856509e223bffcc32a449cf360db6cda406c69b6d98ad3,020163371X,978-0201633719,"January 1, 1996","['C++ Programming Language', 'Computer Software', 'Mathematics']",More Effective C++: 35 New Ways to Improve Your Programs and Designs,https://www.amazon.com/dp/020163371X,1996
+Read more",7cffdfeda9a4b3a764856509e223bffcc32a449cf360db6cda406c69b6d98ad3,020163371X,978-0201633719,"January 1, 1996",amazon,"['C++ Programming Language', 'Computer Software', 'Mathematics']",More Effective C++: 35 New Ways to Improve Your Programs and Designs,https://www.amazon.com/dp/020163371X,1996
 ['James O. Coplien'],"This book assumes a background in the syntax of C++. Coplien shows how to become an expert C++ programmer by learning the idioms of the language. His approach is organized around the abstractions that C++ supports. He shows how these abstractions can be combined to use the language effectively.
-Read more",82c7d9ad40121cdb9aab71defa419dce934c974ab5000d4f9e1a4d888feca4be,0201548550,978-0201548556,"January 1, 1991",[],Advanced C++ Programming Styles and Idioms,https://www.amazon.com/dp/0201548550,1991
+Read more",82c7d9ad40121cdb9aab71defa419dce934c974ab5000d4f9e1a4d888feca4be,0201548550,978-0201548556,"January 1, 1991",amazon,[],Advanced C++ Programming Styles and Idioms,https://www.amazon.com/dp/0201548550,1991
 ['Bjarne Stroustrup'],"The designer of C++ recounts its development, dissecting the decisions made in the creation of the language to present a case study in real object-oriented development for the working programmer. In doing so, he presents his views on programming and design in a concrete and useful way. Topics include a prehistory of C++, C with classes, C++ language design rules, standardization, libraries, memory management, multiple inheritance, casting, templates, and exception handling. Annotation copyright Book News, Inc. Portland, Or.
-Read more",ff3b5bda2e97bb7c3f568bc0fe3a072cf116d6622f745bd6c738add76d1e0622,0201543303,978-0201543308,"March 29, 1994","['C++ Programming Language', 'Computer Software', 'Mathematics']","Design and Evolution of C++, The",https://www.amazon.com/dp/0201543303,1994
+Read more",ff3b5bda2e97bb7c3f568bc0fe3a072cf116d6622f745bd6c738add76d1e0622,0201543303,978-0201543308,"March 29, 1994",amazon,"['C++ Programming Language', 'Computer Software', 'Mathematics']","Design and Evolution of C++, The",https://www.amazon.com/dp/0201543303,1994
 "['Erich Gamma', 'Richard Helm', 'Ralph Johnson']","Capturing a wealth of experience about the design of object-oriented software, four top-notch designers present a catalog of simple and succinct solutions to commonly occurring design problems. Previously undocumented, these 23 patterns allow designers to create more flexible, elegant, and ultimately reusable designs without having to rediscover the design solutions themselves.
 
 
@@ -2905,9 +2905,9 @@ The authors begin by describing what patterns are and how they can help you desi
 
 Each pattern describes the circumstances in which it is applicable, when it can be applied in view of other design constraints, and the consequences and trade-offs of using the pattern within a larger design. All patterns are compiled from real systems and are based on real-world examples. Each pattern also includes code that demonstrates how it may be implemented in object-oriented programming languages like C++ or Smalltalk.
 
-Read more",92f3ea769defc8cddfac67f46bcb0c202a426272657e2bd757cf21d77ea0795d,0201633612,978-0201633610,"October 31, 1994","['Object-Oriented Design', 'Computer Science', 'Computer Software']",Design Patterns: Elements of Reusable Object-Oriented Software,https://www.amazon.com/dp/0201633612,1994
+Read more",92f3ea769defc8cddfac67f46bcb0c202a426272657e2bd757cf21d77ea0795d,0201633612,978-0201633610,"October 31, 1994",amazon,"['Object-Oriented Design', 'Computer Science', 'Computer Software']",Design Patterns: Elements of Reusable Object-Oriented Software,https://www.amazon.com/dp/0201633612,1994
 ['John Lakos'],"include a dimension with which even expert software developers may have little or no experience. This is the definitive book for all C++ software professionals involved in large development efforts such as databases, operating systems, compilers, and frameworks. It is the first C++ book that actually demonstrates how to design large systems, and one of the few books on object-oriented design specifically geared to practical aspects of the C++ programming language. In this book, Lakos explains the process of decomposing large systems into physical (not inheritance) hierarchies of smaller, more manageable components. Such systems with their acyclic physical dependencies are fundamentally easier and more economical to maintain, test, and reuse than tightly interdependent systems. In addition to explaining the motivation for following good physical as well as logical design practices, Lakos provides you with a catalog of specific techniques designed to eliminate cyclic, compile-time, and link-time (physical) dependencies. He then extends these concepts from large to very large systems. The book concludes with a comprehensive top-down approach to the logical design of individual components. Appendices include a valuable design pattern """"Protocol Hierarchy"""" designed to avoid fat interfaces while minimizing physical dependencies; the details of implementing an ANSI C compatible C++ procedural interface; and a complete specification for a suite of UNIX-like tools to extract and analyze physical dependencies. Practical design rules, guidelines, and principles are also collected in an appendix and indexed for quick reference.
-Read more",b52194864812f0a60efffc724dde9a356a13284bb2b242ace1e73876ca92bc36,0201633620,978-0201633627,"July 10, 1996","['C++ Programming Language', 'Software Development', 'Computer Software']",Large-Scale C++ Software Design,https://www.amazon.com/dp/0201633620,1996
+Read more",b52194864812f0a60efffc724dde9a356a13284bb2b242ace1e73876ca92bc36,0201633620,978-0201633627,"July 10, 1996",amazon,"['C++ Programming Language', 'Software Development', 'Computer Software']",Large-Scale C++ Software Design,https://www.amazon.com/dp/0201633620,1996
 ['Jeff Alger'],"Based on the successful first edition, Secrets of the C++ Masters (1995), this book provides a path to true C++ enlightenment. It has been carefully revised to thoroughly cover advanced programming techniques using C++. It includes valuable techniques organized into three categories: Smart Pointers, Class Hierarchies, and Memory Management, and includes applications-oriented coverage of numerous topics including template creation, exception handling, pointers, optimization, and types. The focus of the book is on ANSI C++, and it includes one 3.5"" disk for Windows that features all the source code for examples presented in the book.
 
 * A revision of the highly acclaimed Secrets of the C++ Masters
@@ -2916,15 +2916,15 @@ Read more",b52194864812f0a60efffc724dde9a356a13284bb2b242ace1e73876ca92bc36,0201
 * Provides in depth coverage of template creation, exception handling, pointers and optimization techniques
 * Book focuses in ANSI C++ and so is compiler independent
 * Includes a 3.5"" disk for Windows with source code of all examples in the book
-Read more",7331ea16c28258532d1b6bffda4a9655387ea85e2ce21a3283c3ba0c9d535d3c,0120499428,978-0120499427,"February 26, 1998","['C Programming Language', 'Computer Programming Languages', 'Computer Software']","C++ for Real Programmers, Revised Edition",https://www.amazon.com/dp/0120499428,1998
+Read more",7331ea16c28258532d1b6bffda4a9655387ea85e2ce21a3283c3ba0c9d535d3c,0120499428,978-0120499427,"February 26, 1998",amazon,"['C Programming Language', 'Computer Programming Languages', 'Computer Software']","C++ for Real Programmers, Revised Edition",https://www.amazon.com/dp/0120499428,1998
 ['Bruce Eckel'],"In the first edition of Thinking in C++, Bruce Eckel synthesized years of C++ teaching and programming experience into a beautifully structured course in making the most of the language. It became an instant classic, winning the 1995 Software Development Jolt Cola Award for best book of the year. Now, Eckel has thoroughly rewritten Thinking in C++ to reflect the final ANSI/ISO C++ standard. Every page has been revisited and rethought, with many new examples and exercises -- all designed to help you understand C++ ""down to the bare metal,"" so you can solve virtually any problem. Eckel starts with a detailed look at objects, showing how C++ programs can be constructed from off-the-shelf object libraries. This edition includes a new, chapter-length overview of the C features that are used in C++ -- plus a new CD-ROM containing an outstanding C seminar that covers all the foundations developers need before they can truly take advantage of C++. Eckel then walks through initialization and cleanup; function overloading and default arguments; constants; inline functions; name control; references and the copy constructor; operator overloading; and more. There are chapters on dynamic object creation; inheritance and composition; polymorphism and virtual functions, and templates. (Bonus coverage of string, templates, and the Standard Template Library, can be found at Eckel's web site.) Every chapter contains many modular, to-the-point examples, plus exercises based on Eckel's extensive experience teaching C++ seminars. Put simply, Eckel has made an outstanding book on C++ even better.
 
-Read more",701bc0d5ca02e434f118447e391b63455180c1cc0f94af55942e52cd0886e240,0139798099,978-0139798092,"January 1, 2000","['C++ Programming Language', 'Computer Software', 'Mathematics']","Thinking in C++, Vol. 1: Introduction to Standard C++, 2nd Edition",https://www.amazon.com/dp/0139798099,2000
+Read more",701bc0d5ca02e434f118447e391b63455180c1cc0f94af55942e52cd0886e240,0139798099,978-0139798092,"January 1, 2000",amazon,"['C++ Programming Language', 'Computer Software', 'Mathematics']","Thinking in C++, Vol. 1: Introduction to Standard C++, 2nd Edition",https://www.amazon.com/dp/0139798099,2000
 "['Bruce Eckel', 'Chuck Allison']","For sophomore/junior level courses in Advanced C++ Programming offered in Computer Science departments.
 
 This text fills the need for a practical C++ topics book beyond the introductory level. No other text covers the topics needed to prepare students for production C++ programming. It streamlines the process of learning the C++ language, presenting material a simple step at a time, which allows the reader to digest each concept before moving on, and provides them with a solid foundation in C++.
 
-Read more",4db33ebcb08ea58068543868d27db33b7d4b8ef52308286572a80a993bc19abb,0130353132,978-0130353139,"December 17, 2003","['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']","Thinking in C++: Practical Programming, Volume 2",https://www.amazon.com/dp/0130353132,2003
+Read more",4db33ebcb08ea58068543868d27db33b7d4b8ef52308286572a80a993bc19abb,0130353132,978-0130353139,"December 17, 2003",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']","Thinking in C++: Practical Programming, Volume 2",https://www.amazon.com/dp/0130353132,2003
 "['Debbie Lafferty', 'Andrei Alexandrescu']","In Modern C++ Design, Andrei Alexandrescu opens new vistas for C++ programmers. Displaying extraordinary creativity and programming virtuosity, Alexandrescu offers a cutting-edge approach to design that unites design patterns, generic programming, and C++, enabling programmers to achieve expressive, flexible, and highly reusable code.
 
 This book introduces the concept of generic components―reusable design templates that produce boilerplate code for compiler consumption―all within C++. Generic components enable an easier and more seamless transition from design to application code, generate code that better expresses the original design intention, and support the reuse of design structures with minimal recoding.
@@ -2939,4 +2939,193 @@ Multi-method engines
 
 For each generic component, the book presents the fundamental problems and design options, and finally implements a generic solution.
 
-Read more",5e27d39532d3b5786a7e1da03c57a4c36aa5b6ccabb154ae8d23a5c334a7e3da,0201704315,978-0201704310,"February 13, 2001","['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']",Modern C++ Design: Generic Programming and Design Patterns Applied,https://www.amazon.com/dp/0201704315,2001
+Read more",5e27d39532d3b5786a7e1da03c57a4c36aa5b6ccabb154ae8d23a5c334a7e3da,0201704315,978-0201704310,"February 13, 2001",amazon,"['C++ Programming Language', 'Computer Programming Languages', 'Computer Software']",Modern C++ Design: Generic Programming and Design Patterns Applied,https://www.amazon.com/dp/0201704315,2001
+['Jason Turner'],"Note that this book is also available on Amazon in both color and black and white editions if you prefer a printed version.
+
+As a C++ developer and trainer for 20 years, I have learned that there are many common mistakes that C++ developers of all experience levels make. This book distills that experience down into the most important things to address to make your code faster, easier to maintain, and more portable.
+
+Most sections have one or more exercises that help you apply what is discussed in a practical way in the code you are currently working on
+
+This book is intentionally concise! Expect short sections for each item! I use as few words as possible to get across the point and get you applying what you learned to your code.
+
+If you follow me and watch all of my talks this book will present little new information to you. Why should you buy it then? Because I've consolidated the most important items and given you exercises to apply the rules in your code.",cd45110fd352e788ffb9394d05ca7516b83968939610e67d3fc2c9222d93cff6,,,2022-07-12,leanpub,"['C and C++', 'Computers and Programming']",C++ Best Practices,https://leanpub.com/cppbestpractices,2022
+['Šimon Tóth'],"This book is a complete guide to the C++ standard algorithms, demonstrating examples and pointing out notable, surprising, dangerous or interesting aspects of the different algorithms.
+
+Note that this is a free book and 100% of my royalty goes to EFF.",852b52f2f00c551d2bb264d816ab23cbf12c748d32c71d06dfed0d87b519a8ce,,,2023-02-01,leanpub,['C and C++'],A Complete Guide to Standard C++ Algorithms,https://leanpub.com/cpp-algorithms-guide,2023
+"['Bartłomiej Filipek', 'Jacek Galowicz']","If you’ve ever asked “what’s in C++17 and what does it mean for me and my code?” — and I hope you have — then this book is for you.
+
+Herb Sutter, herbsutter.com
+
+Available also as the paperback version @Amazon and the interactive online course @Educative
+
+C++11 was a major update for the language. With all the modern features like lambdas, constexpr, variadic templates, threading, range-based for loops, smart pointers and many more powerful elements, it was enormous progress for the language. Even now, in 2018, lots of teams struggle to modernise their projects to leverage all the modern features. Later there was a minor update - C++14, which improved some things from the previous standard and added a few smaller elements. With C++17 we got a lot of mixed emotions.
+
+Although C++17 is not as big as C++11, it's larger than C++14. Everyone expected modules, co-routines, concepts and other powerful features, but it wasn't possible to prepare everything on time.
+
+Is C++17 weak?
+
+Far from it! And this book will show you why!
+
+I spent hundreds of hours investigating how the new things work in order to make a nice and practical book for you. The book will not only save your time but also will guide you through all the nuances of the language.
+
+The book brings you exclusive content about C++17 and draws from the experience of many articles that have appeared on bfilipek.com (and cppstories.com). The chapters were rewritten from the ground-up and updated with the latest information. All of that equipped with lots of new examples and practical tips. Additionally, the book provides insight into the current implementation status, compiler support, performance issues and other relevant knowledge to boost your current projects.
+
+If you have experience with C++11/14 and you want to move forward into the latest C++ standard, then this book is for you.
+
+Here are the features you'll learn:
+
+Part One: C++17 Language features
+
+Fixes and deprecation
+Language clarification
+General language features
+Templates
+Attributes
+
+Part Two: C++17 The Standard Library
+
+std::optional
+std::variant
+std::any
+std::string_view
+String Conversions
+String Matching & Searchers
+Filesystem
+Parallel STL
+Other Changes
+
+Part Three: More Examples and Use Cases
+
+Refactoring with std::optional
+Using if constexpr
+Using [[nodiscard]] attribute
+How to parallelise applications
+Book Mentions:
+
+""C++17 In Detail"" appeared in the Visual C++ Team Blog as suggested books for learning C++17!
+
+Have a look: Books on C++17
+
+Review @CppDepend Blog https://cppdepend.com/blog/?p=1180
+
+Review @A Sawicki Blog: http://asawicki.info/news_1715_book_review_c17_in_detail.html
+
+There's also a book page at Goodreads: C++17 In Detail @Goodreads
+
+Other formats:
+The book is also available in print at Amazon: C++17 in Detail Paperback
+And also as an interactive course at Educative: C++17 in Detail: A Deep Dive
+
+Technical details:
+
+I optimized this book for a PDF reading experience, but other ebook formats should also look good. If you have any issues with the copies, let me know and I'll try to update the formatting.",4cc62627862a5bde9bd3e94fb11ad3368f792da077b55514271f63b4d1a0ac56,,,2019-09-12,leanpub,['C and C++'],C++17 in Detail,https://leanpub.com/cpp17indetail,2019
+['Nicolai M. Josuttis'],"C++17 is the next evolution in modern C++ programming, which is now supported by the latest version of gcc, clang, and Visual C++. Although it is not as big a step as C++11, it contains a large number of small and valuable language and library features, which will change the way we program in C++. As usual, not everything is self-explanatory, combining new features gives even more power, and there are hidden traps.
+
+This book presents all the new language and library features of C++17. It covers the motivation and context of each new feature with examples and background information. The focus is on how these features impact day-to-day programming, what it means to combine them, and how to benefit from this in practice.
+
+Testimonials:
+
+""It's very clearly written and the examples are really helpful!"" Graham Markall
+
+""I am thoroughly enjoying the book; I had skimmed the list of changes in C++17 several times before but until I started reading your book I had no idea how substantial the changes really were. It makes me wonder what I overlooked with previous updates!"" Jason Birch
+
+""I thought I knew a bit about C++. I downloaded this book and learned something new in the *preface*. Highly recommended so far!"" Tristan Brindle
+
+Buy early, pay less, free updates
+
+Note that this book was published step-by-step. It started with 270 pages first published in December 2018. Since then the contents grows with new chapters, examples, and caveats about the features of C++17 and I integrate all feedback I get for the pages already published.
+
+The current version now covers all new features of C++17, both core language and library features.
+
+See www.cppstd17.com for a detailed list of covered topics.
+
+As written, once you bought it you will get all updates for free.
+
+PDF versus Other Formats
+
+I write the book in LaTeX and generate PDF from it (the way I wrote my other books). The other formats (epub, mobi, and online reading) come from the leanpub markdown interface, for which I generate the necessary input from LaTeX by script.
+
+Thus, the PDF layout has a better quality than the other formats. For example, the syntax highlighting rules for the formats other than PDF have to get fixed as soon as possible and the index is missing yet. Leanpub and me are working on corresponding improvements.
+
+I hope you enjoy and benefit.
+
+Nico
+
+#cpp17tcg",c442a7b1c902cf80c4c2df84680887d750d2f707dd91ed24f9dcfef0b8585dda,,,2022-06-26,leanpub,['C and C++'],C++17 - The Complete Guide,https://leanpub.com/cpp17,2022
+['Rainer Grimm'],"My book C++20 is a tutorial and a reference for the C++20 standard. It teaches you C++20 and provides details of this new, thrilling C++ standard. The exciting factor is mainly due to the big four of C++20.
+
+Concepts change the way we think and program templates. They are semantic categories for the template parameters and enable you to express your intention directly in the type system. If something goes wrong, you get a clear error message.
+The new ranges library enables it to perform algorithms directly on the container, compose the algorithm with the pipe symbol, and apply them to infinite data streams.
+Thanks to coroutines, asynchronous programming in C++ has become mainstream. Coroutines are the base for cooperative tasks, event loops, infinite data streams, or pipelines.
+Modules overcome the restrictions of header files. They promise a lot. For example, the separation of header and source files becomes obsolete as the preprocessor. Ultimately, we have faster built time and an easier way to build packages.",ff0d8d01223bd8f976547c9a1d3a56b3842da2311d36286bf2c6e29fb4ce8fcb,,,2023-09-13,leanpub,['C and C++'],C++20,https://leanpub.com/c20,2023
+['Rainer Grimm'],"""The C++ Standard Library"" provides a detailed overview of the C++ Standard Library, including C++23.
+
+The Goal
+
+The C++ Standard Library aims to provide a concise reference of the C++ standard library in about 350 pages. This book assumes that you are familiar with C++. If so, you will get the most benefit from this book. If C++ is new to you, you should start with a textbook about core C++. Once you have mastered a textbook about the core language, you can make your next big step by reading my book.
+
+This book also has more than 150 running code examples for the code snippets I present. Therefore, you can combine theory with practice and get the most out of it.
+
+Many Thanks
+
+In particular, I thank the English proofreaders of my book: Mahesh Attarde, Rick Audet, Pete Barrow, Michael Ben-David, Dave Burns, Alvaro Fernandez, Juliette Grimm, Marius Grimm, George Haake, Nicola Jaud-Stoll, Clare Macrae, Arne Mertz, Ian Reeve, Jason Turner, Bart Vandewoestyne, Ivan Vergiliev, and Andrzej Warzynski. They translated my Swabian English into English. Without their work, the book wouldn't have been possible.",1cafa09e60b5dcc7ac463ec9711bf59ce71be43c3da25eedb3f56887ca4638c2,,,2023-03-11,leanpub,"['C and C++', 'Computers and Programming']",The C++ Standard Library,https://leanpub.com/cpplibrary,2023
+['Andreas Fertig'],"Programming with C++20 teaches programmers with C++ experience the new features of C++20 and how to apply them. It does so by assuming C++11 knowledge. Elements of the standards between C++11 and C++20 will be briefly introduced, if necessary. However, the focus is on teaching the features of C++20.
+
+You will start with learning about the so-called big four Concepts, Coroutines, std::ranges, and modules. The big four are followed by smaller yet not less important features. You will learn about std::format, the new way to format a string in C++. In Chapter 6, you will learn about a new operator, the so-called spaceship operator, which makes you write less code.
+
+You then will look at various improvements to the language, ensuring more consistency and reducing surprises. You will learn how lambdas improved in C++20 and what new elements you can now pass as non-type template parameters. Your next stop is the improvements to the STL.
+
+Of course, you will not end this book without learning about what happened in the constexpr-world.",2244acdafdb6f482a97cca0481bac15c38dac7bbfbd91594a34ec7c5f47e1987,,,2024-02-08,leanpub,['C and C++'],Programming with C++20,https://leanpub.com/programming-with-cpp20,2024
+['Nicolai M. Josuttis'],"C++20 is the next evolution in modern C++ programming, which will be supported step-by-step by the latest version of gcc, clang, and Visual C++.
+
+C++20 is a big step, maybe even larger than C++11.
+
+It contains a couple of new key features (modules, concepts, ranges, corountines) plus several small but valuable language and library features, which will change the way we program in C++. As usual, not everything is self-explanatory, combining new features gives even more power, and there are hidden traps.
+
+This book presents all the new language and library features of C++20. It covers the motivation and context of each new feature with examples and background information. The focus is on how these features impact day-to-day programming, what it means to combine them, and how to benefit from C++20 in practice.
+
+Testimonials:
+
+""C++20 scared me for a few years, and I am a C++ educator. After reading Nico's fantastic new book, I may still be afraid of C++20, but at least now I have a much deeper understanding of what it actually is I am afraid of. Leor Zolman
+
+""I use this book as reference almost everyday."" Selvakumar Jawahar
+
+Buy early, pay less, free updates
+
+Note that this book is published step-by-step. The first public version was published in June 2021. Since then, the contents grows with new chapters, examples, and caveats about the features of C++20 and I integrate all feedback I get for the pages already published.
+
+The book is feature complete now.
+
+Just minore details and copy editing is missing.
+
+See cppstd20.com for a detailed list of all the topics covered.
+
+As written, once you bought the ebook you will get all updates for free.
+
+PDF versus Other Formats
+
+I write the book in LaTeX and generate PDF from it (the way I wrote my other books). The other formats (epub, mobi, and online reading) come from the leanpub markdown interface, for which I generate the necessary input from LaTeX by script.
+
+Thus, the PDF layout has a better quality than the other formats. For example, the syntax highlighting rules for the formats other than PDF have to get fixed as soon as possible and the index is missing yet. Leanpub and me are working on corresponding improvements.
+
+I hope you enjoy and benefit.
+
+Nico
+
+#cpp20tcg",49eff6fdc102bfd78ba57e570d48b20033ce884cbab927c515ff4e76e99327aa,,,2024-08-08,leanpub,['C and C++'],C++20 - The Complete Guide,https://leanpub.com/cpp20,2024
+['Sandor Dargo'],"In this book, you are going to discover one of the flagship features of C++20, concepts.
+
+You will learn about:
+
+the motivations behind concepts
+the 4 ways to use them with functions
+3 different ways to use them with classes
+what kind of concepts are shipped with the standard library
+how to write your own concepts from scratch
+some real-life examples",c1ad40831fa2efd3efc575c56d319798147e8e0819bb48017f0f8a958c967937,,,2022-07-15,leanpub,['C and C++'],C++ Concepts,https://leanpub.com/cppconcepts,2022
+['Pavel Yosifovich'],,9b04540a952c259dfc91270851b4ed4c8b0c1d03676e3a530e6e7b07c888ecbd,,,2024-06-21,leanpub,[],"Windows 10 System Programming, Part 2",https://leanpub.com/windows10systemprogrammingpart2,2024
+,,,,,,other,,,https://en.cppreference.com/w/,
+,,,,,,other,,,https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md,
+,,,,,,other,,,https://isocpp.org/faq,
+,,,,,,other,,,https://cdn.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html,
+,,,,,,other,,,https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/getting-started-with-windbg,

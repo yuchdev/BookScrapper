@@ -35,7 +35,16 @@ async def scrape_book(url: str, browser, site: str):
             await page.route("**/*", route_handler)  # Block unnecessary resources
 
             print(f"Navigating to {url}")
-            await page.goto(url, timeout=30000)
+            await page.goto(url, timeout=40000)
+
+            # Check 404
+            page_title = (await page.title()).lower()
+            if site == "oreilly" and len(page_title) == 0:
+                print(f"Book not found at {url} (404 - Oreilly)")
+                return None
+            if site != "oreilly" and constants["404_PAGE_TITLE"] in page_title:
+                print(f"Book not found at {url} (404 - General)")
+                return None
 
             book_details = {"url": url, "site": site}
 
@@ -58,7 +67,7 @@ async def scrape_book(url: str, browser, site: str):
             await asyncio.sleep(2 ** attempt)
 
         except Exception as e:
-            print_log(f"Error on {url}: {e}, retrying", "error")
+            print_log(f"Error on {url}: {e}. Retrying", "error")
             await asyncio.sleep(2 ** attempt)
 
     print_log(f"Failed to scrape {url} after {retries} retries.", "error")
@@ -66,24 +75,11 @@ async def scrape_book(url: str, browser, site: str):
     return None
 
 
-class PageNotFoundException(Exception):
-    pass
-
-
 async def scrape_amazon_details(page, url, book_details, constants):
-    # Check 404
-    try:
-        page_title = (await page.title()).lower()
-        if "page not found" in page_title:
-            print_log(f"Book not found at {url}", "error")
-            raise PageNotFoundException  # Raise the exception to go to next URL
-    except Exception as e:
-        raise PageNotFoundException
-
     print(f"Getting title: {url}")
     try:
-        await page.wait_for_selector(constants["TITLE"], timeout=30000)
-        title = (await page.locator(constants["TITLE"]).inner_text()).strip()
+        await page.wait_for_selector(constants["BOOK_TITLE"], timeout=30000)
+        title = (await page.locator(constants["BOOK_TITLE"]).inner_text()).strip()
         book_details["title"] = title
     except Exception as e:
         print_log(f"No title for {url}", "error")
@@ -164,19 +160,10 @@ async def scrape_amazon_details(page, url, book_details, constants):
 
 
 async def scrape_leanpub_details(page, url, book_details, constants):
-    # Check 404
-    try:
-        page_title = (await page.title()).lower()
-        if "not found" in page_title:
-            print_log(f"Book not found at {url}", "error")
-            raise PageNotFoundException  # Raise the exception to go to next URL
-    except Exception as e:
-        raise PageNotFoundException
-
     print(f"Getting title: {url}")
     try:
-        await page.wait_for_selector(constants["TITLE"], timeout=30000)
-        title = (await page.locator(constants["TITLE"]).inner_text()).strip()
+        await page.wait_for_selector(constants["BOOK_TITLE"], timeout=30000)
+        title = (await page.locator(constants["BOOK_TITLE"]).inner_text()).strip()
         book_details["title"] = title
     except Exception as e:
         print_log(f"No title for {url}", "error")
@@ -238,10 +225,126 @@ async def scrape_leanpub_details(page, url, book_details, constants):
 
 
 async def scrape_packtpub_details(page, url, book_details, constants):
-    print("Packtpub book")
-    return None
+    print(f"Getting title: {url}")
+    try:
+        await page.wait_for_selector(constants["BOOK_TITLE"], timeout=30000)
+        title = (await page.locator(constants["BOOK_TITLE"]).inner_text()).strip()
+        book_details["title"] = title
+    except Exception as e:
+        print_log(f"No title for {url}", "error")
+        return None
+
+    # Get author(s)
+    print(f"Getting authors: {url}")
+    try:
+        authors = await page.locator(constants["AUTHORS"]).all()
+        author_names = []
+        for author in authors:
+            author_name = (await author.inner_text()).strip()
+            if author_name not in author_names:
+                author_names.append(author_name)
+        book_details["authors"] = author_names
+    except TimeoutError as e:
+        print_log("Could not find authors for {url}: {e}", "error")
+
+    # ISBN10 and ISBN13 are optional and therefore rarely used on leanpub
+
+    # Get Book Tags
+    print(f"Getting tags: {url}")
+    try:
+        book_tags = await page.locator(constants["TAGS"]).all_text_contents()
+        book_details["tags"] = [tag.strip() for tag in book_tags]
+    except Exception as e:
+        print_log(f"No tags for {url}: {e}", "error")
+        book_details["tags"] = []
+
+    # Get Publication Date
+    try:
+        print(f"Getting publication date: {url}")
+        pd_elements = await page.locator(constants["PUBLICATION_DATE"]).all()
+
+        for element in pd_elements:
+            if await element.is_visible():
+                publication_date = await element.inner_text()
+                book_details["publication_date"] = publication_date
+
+    except Exception as e:
+        print_log(f"Error getting publication date for {url}: {e}", "error")
+
+    # Scrape Description
+    try:
+        print(f"Getting description: {url}")
+        description = (await page.locator(constants["DESCRIPTION"]).inner_text()).strip()
+        book_details["description"] = description
+    except Exception as e:
+        print_log(f"No description for {url}", "error")
+        return None
+
+    year = extract_year_from_date(book_details.get("publication_date"))
+    book_details["year"] = year
+    book_details["hash"] = hash_book(book_details.get("title"), book_details.get("authors"), year)
+
+    return book_details
 
 
 async def scrape_oreilly_details(page, url, book_details, constants):
-    print("Oreilly book")
-    return None
+    print(f"Getting title: {url}")
+    try:
+        book_details["title"] = (await page.locator(constants["BOOK_TITLE"]).inner_text()).strip()
+    except Exception as e:
+        print_log(f"No title for {url}", "error")
+        return None
+
+    # Get author(s)
+    print(f"Getting authors: {url}")
+    try:
+        authors = await page.locator(constants["AUTHORS"]).all()
+        author_names = []
+        for author in authors:
+            author_name = (await author.inner_text()).strip()
+            if author_name not in author_names:
+                author_names.append(author_name)
+        book_details["authors"] = author_names
+    except TimeoutError:
+        book_details["authors"] = []
+
+    # ISBN10 and ISBN13 use the same field for O'Reilly
+    print(f"Getting ISBN: {url}")
+    isbn_locator = page.locator(constants["ISBN"].strip())  # create the locator object.
+    isbn = (await isbn_locator.text_content()).replace("ISBN: ", "")  # await the text_content method.
+    print(f"isbn: {isbn}")
+    if len(isbn) == 10:
+        book_details["isbn10"] = isbn
+    elif len(isbn) == 13:
+        book_details["isbn13"] = isbn
+
+    # No tags or categories for O'Reilly
+
+    # Get Publication Date
+    try:
+        print(f"Getting publication date: {url}")
+        pd_locator = page.locator(constants["PUBLICATION_DATE"].strip())
+        pd = (await pd_locator.text_content())
+        print(pd)
+        if pd:
+            book_details["publication_date"] = pd
+    except Exception as e:
+        print_log(f"Error getting publication date for {url}: {e}", "error")
+
+    # Scrape Description
+    try:
+        print(f"Getting description: {url}")
+        description_locator = page.locator("div.title-description div.content span").filter(
+            has_text="To say that C++ programmers")
+        await description_locator.wait_for()
+        description = await description_locator.inner_text()
+        print(f"Description:\n{description}")
+        book_details["description"] = description
+    except Exception as e:
+        print_log(f"No description for {url}, error: {e}", "error")
+
+    year = extract_year_from_date(book_details.get("publication_date"))
+    book_details["year"] = year
+    book_details["hash"] = hash_book(book_details.get("title"), book_details.get("authors"), year)
+
+    return book_details

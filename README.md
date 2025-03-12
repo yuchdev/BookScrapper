@@ -51,11 +51,11 @@ customizable or the usage of a queue implemented.
 
 Output:
 
-1. books.csv, in the same directory, with the scraped book details
-2. failed_books.csv, in the same directory, with the URLs that failed to be scraped as books
-
-This failed_books.csv allows the user to manually investigate the issues. At a later iteration, there may be a way to
-scrape this file (or another one) to add to books.csv, thereby covering false-negative and amended source URL scenarios.
+1. `books.csv`, in the same directory, with the scraped book details. This is the main goal of the BookScraper module.
+2. `failed_books.csv`, in the same directory, with the URLs that failed to be scraped as books. This `failed_books.csv`
+   allows the user to manually investigate the issues.
+3. `other_links.csv`, in the same directory, which contains the URLs of sites that are not supported or that are not of
+   book details
 
 Syntax:
 `python scrape_existing_books.py -f <urls.csv>`
@@ -77,18 +77,18 @@ At this stage, the scraper supports:
 
 ## Output Specifications
 
-At this stage, the scraper will output a file called "books.csv" in the directory from where scrape_existing_books.py is
-executed. The file contains the results of the scrape, with the following fields, where applicable:
+At this stage, the scraper will output a file called `books.csv` in the directory from where `scrape_existing_books.py`
+is executed. The file contains the results of the scrape, with the following fields, where applicable:
 
-authors, description, hash, isbn10, isbn13, publication_date, site, summary, tags, title, and url.
+- authors, description, hash, isbn10, isbn13, publication_date, site, summary, tags, title, and url.
 
 At a subsequent iteration, the option to store the results within MongoDB will be added.
 
 ## Tests
 
-Tests are contained within the ```test``` folder and are a not fully integrated at this stage.
+Tests are contained within the `test` folder and are a not fully integrated at this stage.
 
 ## Note on Performance
 
-At this stage, tests have shown an average of ~3.7s per Amazon book URL. This includes waiting periods to avoid being
+At this stage, tests have shown an average of ~2.25s per book URL across all supported sites. This includes waiting periods to avoid being
 flagged by anti-bot measures. Although not 100% stable, most trial runs show a 99-100% accuracy.

@@ -30,7 +30,8 @@ USER_AGENTS = [
 
 site_constants = {
     "amazon": {
-        "TITLE": "#productTitle",
+        "404_PAGE_TITLE": "not found",
+        "BOOK_TITLE": "#productTitle",
         "AUTHORS": "#bylineInfo span.author.notFaded a",
         "AUTHORS_ALT": "._about-the-author-card_style_cardContentDiv__FXLPd ._about-the-author-card_carouselItemStyles_authorName__HSb1t h2",
         "ISBN10": "#rpi-attribute-book_details-isbn10 .rpi-attribute-value",
@@ -42,7 +43,8 @@ site_constants = {
         "READ_MORE_LINK": "#bookDescription_feature_div .a-expander-prompt"
     },
     "leanpub": {
-        "TITLE": "h3.book-hero__title",
+        "404_PAGE_TITLE": "not found",
+        "BOOK_TITLE": "h3.book-hero__title",
         "AUTHORS": ".avatar-with-name__name",
         "AUTHORS_ALT": "",
         # "ISBN10": "",
@@ -54,27 +56,28 @@ site_constants = {
         "READ_MORE_LINK": ""
     },
     "packtpub": {
-        "TITLE": "",
-        "AUTHORS": "",
+        "404_PAGE_TITLE": "not found",
+        "BOOK_TITLE": "h1.product-title",
+        "AUTHORS": "div.authors span",
         "AUTHORS_ALT": "",
-        "ISBN10": "",
-        "ISBN13": "",
-        "TAGS": "",
-        "DETAILS_BUTTON": "",
-        "PUBLICATION_DATE": "",
-        "DESCRIPTION": "",
-        "READ_MORE_LINK": ""
+        # "ISBN10": "",
+        "ISBN13": "div.product-page-rhs.desktop span.product-details-section-key:has-text('ISBN-13 :') + span.product-details-section-value",
+        "TAGS": "div.product-page-rhs.desktop a",
+        # "DETAILS_BUTTON": "",
+        "PUBLICATION_DATE": "div.product-page-rhs.desktop span.product-details-section-key:has-text('Publication date :') + span.product-details-section-value",
+        "DESCRIPTION": ".product-book-content-details h2:has-text('Description') + div.content-text",
+        # "READ_MORE_LINK": ""
     },
     "oreilly": {
-        "TITLE": "",
-        "AUTHORS": "",
-        "AUTHORS_ALT": "",
-        "ISBN10": "",
-        "ISBN13": "",
-        "TAGS": "",
-        "DETAILS_BUTTON": "",
-        "PUBLICATION_DATE": "",
-        "DESCRIPTION": "",
-        "READ_MORE_LINK": ""
+        "404_PAGE_TITLE": "",
+        "BOOK_TITLE": "h1.t-title",
+        "AUTHORS": "a.author-name",
+        # "AUTHORS_ALT": "",
+        "ISBN": "div.t-isbn",
+        # "TAGS": "",
+        # "DETAILS_BUTTON": "",
+        "PUBLICATION_DATE": "ul.detail-product-information span.name:has-text('Release date:') + span.value",
+        "DESCRIPTION": "#sbo-reader div.content span",
+        # "READ_MORE_LINK": ""
     }
 }

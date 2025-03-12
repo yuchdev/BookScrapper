@@ -9,6 +9,7 @@ import pandas as pd
 from playwright.async_api import async_playwright, TimeoutError
 import random
 
+from src.bookscraper.book_utils import print_log
 from src.bookscraper.scrape_details import scrape_book
 
 
@@ -66,6 +67,25 @@ def save_failed_urls_to_csv(failed_urls, filename="failed_books.csv"):
         print(f"Error saving failed URLs to CSV: {e}")
 
 
+def save_other_links_to_csv(other_links, filename="other_links.csv"):
+    """Saves the 'other' links to a CSV file."""
+    if not other_links:
+        print("No 'other' links to save.")
+        return
+
+    try:
+        with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["url"])
+            for url in other_links:
+                writer.writerow([url])
+
+        print(f"'Other' links saved to {filename}")
+
+    except Exception as e:
+        print(f"Error saving 'other' links to CSV: {e}")
+
+
 async def main():
     """
     Asynchronously scrape book details from URLs provided in a CSV file.
@@ -120,8 +140,6 @@ async def main():
                     website_urls["leanpub"].append(url)
                 elif "oreilly.com" in url:
                     website_urls["oreilly"].append(url)
-                elif urllib.parse.urlparse(url).path.lower().endswith(".pdf"):
-                    print(f"Skipping PDF URL: {url}")
                 else:
                     website_urls["other"].append(url)
 
@@ -132,14 +150,15 @@ async def main():
             print(f"Error: Could not parse CSV at {filepath}")
             return
 
-    for website, urls in website_urls.items():
-        print(f" {len(urls)} {website.capitalize()} URLs to scrape.")
-
-    batch_size = 10
-    # all_urls = website_urls["leanpub"]  # For single-site testing
+    # all_urls = website_urls["oreilly"]  # For single-site testing
     all_urls = []
-    for urls in website_urls.values():
-        all_urls.extend(urls)
+    batch_size = 10
+    for website, urls in website_urls.items():
+        if website not in ["other"]:
+            print_log(f" {len(urls)} {website.capitalize()} URLs to scrape.", "info")
+            all_urls.extend(urls)
+        else:
+            print_log(f" {len(urls)} {website.capitalize()} URLs will be skipped and added to other_links.csv.", "info")
     total_urls = len(all_urls)
 
     async with async_playwright() as p:
@@ -172,12 +191,15 @@ async def main():
                 await asyncio.sleep(random.uniform(3, 5))
 
         print("Shutting down browser...")
-        print(f"Time elapsed: {time.time() - start} seconds")
+        total_time = time.time() - start
+        print(
+            f"{total_urls} books checked and scraped in {total_time} seconds at a rate of {total_time / total_urls}s per book")
 
         await browser.close()
 
     save_books_to_csv(books)
     save_failed_urls_to_csv(failed_urls)
+    save_other_links_to_csv(website_urls["other"])
 
 
 def identify_website(url):

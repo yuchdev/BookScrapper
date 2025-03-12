@@ -40,10 +40,10 @@ async def scrape_book(url: str, browser, site: str):
             # Check 404
             page_title = (await page.title()).lower()
             if site == "oreilly" and len(page_title) == 0:
-                print(f"Book not found at {url} (404 - Oreilly)")
+                print_log(f"Book not found at {url} (404 - Oreilly)", "error")
                 return None
             if site != "oreilly" and constants["404_PAGE_TITLE"] in page_title:
-                print(f"Book not found at {url} (404 - General)")
+                print_log(f"Book not found at {url} (404 - {site})", "error")
                 return None
 
             book_details = {"url": url, "site": site}

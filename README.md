@@ -54,7 +54,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Yurii/BookScraper.git](https://github.com/Yurii/BookScraper.git)
+    git clone [https://github.com/YannickLalonde/BookScraper.git](https://github.com/YannickLalonde/BookScraper.git)
     cd BookScraper
     ```
 2.  **Create and activate a Python virtual environment (recommended):**

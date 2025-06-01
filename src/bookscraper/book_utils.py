@@ -3,6 +3,8 @@ from datetime import datetime
 import logging
 import os
 import re
+import glob
+from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from dotenv import load_dotenv
 from pymongo import MongoClient, server_api
@@ -12,8 +14,15 @@ from pymongo.errors import ServerSelectionTimeoutError, ConnectionFailure
 logger = logging.getLogger('bookscraper')
 logger.setLevel(logging.INFO)
 
+# Create logs directory if it doesn't exist
+logs_dir = Path.home() / ".bookscrapper" / "logs"
+logs_dir.mkdir(parents=True, exist_ok=True)
+
+# Generate log filename with timestamp
+timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+log_file_path = logs_dir / f"bookscraper-{timestamp}.log"
+
 # File Handler: Writes logs to a file
-log_file_path = "bookscraper.log"
 file_handler = logging.FileHandler(log_file_path)
 file_handler.setLevel(logging.INFO)
 
@@ -30,6 +39,22 @@ console_handler.setFormatter(formatter)
 if not logger.handlers:  # Prevent adding handlers multiple times if module is reloaded
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
+
+    # Log the path of the current log file
+    logger.info(f"Logging to: {log_file_path}")
+
+    # Implement log rotation - keep only 5 most recent log files
+    # Do this after logger is configured so we can properly log the actions
+    log_files = sorted(glob.glob(str(logs_dir / "bookscraper-*.log")), reverse=True)
+    if len(log_files) > 5:  # Only rotate if we have more than 5 files
+        logger.info(f"Found {len(log_files)} log files, keeping 5 most recent")
+        for old_log in log_files[5:]:  # Keep 5 most recent (including the new one we just created)
+            try:
+                os.remove(old_log)
+                logger.info(f"Removed old log file: {old_log}")
+            except Exception as e:
+                # Log the error but continue - this is not critical
+                logger.warning(f"Could not remove old log file {old_log}: {e}")
 
 
 def print_log(text, status: str):
@@ -181,12 +206,12 @@ def extract_year_from_date(date_string: str) -> int | None:
 
 def get_default_atlas_dir():
     """
-    Returns the default Atlas directory path.
+    Returns the default Bookscrapper directory path.
 
     Returns:
-        Path: The default Atlas directory path.
+        Path: The default Bookscrapper directory path.
     """
-    return Path.home() / ".atlas"
+    return Path.home() / ".bookscrapper"
 
 def get_default_urls_file():
     """

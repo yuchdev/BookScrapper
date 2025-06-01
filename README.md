@@ -97,8 +97,8 @@ TLS_CERT_FILE="/path/to/your/tls_certificate.pem" # Optional if not using client
 
 If you don't specify the configuration in the `.env` file, the application will use the following defaults:
 
-* `MONGODB_URI`: If not defined or empty, the application will try to read it from `~/.atlas/driver_string.txt`. The URI format will be validated before use.
-* `TLS_CERT_FILE`: If not defined or empty, the application will use `~/.atlas/X509-cert-142838411852079927.pem` if it exists.
+* `MONGODB_URI`: If not defined or empty, the application will try to read it from `~/.bookscrapper/driver_string.txt`. The URI format will be validated before use.
+* `TLS_CERT_FILE`: If not defined or empty, the application will use `~/.bookscrapper/X509-cert-142838411852079927.pem` if it exists.
 
 -----
 
@@ -110,7 +110,7 @@ The scraper requires an input CSV file containing the URLs to scrape.
 
 The application uses a CSV file with a single column named `url`. If the file doesn't exist at the specified path (or at the default path if not specified), it will be created automatically with the header.
 
-Default path: `~/.atlas/urls.txt`
+Default path: `~/.bookscrapper/urls.txt`
 
 Example content:
 
@@ -127,7 +127,7 @@ url
 
 Run the `scrape_existing_books.py` script with the following arguments:
 
-  * `-f` or `--file <path/to/urls.csv>`: **(Optional)** Specifies the path to your input CSV file containing book URLs. If not provided, the default path `~/.atlas/urls.txt` will be used. If the file doesn't exist, it will be created automatically with the header.
+  * `-f` or `--file <path/to/urls.csv>`: **(Optional)** Specifies the path to your input CSV file containing book URLs. If not provided, the default path `~/.bookscrapper/urls.txt` will be used. If the file doesn't exist, it will be created automatically with the header.
   * `-c` or `--csv`: **(Optional)** If present, scraped data will be saved to `books.csv`, `failed_books.csv`, and `other_links.csv` in the current directory.
   * `-m` or `--mongo`: **(Optional)** If present, scraped data will be saved to your configured MongoDB Atlas database.
 
@@ -196,7 +196,8 @@ Upon successful execution (and if CSV output is enabled), the following files wi
 The `BookScraper` utilizes a comprehensive logging system:
 
   * **Console Output:** Real-time progress and critical messages are printed to your terminal, often with color-coded statuses (e.g., yellow for info, red for errors).
-  * **Log File (`bookscraper.log`):** All messages (INFO, WARNING, ERROR, CRITICAL) are simultaneously written to `bookscraper.log` in the project root. This file provides a persistent and detailed record of the scraping process, including timestamps and full tracebacks for errors, which is invaluable for debugging.
+  * **Log Files:** All messages (INFO, WARNING, ERROR, CRITICAL) are simultaneously written to timestamped log files in the `~/.bookscrapper/logs/` directory with the naming format `bookscraper-YYYYMMDD-HHMMSS.log`. These files provide a persistent and detailed record of the scraping process, including timestamps and full tracebacks for errors, which is invaluable for debugging.
+  * **Log Rotation:** The system automatically maintains the 5 most recent log files, removing older logs to prevent excessive disk usage.
 
 -----
 
@@ -205,7 +206,6 @@ The `BookScraper` utilizes a comprehensive logging system:
 ```
 BookScraper/
 ├── .env                  # Environment variables for MongoDB (ignored by Git)
-├── bookscraper.log       # Log file generated during runtime (ignored by Git)
 ├── requirements.txt      # List of project dependencies for pip
 ├── README.md             # This README file
 ├── books.csv             # Output CSV for scraped books (ignored by Git)
@@ -220,6 +220,8 @@ BookScraper/
         └── scrape_details.py # Core scraping logic for each site (Playwright interactions)
     └── scrape_existing_books.py # Main entry point for the CLI tool
 ```
+
+Log files are stored in `~/.bookscrapper/logs/` with the naming format `bookscraper-YYYYMMDD-HHMMSS.log`.
 
 -----
 

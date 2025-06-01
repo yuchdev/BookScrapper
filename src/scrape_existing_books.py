@@ -3,19 +3,22 @@ import asyncio
 import csv
 import time
 import sys
+import os
 
 import pandas as pd
 
 from playwright.async_api import async_playwright
 import random
 
-from src.bookscraper.book_utils import (
+from bookscraper.book_utils import (
     print_log,
     logger,
     check_csv_write_permission,
-    check_mongodb_connection)
-from src.bookscraper.scrape_details import scrape_book
-from src.bookscraper.database import save_books_to_mongodb
+    check_mongodb_connection,
+    get_default_urls_file,
+    create_default_urls_file)
+from bookscraper.scrape_details import scrape_book
+from bookscraper.database import save_books_to_mongodb
 
 
 def save_books_to_csv(books, filename="books.csv"):
@@ -53,22 +56,24 @@ def save_books_to_csv(books, filename="books.csv"):
         logger.error(f"Error saving books to CSV: {e}")
 
 
+def write_urls(urls_list, log_message, filename):
+    try:
+        with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["url"])
+            for url in urls_list:
+                writer.writerow([url])
+        logger.info(f"{log_message} {filename}")
+
+    except Exception as e:
+        logger.error(f"Error saving failed URLs to CSV: {e}")
+
 def save_failed_urls_to_csv(failed_urls, filename="failed_books.csv"):
     """Saves the failed URLs to a CSV file."""
     if not failed_urls:
         logger.info("No failed URLs to save.")
         return
-
-    try:
-        with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(["url"])
-            for url in failed_urls:
-                writer.writerow([url])
-        logger.info(f"Failed URLs saved to {filename}")
-
-    except Exception as e:
-        logger.error(f"Error saving failed URLs to CSV: {e}")
+    write_urls(urls_list=failed_urls, log_message="Failed URLs saved to", filename=filename)
 
 
 def save_other_links_to_csv(other_links, filename="other_links.csv"):
@@ -76,17 +81,7 @@ def save_other_links_to_csv(other_links, filename="other_links.csv"):
     if not other_links:
         logger.info("No 'other' links to save.")
         return
-
-    try:
-        with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(["url"])
-            for url in other_links:
-                writer.writerow([url])
-        logger.info(f"'Other' links saved to {filename}")
-
-    except Exception as e:
-        logger.error(f"Error saving 'other' links to CSV: {e}")
+    write_urls(urls_list=other_links, log_message="Other links saved to", filename=filename)
 
 
 def identify_website(url):
@@ -104,11 +99,34 @@ def identify_website(url):
 
 async def main():
     parser = argparse.ArgumentParser(description="Scrape book details from URLs.")
-    parser.add_argument("-f", "--file", required=True, help="Path to the CSV file containing URLs.")
-    parser.add_argument("-c", "--csv", action="store_true",
+    parser.add_argument("-f", "--file",
+                        required=False,
+                        help=f"Path to the CSV file containing URLs. Default: {get_default_urls_file()}")
+    parser.add_argument("-c", "--csv",
+                        action="store_true",
                         help="Output scraped data to CSV files (books.csv, failed_books.csv, other_links.csv).")
     parser.add_argument("-m", "--mongo", action="store_true", help="Output scraped data to a MongoDB database.")
     args = parser.parse_args()  # Keep this outside try-except for standard arg parsing errors
+
+    # Use default URLs file if not specified
+    if not args.file:
+        args.file = get_default_urls_file()
+        logger.info(f"Using default URLs file: {args.file}")
+
+    # Create default URLs file if it doesn't exist
+    if not os.path.exists(args.file):
+        logger.info(f"URLs file not found at {args.file}. Creating it.")
+        if args.file == get_default_urls_file():
+            if create_default_urls_file():
+                logger.info(f"Created default URLs file at {args.file}")
+            else:
+                logger.critical(f"Failed to create default URLs file at {args.file}")
+                print_log(f"Critical Error: Failed to create default URLs file at {args.file}. Please check permissions.", "error")
+                sys.exit(1)
+        else:
+            logger.critical(f"URLs file not found at {args.file} and it's not the default file.")
+            print_log(f"Critical Error: The input file '{args.file}' was not found. Please check the path.", "error")
+            sys.exit(1)
 
     # Pre-flight Checks for Output Destinations
     can_output_to_csv = False

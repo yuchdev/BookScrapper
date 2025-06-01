@@ -5,8 +5,8 @@ from pymongo import MongoClient, server_api
 from pymongo.errors import ServerSelectionTimeoutError, InvalidDocument, ConnectionFailure, DuplicateKeyError, \
     OperationFailure, InvalidName
 
-# Import print_log from book_utils for colored console output
-from src.bookscraper.book_utils import print_log
+# Import utility functions from book_utils
+from bookscraper.book_utils import print_log, get_default_mongodb_uri, get_default_tls_cert_file, validate_mongodb_uri
 
 # Configure logging for the database module
 # This logger will write to the consolidated log file as configured in book_utils
@@ -16,16 +16,37 @@ logger = logging.getLogger(__name__)
 def save_books_to_mongodb(books: list[dict]) -> None:
     """
     Saves a list of book dictionaries to a MongoDB Atlas cluster.
-    Assumes MONGODB_URI and TLS_CERT_FILE are set in environment variables or .env file.
+    Uses MONGODB_URI and TLS_CERT_FILE from environment variables or default locations.
     """
     load_dotenv()
     mongodb_uri = os.environ.get("MONGODB_URI")
     tls_cert_file = os.environ.get("TLS_CERT_FILE")
 
+    # Use default MongoDB URI if not defined in environment variables
     if not mongodb_uri:
-        logger.critical("MONGODB_URI not found in environment variables. Cannot connect to MongoDB.")
-        print_log("Error: MONGODB_URI not found in environment variables. Aborting MongoDB save.", "error")
+        mongodb_uri = get_default_mongodb_uri()
+        if mongodb_uri:
+            logger.info(f"Using MongoDB URI from default location")
+        else:
+            logger.critical("MONGODB_URI not found in environment variables or default location. Cannot connect to MongoDB.")
+            print_log("Error: MONGODB_URI not found in environment variables or default location. Aborting MongoDB save.", "error")
+            return
+
+    # Validate MongoDB URI format
+    if not validate_mongodb_uri(mongodb_uri):
+        logger.critical(f"Invalid MongoDB URI format: {mongodb_uri}")
+        print_log("Error: Invalid MongoDB URI format. Aborting MongoDB save.", "error")
         return
+
+    # Use default TLS certificate file if not defined in environment variables
+    if not tls_cert_file or not os.path.exists(tls_cert_file):
+        default_tls_cert_file = get_default_tls_cert_file()
+        if os.path.exists(default_tls_cert_file):
+            tls_cert_file = default_tls_cert_file
+            logger.info(f"Using default TLS certificate file")
+        else:
+            logger.warning(f"TLS certificate file not found in environment variables or default location")
+            tls_cert_file = None
 
     client = None
     try:

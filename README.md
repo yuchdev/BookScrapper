@@ -54,7 +54,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YannickLalonde/BookScraper.git](https://github.com/YannickLalonde/BookScraper.git)
+    git clone https://github.com/YannickLalonde/BookScraper.git
     cd BookScraper
     ```
 2.  **Create and activate a Python virtual environment (recommended):**
@@ -93,6 +93,13 @@ TLS_CERT_FILE="/path/to/your/tls_certificate.pem" # Optional if not using client
   * Replace `<username>`, `<password>`, `<cluster-url>`, and `<database-name>` with your MongoDB Atlas credentials.
   * `TLS_CERT_FILE`: This is optional. If your MongoDB Atlas setup requires client certificate authentication, provide the full path to your `.pem` file. If not needed for your connection, you can omit this line or leave it empty.
 
+#### Default Configuration
+
+If you don't specify the configuration in the `.env` file, the application will use the following defaults:
+
+* `MONGODB_URI`: If not defined or empty, the application will try to read it from `~/.atlas/driver_string.txt`. The URI format will be validated before use.
+* `TLS_CERT_FILE`: If not defined or empty, the application will use `~/.atlas/X509-cert-142838411852079927.pem` if it exists.
+
 -----
 
 ## 💡 Usage
@@ -101,7 +108,11 @@ The scraper requires an input CSV file containing the URLs to scrape.
 
 ### Input CSV Format
 
-Create a CSV file (e.g., `urls.csv`) with a single column named `url`:
+The application uses a CSV file with a single column named `url`. If the file doesn't exist at the specified path (or at the default path if not specified), it will be created automatically with the header.
+
+Default path: `~/.atlas/urls.txt`
+
+Example content:
 
 ```csv
 url
@@ -116,25 +127,37 @@ url
 
 Run the `scrape_existing_books.py` script with the following arguments:
 
-  * `-f` or `--file <path/to/urls.csv>`: **(Required)** Specifies the path to your input CSV file containing book URLs.
+  * `-f` or `--file <path/to/urls.csv>`: **(Optional)** Specifies the path to your input CSV file containing book URLs. If not provided, the default path `~/.atlas/urls.txt` will be used. If the file doesn't exist, it will be created automatically with the header.
   * `-c` or `--csv`: **(Optional)** If present, scraped data will be saved to `books.csv`, `failed_books.csv`, and `other_links.csv` in the current directory.
   * `-m` or `--mongo`: **(Optional)** If present, scraped data will be saved to your configured MongoDB Atlas database.
 
 ### Examples
 
-1.  **Scrape and save to CSV only:**
+1.  **Scrape and save to CSV only (using default URLs file):**
+    ```bash
+    python src/scrape_existing_books.py -c
+    ```
+2.  **Scrape and save to MongoDB only (using default URLs file):**
+    ```bash
+    python src/scrape_existing_books.py -m
+    ```
+3.  **Scrape and save to both CSV and MongoDB (using default URLs file):**
+    ```bash
+    python src/scrape_existing_books.py -c -m
+    ```
+4.  **Scrape and save to CSV only (using custom URLs file):**
     ```bash
     python src/scrape_existing_books.py -f urls.csv -c
     ```
-2.  **Scrape and save to MongoDB only:**
+5.  **Scrape and save to MongoDB only (using custom URLs file):**
     ```bash
     python src/scrape_existing_books.py -f urls.csv -m
     ```
-3.  **Scrape and save to both CSV and MongoDB:**
+6.  **Scrape and save to both CSV and MongoDB (using custom URLs file):**
     ```bash
     python src/scrape_existing_books.py -f urls.csv -c -m
     ```
-4.  **Display help message:**
+7.  **Display help message:**
     ```bash
     python src/scrape_existing_books.py --help
     ```

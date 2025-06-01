@@ -2,6 +2,8 @@ import hashlib
 from datetime import datetime
 import logging
 import os
+import re
+from pathlib import Path
 from dotenv import load_dotenv
 from pymongo import MongoClient, server_api
 from pymongo.errors import ServerSelectionTimeoutError, ConnectionFailure
@@ -91,9 +93,30 @@ def check_mongodb_connection() -> bool | None:
     mongodb_uri = os.environ.get("MONGODB_URI")
     tls_cert_file = os.environ.get("TLS_CERT_FILE")
 
+    # Use default MongoDB URI if not defined in environment variables
     if not mongodb_uri:
-        logger.error("MONGODB_URI not found in environment variables for MongoDB connection test.")
-        print_log("MongoDB Check Error: MONGODB_URI not found in environment variables. Cannot test connection.",
+        mongodb_uri = get_default_mongodb_uri()
+        if mongodb_uri:
+            logger.info(f"Using MongoDB URI from {get_default_atlas_dir() / 'driver_string.txt'}")
+        else:
+            logger.error("MONGODB_URI not found in environment variables or default file for MongoDB connection test.")
+            print_log("MongoDB Check Error: MONGODB_URI not found in environment variables or default file. Cannot test connection.",
+                      "error")
+            return False
+
+    # Use default TLS certificate file if not defined in environment variables
+    if not tls_cert_file or not os.path.exists(tls_cert_file):
+        default_tls_cert_file = get_default_tls_cert_file()
+        if os.path.exists(default_tls_cert_file):
+            tls_cert_file = default_tls_cert_file
+            logger.info(f"Using default TLS certificate file: {tls_cert_file}")
+        else:
+            logger.warning(f"TLS certificate file not found in environment variables or default location: {default_tls_cert_file}")
+
+    # Validate MongoDB URI format
+    if not validate_mongodb_uri(mongodb_uri):
+        logger.error(f"Invalid MongoDB URI format: {mongodb_uri}")
+        print_log("MongoDB Check Error: Invalid MongoDB URI format. Please check your connection string.",
                   "error")
         return False
 
@@ -155,6 +178,93 @@ def extract_year_from_date(date_string: str) -> int | None:
         logger.error(f"Error extracting year from '{date_string}': {e}")
         return None
 
+
+def get_default_atlas_dir():
+    """
+    Returns the default Atlas directory path.
+
+    Returns:
+        Path: The default Atlas directory path.
+    """
+    return Path.home() / ".atlas"
+
+def get_default_urls_file():
+    """
+    Returns the default path for the URLs file.
+
+    Returns:
+        str: The default path for the URLs file.
+    """
+    return str(get_default_atlas_dir() / "urls.txt")
+
+def get_default_tls_cert_file():
+    """
+    Returns the default path for the TLS certificate file.
+
+    Returns:
+        str: The default path for the TLS certificate file.
+    """
+    return str(get_default_atlas_dir() / "X509-cert-142838411852079927.pem")
+
+def get_default_mongodb_uri():
+    """
+    Returns the MongoDB URI from the default driver string file if it exists.
+
+    Returns:
+        str or None: The MongoDB URI from the driver string file, or None if the file doesn't exist or is empty.
+    """
+    driver_string_file = get_default_atlas_dir() / "driver_string.txt"
+    if driver_string_file.exists():
+        try:
+            with open(driver_string_file, 'r') as f:
+                uri = f.read().strip()
+                if uri and validate_mongodb_uri(uri):
+                    return uri
+        except Exception as e:
+            logger.error(f"Error reading MongoDB URI from {driver_string_file}: {e}")
+    return None
+
+def validate_mongodb_uri(uri):
+    """
+    Validates the format of a MongoDB URI.
+
+    Args:
+        uri (str): The MongoDB URI to validate.
+
+    Returns:
+        bool: True if the URI is valid, False otherwise.
+    """
+    if not uri:
+        return False
+
+    # Basic pattern for MongoDB URI validation
+    # This pattern supports both standard username:password authentication
+    # and X509 authentication without username:password
+    pattern = r'^mongodb(\+srv)?:\/\/(([^:]+):([^@]+)@)?([^\/\?]+)(\/([^\?]*))?(\?.*)?$'
+    return bool(re.match(pattern, uri))
+
+def create_default_urls_file():
+    """
+    Creates the default URLs file with a header if it doesn't exist.
+
+    Returns:
+        bool: True if the file was created or already exists, False otherwise.
+    """
+    urls_file = Path(get_default_urls_file())
+    try:
+        # Create the directory if it doesn't exist
+        urls_file.parent.mkdir(parents=True, exist_ok=True)
+
+        # Create the file if it doesn't exist
+        if not urls_file.exists():
+            with open(urls_file, 'w', newline='', encoding='utf-8') as f:
+                f.write("url\n")
+            logger.info(f"Created default URLs file at {urls_file}")
+            return True
+        return True
+    except Exception as e:
+        logger.error(f"Error creating default URLs file: {e}")
+        return False
 
 def hash_book(title: str = "", authors: list = None, year=None) -> str:
     """

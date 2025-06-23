@@ -239,61 +239,61 @@ async def main():
 							total_duplicates_skipped += 1
 							print_log(f"{site_name.title()} - Book already in database: {book_title}", 'warning')
 
-				# elif site_name.lower() == "amazon":
-				# 	# Amazon
-				# 	batch_size = 10
-				# 	try:
-				# 		async with async_playwright() as p:
-				# 			browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
-				# 			print_log("Playwright browser launched successfully.")
-				# 			books = []
-				#
-				# 			for i in range(0, site_constants['amazon'][''], batch_size):
-				# 				batch_urls = all_urls[i:i + batch_size]
-				# 				print_log(
-				# 					f"Starting batch {i // batch_size + 1} of {len(all_urls) // batch_size + (1 if len(all_urls) % batch_size else 0)}",
-				# 					"info")
-				#
-				# 				tasks = []
-				# 				for url in batch_urls:
-				# 					site = identify_website(url)
-				# 					tasks.append(scrape_book(url, browser, site))
-				#
-				# 				results = await asyncio.gather(*tasks)
-				#
-				# 				for index, result in enumerate(results):
-				# 					if result:
-				# 						books.append(result)
-				# 					else:
-				# 						failed_urls.append(batch_urls[index])
-				# 						logger.warning(f"Failed to scrape: {batch_urls[index]}")
-				#
-				# 				if i + batch_size < total_urls:
-				# 					print_log("Pausing between batches...", "info")
-				# 					await asyncio.sleep(random.uniform(3, 5))
-				#
-				#
-				#
-				#
-				#
-				# 	except Exception as e:
-				# 		print_log(
-				# 			f"Failed to launch Playwright browser: {e}. Playwright-based sites will be skipped.",
-				# 			"critical")
-				# 		module_logger.critical(f"Failed to launch Playwright browser: {e}", exc_info=True)
-				# 		# Remove Playwright sites from SITES_TO_SCRAPE if browser launch fails
-				# 		SITES_TO_SCRAPE[:] = [site for site in SITES_TO_SCRAPE if
-				# 		                      site.lower() not in ["amazon", "packtpub", "oreilly"]]
-				# 	# if not SITES_TO_SCRAPE:  # If no sites left to scrape
-				# 	#     print_log("No sites left to scrape after browser launch failure. Exiting.", "error")
-				# 	#     sys.exit(1)
-				#
-				# 	print_log(f"{site_name.title()} - Searching for '{search_item}' using Playwright...", "info")
-				# 	current_search_results = await get_search_results_via_playwright(
-				# 		browser=browser,
-				# 		site_name=site_name,
-				# 		query=search_item,
-				# 	)
+				elif site_name.lower() == "amazon":
+					# Amazon
+					batch_size = 10
+					try:
+						async with async_playwright() as p:
+							browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
+							print_log("Playwright browser launched successfully.")
+							books = []
+
+							for i in range(0, site_constants['amazon']['SEARCH_MAXIMUM_PAGES'], batch_size):
+								batch_urls = all_urls[i:i + batch_size]
+								print_log(
+									f"Starting batch {i // batch_size + 1} of {len(all_urls) // batch_size + (1 if len(all_urls) % batch_size else 0)}",
+									"info")
+
+								tasks = []
+								for url in batch_urls:
+									site = identify_website(url)
+									tasks.append(scrape_book(url, browser, site))
+
+								results = await asyncio.gather(*tasks)
+
+								for index, result in enumerate(results):
+									if result:
+										books.append(result)
+									else:
+										failed_urls.append(batch_urls[index])
+										logger.warning(f"Failed to scrape: {batch_urls[index]}")
+
+								if i + batch_size < total_urls:
+									print_log("Pausing between batches...", "info")
+									await asyncio.sleep(random.uniform(3, 5))
+
+
+
+
+
+					except Exception as e:
+						print_log(
+							f"Failed to launch Playwright browser: {e}. Playwright-based sites will be skipped.",
+							"critical")
+						module_logger.critical(f"Failed to launch Playwright browser: {e}", exc_info=True)
+						# Remove Playwright sites from SITES_TO_SCRAPE if browser launch fails
+						SITES_TO_SCRAPE[:] = [site for site in SITES_TO_SCRAPE if
+						                      site.lower() not in ["amazon", "packtpub", "oreilly"]]
+					# if not SITES_TO_SCRAPE:  # If no sites left to scrape
+					#     print_log("No sites left to scrape after browser launch failure. Exiting.", "error")
+					#     sys.exit(1)
+
+					print_log(f"{site_name.title()} - Searching for '{search_item}' using Playwright...", "info")
+					current_search_results = await get_search_results_via_playwright(
+						browser=browser,
+						site_name=site_name,
+						query=search_item,
+					)
 
 				# Compile all potential books found on all sites per search query
 				# site_books_from_search.extend(current_search_results)

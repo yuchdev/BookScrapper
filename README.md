@@ -27,7 +27,7 @@ To quickly start the application at this stage of development:
     TLS_CERT_FILE="/path/to/your/tls_certificate.pem" # Optional if not using client certificates
     ```
 3. cd into BookScraper project folder
-4. run `python -m src.search_and_scrape -m`
+4. run `python -m src.bookscraper.search_and_scrape -m`
 
 ---
 

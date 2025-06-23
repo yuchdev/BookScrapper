@@ -3,22 +3,20 @@ import asyncio
 import csv
 import time
 import sys
-import os
+import random
 
 import pandas as pd
 
-from playwright.async_api import async_playwright
-import random
+from playwright.async_api import async_playwright, Browser  # Import Browser for type hinting
 
 from bookscraper.book_utils import (
     print_log,
     logger,
-    check_csv_write_permission,
-    check_mongodb_connection,
-    get_default_urls_file,
-    create_default_urls_file)
+    check_csv_write_permission
+)
+from bookscraper.parameters import HEADLESS_BROWSER
 from bookscraper.scrape_details import scrape_book
-from bookscraper.database import save_books_to_mongodb
+from bookscraper.database import save_books_to_mongodb, get_mongo_collection  # Import new function
 
 
 def save_books_to_csv(books, filename="books.csv"):
@@ -31,60 +29,83 @@ def save_books_to_csv(books, filename="books.csv"):
         filename: The name of the CSV file to create.
     """
     if not books:
-        logger.info("No book data to save to CSV.")
+        logger.info(f"No book data to save to {filename}.")
         return
 
     try:
         # Get all the unique keys (fields) from all dictionaries
         fieldnames = set()
         for book in books:
-            if book:
+            # Ensure book is a dictionary before trying to get keys
+            if isinstance(book, dict):
                 fieldnames.update(book.keys())
         fieldnames = sorted(list(fieldnames))
-        logger.info(f"CSV fields: {fieldnames}")
+        logger.info(f"CSV fields for {filename}: {fieldnames}")
 
         with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, restval="")
             writer.writeheader()
             for book in books:
-                if book is not None:
-                    writer.writerow(book)  # Write each book's data
+                # Double-check before writing, ensuring it's a dictionary
+                if isinstance(book, dict):
+                    writer.writerow(book)
 
-        logger.info(f"Books saved to {filename}")
+        print_log(f"Successfully saved {len(books)} books to {filename}", "success")
+        logger.info(f"Successfully saved {len(books)} books to {filename}")
 
     except Exception as e:
-        logger.error(f"Error saving books to CSV: {e}")
+        logger.error(f"Error saving books to CSV ({filename}): {e}", exc_info=True)
+        print_log(f"Error: Could not write books to CSV file {filename}. Details: {e}", "error")
 
 
-def write_urls(urls_list, log_message, filename):
+def save_failed_urls_to_csv(failed_urls_with_status, filename="failed_books.csv"):
+    """
+    Saves the failed/duplicate URLs with their status to a CSV file.
+
+    Args:
+        failed_urls_with_status: A list of tuples, where each tuple is (url, status_string).
+        filename: The name of the CSV file to create.
+    """
+    if not failed_urls_with_status:
+        logger.info(f"No failed/duplicate URLs to save to {filename}.")
+        return
+
+    try:
+        with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["url", "status"])  # Add status header
+            for url, status in failed_urls_with_status:
+                writer.writerow([url, status])
+        print_log(f"Successfully saved {len(failed_urls_with_status)} failed/duplicate URLs to {filename}", "success")
+        logger.info(f"Successfully saved {len(failed_urls_with_status)} failed/duplicate URLs to {filename}")
+
+    except Exception as e:
+        logger.error(f"Error saving failed/duplicate URLs to CSV ({filename}): {e}", exc_info=True)
+        print_log(f"Error: Could not write failed/duplicate URLs to CSV file {filename}. Details: {e}", "error")
+
+
+def save_other_links_to_csv(other_links, filename="other_links.csv"):
+    """Saves the 'other' links (skipped URLs) to a CSV file."""
+    if not other_links:
+        logger.info(f"No 'other' links to save to {filename}.")
+        return
+
     try:
         with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["url"])
-            for url in urls_list:
+            for url in other_links:
                 writer.writerow([url])
-        logger.info(f"{log_message} {filename}")
+        print_log(f"Successfully saved {len(other_links)} 'other' links to {filename}", "success")
+        logger.info(f"Successfully saved {len(other_links)} 'other' links to {filename}")
 
     except Exception as e:
-        logger.error(f"Error saving failed URLs to CSV: {e}")
-
-def save_failed_urls_to_csv(failed_urls, filename="failed_books.csv"):
-    """Saves the failed URLs to a CSV file."""
-    if not failed_urls:
-        logger.info("No failed URLs to save.")
-        return
-    write_urls(urls_list=failed_urls, log_message="Failed URLs saved to", filename=filename)
-
-
-def save_other_links_to_csv(other_links, filename="other_links.csv"):
-    """Saves the 'other' links to a CSV file."""
-    if not other_links:
-        logger.info("No 'other' links to save.")
-        return
-    write_urls(urls_list=other_links, log_message="Other links saved to", filename=filename)
+        logger.error(f"Error saving 'other' links to CSV ({filename}): {e}", exc_info=True)
+        print_log(f"Error: Could not write 'other' links to CSV file {filename}. Details: {e}", "error")
 
 
 def identify_website(url):
+    """Identifies the website based on the URL."""
     if "amazon.com" in url:
         return "amazon"
     elif "packtpub.com" in url:
@@ -98,35 +119,14 @@ def identify_website(url):
 
 
 async def main():
+    start_time = time.time()
     parser = argparse.ArgumentParser(description="Scrape book details from URLs.")
-    parser.add_argument("-f", "--file",
-                        required=False,
-                        help=f"Path to the CSV file containing URLs. Default: {get_default_urls_file()}")
-    parser.add_argument("-c", "--csv",
-                        action="store_true",
+    parser.add_argument("-f", "--input_file", required=True, help="Path to the CSV file containing URLs to scrape.")
+    parser.add_argument("-c", "--output_to_csv", action="store_true",
                         help="Output scraped data to CSV files (books.csv, failed_books.csv, other_links.csv).")
-    parser.add_argument("-m", "--mongo", action="store_true", help="Output scraped data to a MongoDB database.")
-    args = parser.parse_args()  # Keep this outside try-except for standard arg parsing errors
+    parser.add_argument("-m", "--output_to_mongoDB", action="store_true", help="Output scraped data to a MongoDB Atlas database.")
 
-    # Use default URLs file if not specified
-    if not args.file:
-        args.file = get_default_urls_file()
-        logger.info(f"Using default URLs file: {args.file}")
-
-    # Create default URLs file if it doesn't exist
-    if not os.path.exists(args.file):
-        logger.info(f"URLs file not found at {args.file}. Creating it.")
-        if args.file == get_default_urls_file():
-            if create_default_urls_file():
-                logger.info(f"Created default URLs file at {args.file}")
-            else:
-                logger.critical(f"Failed to create default URLs file at {args.file}")
-                print_log(f"Critical Error: Failed to create default URLs file at {args.file}. Please check permissions.", "error")
-                sys.exit(1)
-        else:
-            logger.critical(f"URLs file not found at {args.file} and it's not the default file.")
-            print_log(f"Critical Error: The input file '{args.file}' was not found. Please check the path.", "error")
-            sys.exit(1)
+    args = parser.parse_args()
 
     # Pre-flight Checks for Output Destinations
     can_output_to_csv = False
@@ -136,47 +136,50 @@ async def main():
 
     # Check CSV write permissions
     print_log("  Checking CSV write permissions...", "info")
-    if check_csv_write_permission('.'):  # Check current directory
+    if check_csv_write_permission('.'):
         can_output_to_csv = True
         print_log("  CSV write permission: OK", "info")
     else:
         print_log("  CSV write permission: FAILED. CSV output will not be available.", "error")
-        # The check_csv_write_permission function already prints an error message
 
-    # Check MongoDB connection
+    # Initialize MongoDB client and collection
+    mongo_client = None
+    mongo_collection = None
+    # Always attempt MongoDB connection check as part of pre-flight, regardless of -m flag
     print_log("  Checking MongoDB connection...", "info")
-    if check_mongodb_connection():
+    mongo_client, mongo_collection = get_mongo_collection()
+    if mongo_client is not None and mongo_collection is not None:
         can_output_to_mongo = True
         print_log("  MongoDB connection: OK", "info")
     else:
         print_log("  MongoDB connection: FAILED. MongoDB output will not be available.", "error")
-        # The check_mongodb_connection function already prints an error message
+        # Do NOT set args.mongo = False here; can_output_to_mongo already reflects the failure.
 
     if not can_output_to_csv and not can_output_to_mongo:
         print_log("\nNo valid output destinations available. Please fix permission/MongoDB issues.", "error")
-        sys.exit(1)  # Exit if no output option is possible
+        sys.exit(1)
 
     # --- Pre-Scrape Output Confirmation with dynamic choices ---
+    # Determine initial output flags based on args and connection checks
     output_to_csv = args.csv and can_output_to_csv
-    output_to_mongo = args.mongo and can_output_to_mongo
+    output_to_mongo = args.mongo and can_output_to_mongo  # This will be true if -m is used AND connection was OK
 
-    if not output_to_csv and not output_to_mongo:  # Only prompt if no valid flags were passed or if checks failed
-        print_log("\nNo valid output destination specified via command line arguments (-c, -m).", "info")
+    # Only prompt if neither -c nor -m flags were passed
+    if not args.csv and not args.mongo:  # Changed condition to only prompt if no flags were given
+        print_log("No specific output destination chosen via command line arguments (-c, -m).", "info")
         prompt_options = []
         if can_output_to_csv:
             prompt_options.append("(C)SV")
         if can_output_to_mongo:
             prompt_options.append("(M)ongoDB")
-
-        # Add "Both" if both are available
         if can_output_to_csv and can_output_to_mongo:
             prompt_options.append("(B)oth")
 
         prompt_options_str = ", ".join(prompt_options)
-        prompt_options_str = prompt_options_str.replace(", (B)oth", " or (B)oth")  # Prettier formatting
+        prompt_options_str = prompt_options_str.replace(", (B)oth", " or (B)oth")
 
         while True:
-            if not prompt_options:  # Should not happen if previous sys.exit(1) works
+            if not prompt_options:
                 print_log("No output options available. Exiting.", "error")
                 sys.exit(1)
 
@@ -198,13 +201,19 @@ async def main():
             else:
                 print_log("Invalid choice or selected option is not available. Please try again.", "error")
 
-    # --- Continue with existing logic (URL Reading, Scraping Loop, Final Output Saving) ---
+    # If -c or -m was provided, we don't prompt, we just use those settings
+    elif args.csv and not can_output_to_csv:
+        print_log("CSV output requested but not available due to permission issues. Skipping CSV output.", "warning")
+    elif args.mongo and not can_output_to_mongo:
+        print_log("MongoDB output requested but not available due to connection issues. Skipping MongoDB output.",
+                  "warning")
 
     # Store URLs to scrape within a dictionary
     website_urls = {
         "amazon": [], "packtpub": [], "leanpub": [], "oreilly": [], "other": []
     }
-    failed_urls = []
+    # This will store (url, status) tuples for failed or duplicate entries
+    failed_urls_with_status = []
 
     filepath = args.file
     try:
@@ -228,18 +237,21 @@ async def main():
             "error")
         sys.exit(1)
 
-    all_urls = []
+    all_urls_to_scrape = []
     batch_size = 10
 
     for website, urls in website_urls.items():
         if website not in ["other"]:
-            print_log(f" {len(urls)} {website.capitalize()} URLs to scrape.", "info")
-            all_urls.extend(urls)
+            print_log(f"Found {len(urls)} {website.capitalize()} URLs to scrape.", "info")
+            all_urls_to_scrape.extend(urls)
         else:
-            print_log(f" {len(urls)} {website.capitalize()} URLs will be skipped and added to other_links.csv.", "info")
-    total_urls = len(all_urls)
+            print_log(
+                f"Found {len(urls)} {website.capitalize()} URLs which will be skipped and added to other_links.csv.",
+                "info")
 
-    if total_urls == 0:
+    total_urls_to_scrape = len(all_urls_to_scrape)
+
+    if total_urls_to_scrape == 0:
         print_log("No valid book URLs found to scrape. Saving skipped links and exiting.", "info")
         save_other_links_to_csv(website_urls["other"])
         sys.exit(0)
@@ -248,76 +260,100 @@ async def main():
     print_log("Starting web scraping operation...", "info")
     async with async_playwright() as p:
         print_log("Opening browser...", "info")
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
 
-        books = []
-        start_time = time.time()
+        books = []  # Stores successfully scraped book details (non-duplicates)
 
-        for i in range(0, total_urls, batch_size):
-            batch_urls = all_urls[i:i + batch_size]
-            print_log(
-                f"Starting batch {i // batch_size + 1} of {len(all_urls) // batch_size + (1 if len(all_urls) % batch_size else 0)}",
-                "info")
+        for i in range(0, total_urls_to_scrape, batch_size):
+            batch_urls = all_urls_to_scrape[i:i + batch_size]
+            current_batch_num = i // batch_size + 1
+            total_batches = (total_urls_to_scrape + batch_size - 1) // batch_size  # Ceiling division
+            print_log(f"Starting batch {current_batch_num} of {total_batches}", "info")
 
             tasks = []
             for url in batch_urls:
                 site = identify_website(url)
-                tasks.append(scrape_book(url, browser, site))
+                # Pass the mongo_collection to scrape_book for immediate duplicate check
+                # scrape_book will return a dict on success, or (None, "DUPLICATE"), or (None, "FAILED")
+                tasks.append(scrape_book(url, browser, site, mongo_collection))
 
             results = await asyncio.gather(*tasks)
 
             for index, result in enumerate(results):
-                if result:
+                if isinstance(result, dict):
+                    # This is a successfully scraped book (a dictionary)
                     books.append(result)
-                else:
-                    failed_urls.append(batch_urls[index])
-                    logger.warning(f"Failed to scrape: {batch_urls[index]}")
+                elif isinstance(result, tuple) and len(result) == 2 and result[0] is None:
+                    # This is a status tuple: (None, "DUPLICATE") or (None, "FAILED")
+                    original_url = batch_urls[index]
+                    status_type = result[1]  # "DUPLICATE" or "FAILED"
 
-            if i + batch_size < total_urls:
+                    # Add to failed_urls_with_status for diagnostic CSV
+                    failed_urls_with_status.append((original_url, status_type))
+
+                    if status_type == "DUPLICATE":
+                        logger.info(f"Book from URL: {original_url} detected as duplicate and skipped from saving.")
+                    elif status_type == "FAILED":
+                        logger.error(f"Scraping failed for URL: {original_url}")
+                else:
+                    # Catch-all for unexpected return types from scrape_book
+                    original_url = batch_urls[index]
+                    logger.error(f"Unexpected return type from scrape_book for URL: {original_url}. Result: {result}")
+                    failed_urls_with_status.append(
+                        (original_url, "UNKNOWN_ERROR"))  # Add to failed_urls for diagnostics
+
+            if current_batch_num < total_batches:  # Only pause if there are more batches
                 print_log("Pausing between batches...", "info")
                 await asyncio.sleep(random.uniform(3, 5))
 
+        total_scraped_books = len(books)  # Only counts successfully scraped books
+        total_time_taken = time.time() - start_time
         print_log("Shutting down browser...", "info")
-        total_time = time.time() - start_time
         print_log(
-            f"{total_urls} URLs processed in {total_time:.2f} seconds at a rate of {total_time / total_urls:.2f}s per URL",
+            f"{total_scraped_books} unique books scraped from {total_urls_to_scrape} URLs processed in {total_time_taken:.2f} seconds.",
             "info")
+        if total_scraped_books > 0:
+            print_log(f"Average time per unique book: {total_time_taken / total_scraped_books:.2f}s", "info")
+        else:
+            print_log("No unique books were scraped successfully.", "warning")
 
         await browser.close()
 
     # Output Saving Based on Resolved Choices and pre-flight checks
-    if output_to_csv and can_output_to_csv:  # Ensure we can still output to CSV
+    if output_to_csv and can_output_to_csv:
         print_log("Saving scraped books to CSV files...", "info")
-        save_books_to_csv(books)
-        save_failed_urls_to_csv(failed_urls)
+        save_books_to_csv(books)  # This now only contains dictionaries
+        save_failed_urls_to_csv(failed_urls_with_status)  # This contains URLs and their statuses
         save_other_links_to_csv(website_urls["other"])
     else:
         print_log("CSV output not requested or not available.", "info")
+        # If primary CSV output was not chosen or available, still save diagnostic files if possible
+        if can_output_to_csv:
+            print_log("Saving diagnostic failed/other links to CSV (as primary CSV output for books was not chosen).",
+                      "info")
+            save_failed_urls_to_csv(failed_urls_with_status)
+            save_other_links_to_csv(website_urls["other"])
+        else:
+            logger.warning("Failed to save diagnostic failed/other links to CSV due to lack of write permissions.")
+            print_log("Warning: Failed to save diagnostic failed/other links to CSV due to lack of write permissions.",
+                      "warning")
 
-    if output_to_mongo and can_output_to_mongo:  # Ensure we can still output to Mongo
+    if output_to_mongo and can_output_to_mongo:
         print_log("Saving scraped books to MongoDB...", "info")
         if books:
-            save_books_to_mongodb(books)
+            # Pass the mongo_collection to save_books_to_mongodb
+            # Use asyncio.to_thread as save_books_to_mongodb might be synchronous
+            await asyncio.to_thread(save_books_to_mongodb, books, mongo_collection)
         else:
-            print_log("No books scraped to save to MongoDB.", "info")
+            print_log("No new unique books scraped to save to MongoDB.", "info")
     else:
         print_log("MongoDB output not requested or not available.", "info")
 
-    # Always save diagnostic files if any scraping occurred and CSV was not explicitly chosen
-    # and CSV output is possible. This is a bit tricky now with dynamic choice.
-    # The most robust way is to always try to save failed/other if possible,
-    # regardless of the primary output choice.
-    if can_output_to_csv:  # Only attempt if write permission exists
-        if not output_to_csv:  # If CSV for books wasn't chosen OR wasn't available
-            print_log(
-                "Saving diagnostic failed/other links to CSV (as primary CSV output for books was not chosen or available).",
-                "info")
-            save_failed_urls_to_csv(failed_urls)
-            save_other_links_to_csv(website_urls["other"])
-    else:
-        logger.warning("Failed to save diagnostic failed/other links to CSV due to lack of write permissions.")
-        print_log("Warning: Failed to save diagnostic failed/other links to CSV due to lack of write permissions.",
-                  "warning")
+    # Ensure MongoDB client is closed
+    if mongo_client:
+        mongo_client.close()
+        logger.info("MongoDB client closed.")
+        print_log("MongoDB client closed.", "info")
 
 
 if __name__ == "__main__":

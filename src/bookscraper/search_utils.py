@@ -42,9 +42,9 @@ async def get_leanpub_search_results_via_api(query: str):
 			}
 
 			try:
-				print_log(f"Leanpub - Fetching page {current_page}...", "info")
-				logger.info(f"Leanpub - Fetching page {current_page}...")
 				response = await client.get(base_url, params=params, timeout=30.0)
+				print_log(f"Leanpub - Fetching page {current_page}  at {response.url}...", "info")
+				logger.info(f"Leanpub - Fetching page {current_page} at {response.url}...")
 				response.raise_for_status()
 				data = response.json()
 
@@ -89,8 +89,10 @@ async def get_leanpub_search_results_via_api(query: str):
 
 				# Extend the main list of all extracted books
 				all_extracted_books.extend(books_on_current_page)
-				print_log(f"Leanpub - Fetched and processed {len(books_on_current_page)} books on page {current_page}.", "info")
-				logger.info(f"Leanpub - Fetched and processed {len(books_on_current_page)} books on page {current_page}.")
+				print_log(f"Leanpub - Found {len(books_on_current_page)} books on page {current_page}.",
+				          "info")
+				logger.info(
+					f"Leanpub - Found {len(books_on_current_page)} books on page {current_page}.")
 
 				#
 				if len(books_on_current_page) < 100:
@@ -118,8 +120,8 @@ async def get_leanpub_search_results_via_api(query: str):
 				logger.error(f"An unexpected error occurred while processing page {current_page}: {e}")
 				break  # Catch any other unexpected errors
 
-	print_log(f"Leanpub - Finished searching for '{query}'. Total books found: {len(all_extracted_books)}", "info")
-	logger.info(f"Leanpub - Finished searching for '{query}'. Total books found: {len(all_extracted_books)}")
+	print_log(f"Leanpub - Found {len(all_extracted_books)} for '{query}'.\n", "success")
+	logger.info(f"Leanpub - Found {len(all_extracted_books)} for '{query}'.")
 	return all_extracted_books
 
 
@@ -197,7 +199,7 @@ async def get_search_results_via_playwright(browser: Browser, site_name: str, qu
 				parsed_query = quote_plus(query)
 				search_urls = [
 					f"{selectors['SEARCH_BASE_URL']}".replace("[k]", parsed_query).replace("[p]", str(p))
-					for p in range(1, selectors.get("SEARCH_MAXIMUM_PAGES"))
+					for p in range(1, selectors.get("SEARCH_MAXIMUM_PAGES") + 1)
 				]
 
 				for search_result_page in search_urls:
@@ -208,7 +210,7 @@ async def get_search_results_via_playwright(browser: Browser, site_name: str, qu
 					await page.route("**/*", route_handler)
 
 					try:
-						await page.goto(search_result_page, wait_until="domcontentloaded", timeout=60000)
+						await page.goto(search_result_page, wait_until="networkidle", timeout=60000)
 						await page.wait_for_load_state("networkidle", timeout=60000)
 						actual_url_after_goto = page.url
 						logger.info(f"Actual URL after navigation for page {current_page_num}: {actual_url_after_goto}")
@@ -238,9 +240,9 @@ async def get_search_results_via_playwright(browser: Browser, site_name: str, qu
 					for i, card in enumerate(book_cards):
 						book_data = {
 							"site": site_name,
-							"query": query,
-							"search_page_number": current_page_num,
-							"search_result_index": i + 1
+							# "query": query,
+							# "search_page_number": current_page_num,
+							# "search_result_index": i + 1
 						}
 						try:
 							link_element = card.locator(selectors["SEARCH_BOOK_DETAIL_LINK"])
@@ -283,45 +285,46 @@ async def get_search_results_via_playwright(browser: Browser, site_name: str, qu
 									# For non-Amazon sites, just join the URL
 									book_url = urljoin(site_constants[site_name]["BASE_URL"], raw_href)
 
-							book_data["url"] = book_url if book_url else None
-							# Amazon ASIN
-							if site_name == "amazon":
-								book_data["asin"] = asin if asin else None
-
 							# Extract Title
 							title_element = card.locator(selectors["SEARCH_TITLE"])
 							book_data[
 								"title"] = await title_element.text_content() if await title_element.count() > 0 else None
 
-							# Extract Authors
-							authors_elements = card.locator(selectors["SEARCH_AUTHORS"])
-							authors = []
-							if await authors_elements.count() > 0:
-								authors = await authors_elements.all_text_contents()
-							if site_name == "leanpub":
-								names_list = authors[0].split(' and ')
-								book_data["authors_from_search"] = names_list if authors else None
-							else:
-								book_data["authors_from_search"] = ", ".join(authors) if authors else None
+							# Amazon ASIN
+							book_data["asin"] = asin if asin else None
+
+							# Authors
+							# authors_elements = card.locator(selectors["SEARCH_AUTHORS"])
+							# authors = []
+							# if await authors_elements.count() > 0:
+							# 	authors = await authors_elements.all_text_contents()
+							# if site_name == "leanpub":
+							# 	names_list = authors[0].split(' and ')
+							# 	book_data["authors_from_search"] = names_list if authors else None
+							# else:
+							# 	book_data["authors_from_search"] = ", ".join(authors) if authors else None
+
+							# Book URL
+							book_data["book_url"] = book_url if book_url else None
 
 							# Extract Publication Date
-							publication_date_selector = selectors.get("SEARCH_PUBLICATION_DATE")
-							if publication_date_selector:
-								try:
-									date_element = card.locator(publication_date_selector)
-									book_data[
-										"publication_date"] = await date_element.text_content() if await date_element.count() > 0 else None
-								except Exception as e:
-									logger.warning(
-										f"Could not extract publication date for a book on {site_name} using selector '{publication_date_selector}'. Error: {e}")
-									book_data["publication_date"] = None
-							else:
-								# logger.info(f"No SEARCH_PUBLICATION_DATE selector defined for {site_name}.")
-								book_data["publication_date"] = None
+							# publication_date_selector = selectors.get("SEARCH_PUBLICATION_DATE")
+							# if publication_date_selector:
+							# 	try:
+							# 		date_element = card.locator(publication_date_selector)
+							# 		book_data[
+							# 			"publication_date"] = await date_element.text_content() if await date_element.count() > 0 else None
+							# 	except Exception as e:
+							# 		logger.warning(
+							# 			f"Could not extract publication date for a book on {site_name} using selector '{publication_date_selector}'. Error: {e}")
+							# 		book_data["publication_date"] = None
+							# else:
+							# 	# logger.info(f"No SEARCH_PUBLICATION_DATE selector defined for {site_name}.")
+							# 	book_data["publication_date"] = None
 
 							books_from_search_results.append(book_data)
 							logger.debug(
-								f"Extracted: {book_data.get('title')} by {book_data.get('authors_from_search')} ({site_name}) (URL: {book_data.get('url')}, ASIN: {book_data.get('asin')})")
+								f"Extracted: {book_data.get('title')} by {book_data.get('authors_from_search')} ({site_name}) (URL: {book_data.get('book_url')}, ASIN: {book_data.get('asin')})")
 
 						except Exception as e:
 							logger.error(
@@ -358,3 +361,120 @@ async def get_search_results_via_playwright(browser: Browser, site_name: str, qu
 		f"Finished search for '{query}' on {site_name}. Found {len(books_from_search_results)} preliminary books.",
 		"info")
 	return books_from_search_results
+
+
+# async def extract_packtpub_book_card_data(card_element: ElementHandle, base_url: str) -> Optional[Dict[str, Any]]:
+# 	"""
+# 	Extracts relevant book data from a single Packtpub product card ElementHandle.
+#
+# 	Args:
+# 		card_element: The Playwright ElementHandle for a 'div.product-card-v2'.
+# 		base_url: The base URL of the Packtpub site (e.g., "https://www.packtpub.com").
+#
+# 	Returns:
+# 		A dictionary containing the extracted book details, or None if essential data is missing.
+# 	"""
+# 	book_details = {"site": "packtpub"}
+#
+# 	try:
+# 		# --- Extract data from data-analytics-item attributes (EFFICIENT!) ---
+# 		book_details["title"] = await card_element.get_attribute("data-analytics-item-title")
+# 		book_details["isbn13"] = await card_element.get_attribute(
+# 			"data-analytics-item-id")  # This usually contains the ISBN-13
+# 		if book_details["isbn13"] and "-" in book_details["isbn13"]:
+# 			# Often in format US-9781835088258-EBOOK, extract the ISBN part
+# 			parts = book_details["isbn13"].split('-')
+# 			if len(parts) >= 2:
+# 				book_details["isbn13"] = parts[1]  # Assumes ISBN-13 is the second part
+# 		else:
+# 			book_details["isbn13"] = None  # If the format is unexpected or missing
+#
+# 		book_details["category"] = await card_element.get_attribute("data-analytics-item-category")
+# 		book_details["language"] = await card_element.get_attribute("data-analytics-item-language")
+# 		book_details["format"] = await card_element.get_attribute("data-analytics-item-format")  # e.g., "eBook"
+#
+# 		# Publication Year from data-attribute
+# 		publication_year_str = await card_element.get_attribute("data-analytics-item-publication-year")
+# 		try:
+# 			book_details["publication_year"] = int(publication_year_str) if publication_year_str else None
+# 		except ValueError:
+# 			book_details["publication_year"] = None
+#
+# 		# Prices from data-attributes
+# 		current_price_str = await card_element.get_attribute("data-price")
+# 		regular_price_str = await card_element.get_attribute("data-regular-price")
+# 		try:
+# 			book_details["current_price"] = float(current_price_str) if current_price_str else None
+# 			book_details["regular_price"] = float(regular_price_str) if regular_price_str else None
+# 		except ValueError:
+# 			book_details["current_price"] = None
+# 			book_details["regular_price"] = None
+#
+# 		# --- Extract from HTML elements ---
+#
+# 		# Book URL
+# 		link_selector = site_constants["packtpub"]["SEARCH_BOOK_LINK_SELECTOR"]
+# 		book_link_element = await card_element.query_selector(link_selector)
+# 		if book_link_element:
+# 			relative_url = await book_link_element.get_attribute("href")
+# 			book_details["url"] = urljoin(base_url, relative_url) if relative_url else None
+# 		else:
+# 			module_logger.warning(f"Packtpub: No link element found for card with title '{book_details.get('title')}'")
+# 			book_details["url"] = None
+#
+# 		# Cover Image URL
+# 		img_selector = site_constants["packtpub"]["SEARCH_IMAGE_SELECTOR"]
+# 		img_element = await card_element.query_selector(img_selector)
+# 		book_details["image_url"] = await img_element.get_attribute("src") if img_element else None
+#
+# 		# Authors (Note: Packtpub's search card doesn't directly show authors in the main view.
+# 		# They appear in the 'More Info' tooltip which might be loaded dynamically or requires clicking.
+# 		# For search results, we'll try to find them if they're available, otherwise mark as to be scraped later).
+# 		# Based on your HTML, authors are nested in product-info-authors-item, which is inside the tooltip.
+# 		# So, for search card, authors might not be available directly without clicking "MORE INFO".
+# 		# We will set this to None and expect detail scrape to fill it.
+# 		book_details["authors"] = []  # Initialize as empty list
+#
+# 		# You could try to scrape from the tooltip if it's always pre-rendered:
+# 		# author_selector = site_constants["packtpub"]["SEARCH_AUTHORS_SELECTOR"]
+# 		# authors_elements = await card_element.query_selector_all(author_selector)
+# 		# book_details["authors"] = [await a.text_content() for a in authors_elements if await a.text_content()]
+#
+# 		# Short Description / Subtitle (from the product card itself)
+# 		description_selector = site_constants["packtpub"]["SEARCH_DESCRIPTION_SELECTOR"]
+# 		description_element = await card_element.query_selector(description_selector)
+# 		book_details["short_description"] = await description_element.text_content() if description_element else None
+#
+# 		# Publication Date (from the product card itself)
+# 		# Note: Your HTML has "May 2024" directly under product-meta. This might be the best available.
+# 		# Full date like "May 31st 2024" is in the button's data-attribute.
+# 		publication_date_selector = site_constants["packtpub"]["SEARCH_PUBLICATION_DATE_SELECTOR"]
+# 		publication_date_element = await card_element.query_selector(publication_date_selector)
+# 		book_details[
+# 			"publication_date"] = await publication_date_element.text_content() if publication_date_element else None
+#
+# 		# Get pages from the product card meta
+# 		pages_selector = site_constants["packtpub"]["SEARCH_PAGES_SELECTOR"]
+# 		pages_element = await card_element.query_selector(pages_selector)
+# 		pages_text = await pages_element.text_content() if pages_element else None
+# 		if pages_text and "pages" in pages_text.lower():
+# 			try:
+# 				book_details["pages"] = int(pages_text.replace("pages", "").strip())
+# 			except ValueError:
+# 				book_details["pages"] = None
+# 		else:
+# 			book_details["pages"] = None
+#
+# 		# Generate hash for the book (crucial for deduplication later)
+# 		# For search results, we rely on title, authors (if available), and publication year
+# 		book_details["hash"] = hash_book(
+# 			title=book_details.get("title"),
+# 			authors=book_details.get("authors", []),  # Pass empty list if no authors found here
+# 			year=book_details.get("publication_year")
+# 		)
+#
+# 		return book_details
+#
+# 	except Exception as e:
+# 		module_logger.error(f"Error extracting data from Packtpub card: {e}", exc_info=True)
+# 		return None

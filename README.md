@@ -20,14 +20,47 @@ checks for output destinations, ensuring a smooth and resilient scraping experie
 
 To quickly start the application at this stage of development:
 
-1. Install requirements and virtual environment
-2. Ensure the .env file is set with:
-    ```dotenv
+1. Clone the repository
+    ```bash
+   git clone https://github.com/YannickLalonde/BookScraper.git
+   cd BookScraper
+    ```
+
+2. Activate virtual environment and install requirements (MacOS)
+    ```bash
+    python3 -m venv .venv
+   ```
+   or
+    ```bash
+    python -m venv .venv
+    ```
+   then
+    ```bash
+    source ./.venv/bin/activate
+    pip install -r requirements.txt
+    playwright install chromium
+    ```
+
+3. Ensure the BookScraper/.env file is set with:
+
+   ```dotenv
     MONGODB_URI="mongodb+srv://<username>:<password>@<cluster-url>/<database-name>?retryWrites=true&w=majority"
     TLS_CERT_FILE="/path/to/your/tls_certificate.pem" # Optional if not using client certificates
+   ```
+4. Change the search queries in src/bookscraper/parameters.py:
+   ```python
+   SEARCH_QUERIES = [
+     "C++",
+     "C++ Programming",
+     # ...
+   ]
+   ```
+5. Run the latest version of the BookScraper
+    ```bash
+    python3 -m src.bookscraper.search_and_scrape -m
     ```
-3. cd into BookScraper project folder
-4. run `python -m src.search_and_scrape -m`
+5. The results will be saved in your MongoDB Atlas, database "bookscraper_db", collection "books":
+   ![img.png](img.png)
 
 ---
 

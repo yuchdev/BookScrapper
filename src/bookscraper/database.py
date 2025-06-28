@@ -191,6 +191,7 @@ def save_books_to_mongodb(books: list[dict], mongo_collection: Collection = None
 			print_log(f"Error: MongoDB operation failed for {book.get('title', 'Unknown Title')}: {e}", "error")
 			num_errors += 1
 		except Exception as e:
+			print(book)
 			module_logger.error(f"Unexpected error during insertion of {book.get('title', 'Unknown Title')}: {e}",
 			                    exc_info=True)
 			print_log(f"Error: Unexpected error during insertion of {book.get('title', 'Unknown Title')}: {e}", "error")

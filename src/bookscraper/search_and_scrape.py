@@ -5,15 +5,15 @@ import logging
 import sys
 import time
 
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, Browser
 
-from .deduplicate import leanpub_prescrape_deduplicate
+from .deduplicate import leanpub_prescrape_deduplicate, amazon_prescrape_deduplicate
 
-from .book_utils import print_log, check_csv_write_permission, hash_book, extract_year_from_date
-from .scrape_details import scrape_book, get_leanpub_book_details
-from .database import save_books_to_mongodb, check_book_exists_in_db, update_book_isbn, get_mongo_collection, \
-	close_mongo_connection, check_amazon_asin_exists_in_db, check_for_new_books_before_scrape
-from .parameters import SEARCH_QUERIES, SITES_TO_SCRAPE, SCRAPE_FILTERS, HEADLESS_BROWSER, site_constants
+from .book_utils import print_log, check_csv_write_permission
+from .scrape_details import get_leanpub_book_details, get_html_book_details
+from .database import save_books_to_mongodb, get_mongo_collection, \
+	close_mongo_connection
+from .parameters import SEARCH_QUERIES, SITES_TO_SCRAPE, HEADLESS_BROWSER, site_constants
 from .search_utils import get_search_results_via_playwright, get_leanpub_search_results_via_api
 
 module_logger = logging.getLogger(__name__)
@@ -88,6 +88,8 @@ def save_failed_urls_to_csv(failed_urls: list[dict], filename="failed_urls.csv")
 
 	Returns:
 			None
+			:param failed_urls:
+			:param filename:
 	"""
 	if not failed_urls:
 		module_logger.info(f"No failed URLs to save to {filename}.")
@@ -122,8 +124,29 @@ def save_failed_urls_to_csv(failed_urls: list[dict], filename="failed_urls.csv")
 
 
 async def main():
+	"""
+	Main asynchronous function to run the book scraping application.
+
+	This function orchestrates the entire scraping process:
+
+	1. Parses command-line arguments for output preferences (CSV, MongoDB).
+	2. Performs pre-flight checks for CSV write permissions and MongoDB connectivity.
+	3. Prompts the user for output destination if not specified via arguments and
+	   validates the chosen options against pre-flight checks.
+	4. Iterates through predefined websites and search queries:
+	   - Initiates search operations (e.g., Leanpub via API, Amazon via Playwright).
+	   - Performs pre-scrape deduplication against existing data.
+	   - Queues and executes detailed scraping tasks for newly identified books.
+	5. Handles exceptions, including user interruption (KeyboardInterrupt).
+	6. Summarizes the scraping results, including the number of books scraped,
+	   failed attempts, and duplicates skipped.
+	7. Saves the scraped data to the selected output destinations (CSV and/or MongoDB).
+	8. Ensures proper closure of resources like MongoDB connections.
+	"""
+	print_log("=== Starting Application ===", "step")
+	module_logger.info("Starting application.")
+
 	start_time = time.time()
-	module_logger.info("Application started.")
 
 	parser = argparse.ArgumentParser(description="Find and scrape book data from various websites.")
 	parser.add_argument("-c", "--output_to_csv", action="store_true", help="Enable output to CSV files.")
@@ -136,11 +159,11 @@ async def main():
 	args = parser.parse_args()
 
 	# --- Pre-flight Checks for Output Destinations ---
-	print_log("Running pre-flight checks for output destinations...", "info")
-	print_log("Checking CSV write permissions...", "info")
+	print_log("\n--- Running pre-flight checks for output destinations ---", "step")
+	print_log("Checking CSV write permissions...")
 	can_output_to_csv = check_csv_write_permission()
 
-	print_log("Checking MongoDB connection...", "info")
+	print_log("Checking MongoDB connection...")
 	mongo_collection = get_mongo_collection()
 	can_output_to_mongo = mongo_collection is not None
 
@@ -153,7 +176,7 @@ async def main():
 	output_to_mongo = args.output_to_mongo
 
 	if not args.output_to_csv and not args.output_to_mongo:
-		print_log("No specific output destination chosen via command line arguments (-c, -m).", "info")
+		print_log("No specific output destination chosen via command line arguments (-c, -m).")
 		prompt_options = []
 		if can_output_to_csv: prompt_options.append("(C)SV")
 		if can_output_to_mongo: prompt_options.append("(M)ongoDB")
@@ -182,7 +205,7 @@ async def main():
 				output_to_mongo = True
 				break
 			elif choice == 'e':
-				print_log("Operation cancelled by user. Exiting.", "info")
+				print_log("Operation cancelled by user. Exiting.", "warning")
 				sys.exit(0)
 			else:
 				print_log("Invalid choice or selected option is not available. Please try again.", "error")
@@ -202,168 +225,409 @@ async def main():
 		sys.exit(1)
 
 	# --- Main Scraping Logic Starts Here ---
+	print_log("\n--- Starting Online Book Search ---", "step")
 	scraped_books_data = []  # List to store successfully scraped, detailed book dictionaries to save
 	failed_scrape_attempts = []  # List to store book data that failed detailed scraping
+	search_duplicates_skipped = 0  # To sum up search duplicates across all sites
 	total_duplicates_skipped = 0  # To sum up duplicates across all sites
-	books_from_search = []
+	unpublished_books = 0  # For Leanpub, unpublished books that are in progress
+	initial_search_results = 0  # Cross-site search results counter
 
 	try:
 		# --- Iterate through SITES_TO_SCRAPE and perform search + scrape ---
-		for site_name in SITES_TO_SCRAPE:
-			print_log(f"\n--- Processing {site_name.title()} ---", "step")
+		for site_name in [_.lower() for _ in SITES_TO_SCRAPE]:
+			site_title = site_name.title()
+			print_log(f"\nProcessing {site_title}...", "step")
 
-			for search_item in SEARCH_QUERIES:
-				current_search_results = []
-				# Leanpub-Specific
-				if site_name.lower() == "leanpub":
-					print_log(f"Leanpub - Searching for '{search_item}' via API...", "info")
+			# Leanpub
+			if site_name == "leanpub":
+				site_initial_search_results = []
+				leanpub_search_results = []
+				deduplicated_leanpub_search_results = []
 
-					# Get search results - Format: [{'site', 'title', 'book_id', 'slug', 'authors'}]
-					current_search_results = await get_leanpub_search_results_via_api(search_item)
+				for search_item in SEARCH_QUERIES:
+					print_log(f"{site_title} - Searching for '{search_item}' via API...", "step")
 
-					# Pre-scrape deduplication
-					print_log("Leanpub - Deduplicating search results...")
-					for book in current_search_results:
-						book_title = book.get("title")
-						book_id = book.get("book_id")
-						book_slug = book.get("slug")
-						book_url = site_constants["leanpub"]["SINGLE_BOOK_API"].replace("[slug]", book_slug)
-						book["book_url"] = book_url
-						exists = await asyncio.to_thread(leanpub_prescrape_deduplicate, book_id, book_slug)
+					# 1. Get search results - Format: [{'site', 'title', 'book_id', 'slug', 'authors'}]
+					site_initial_search_results += await get_leanpub_search_results_via_api(search_item)
+				initial_search_results += len(site_initial_search_results)
 
+				# 2. Pre-scrape deduplication
+				print_log(f"{site_title} - Deduplicating {len(site_initial_search_results)} search results...", "step")
+
+				# Deduplicate within search results by book_id
+				seen_ids = set()
+				for book in site_initial_search_results:
+					key_value = book.get("book_id")
+					if key_value not in seen_ids:
+						leanpub_search_results.append(book)
+						seen_ids.add(key_value)
+					else:
+						search_duplicates_skipped += 1
+						print_log(f'{site_title} - Duplicate book found in search results: "{book.get("title")}"',
+						          "warning")
+
+				# Deduplicate with Database Leanpub book_id and slug
+				db_deduplication_tasks = []
+				for book in leanpub_search_results:
+					book_id = book.get("book_id")
+					book_slug = book.get("slug")
+					book_url = site_constants["leanpub"]["SINGLE_BOOK_API"].replace("[slug]", book_slug)
+					book["book_url"] = book_url
+					db_deduplication_tasks.append(asyncio.to_thread(leanpub_prescrape_deduplicate, book_id, book_slug))
+
+				print_log(
+					f"Starting concurrent deduplication checks for {len(leanpub_search_results)} Leanpub books...")
+				exists_results = await asyncio.gather(*db_deduplication_tasks)
+				print_log(f"Finished concurrent deduplication checks for Leanpub books.", "info")
+
+				# 3. Process the results and build the deduplicated list
+				for i, book in enumerate(leanpub_search_results):
+					exists = exists_results[i]
+					if not exists:
+						deduplicated_leanpub_search_results.append(book)
+						print_log(f"{site_title} - New book found: {book.get('title')}", "success")
+					else:
+						total_duplicates_skipped += 1
+
+				print_log(f"{site_title} - Deduplication done.")
+
+				# 4. Scrape Leanpub Books
+				print_log(f"\n{site_title} - Scraping {len(deduplicated_leanpub_search_results)} potential new books.",
+				          "step")
+
+				site_scrape_tasks = []
+				for book_data_to_scrape in deduplicated_leanpub_search_results:
+					site_scrape_tasks.append(get_leanpub_book_details(url=book_data_to_scrape.get("book_url")))
+				if site_scrape_tasks:
+					current_site_scraped_results = await asyncio.gather(*site_scrape_tasks)
+					for result in current_site_scraped_results:
+						if result is not None:
+							scraped_books_data.append(result)
+						else:  # Handles the Leanpub unpublished books
+							unpublished_books += 1
+
+
+			# Amazon
+			elif site_name == "amazon":
+				site_initial_search_results = []
+				amazon_search_results = []
+				deduplicated_amazon_search_results = []
+
+				async with async_playwright() as p:
+					browser: Browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
+
+					for search_item in SEARCH_QUERIES:
+						print_log(f"{site_title} - Searching for '{search_item}' via Playwright...", "step")
+
+						# 1. Get search results - Format: {'site', 'title', 'asin', 'book_url'}
+						site_initial_search_results += await get_search_results_via_playwright(browser, 'amazon',
+						                                                                       search_item)
+					initial_search_results += len(site_initial_search_results)
+
+					# 2. Pre-scrape deduplication
+					print_log(f"{site_title} - Deduplicating {len(site_initial_search_results)} search results...",
+					          "step")
+
+					# Deduplicate within search results by book_id
+					seen_ids = set()
+					for book in site_initial_search_results:
+						key_value = book.get("asin")
+						if key_value not in seen_ids:
+							amazon_search_results.append(book)
+							seen_ids.add(key_value)
+						else:
+							search_duplicates_skipped += 1
+							print_log(f'{site_title} - Duplicate book found in search results: "{book.get("title")}"',
+							          "warning")
+
+					# Deduplicate with Database Amazon asin
+					db_deduplication_tasks = []
+					for book in amazon_search_results:
+						asin = book.get("asin")
+						db_deduplication_tasks.append(
+							asyncio.to_thread(amazon_prescrape_deduplicate, asin))
+
+					print_log(
+						f"Starting concurrent deduplication checks for {len(amazon_search_results)} {site_title} books...")
+					exists_results = await asyncio.gather(*db_deduplication_tasks)
+					print_log(f"Finished concurrent deduplication checks for {site_title} books.")
+
+					# 3. Process the results and build the deduplicated list
+					for i, book in enumerate(amazon_search_results):
+						exists = exists_results[i]
 						if not exists:
-							# Format: {'site', 'title', 'book_id', 'slug', 'authors', 'book_url'}
-							books_from_search.append(book)
-							print_log(f"{site_name.title()} - New book found: {book_title}", "success")
+							deduplicated_amazon_search_results.append(book)
+							print_log(f"{site_title} - New book found: {book.get('title')}", "success")
 						else:
 							total_duplicates_skipped += 1
-							print_log(f"{site_name.title()} - Book already in database: {book_title}", 'warning')
 
-				elif site_name.lower() == "amazon":
-					# Amazon
-					batch_size = 10
-					try:
-						async with async_playwright() as p:
-							browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
-							print_log("Playwright browser launched successfully.")
-							books = []
+					print_log(f"{site_title} - Deduplication done.")
 
-							for i in range(0, site_constants['amazon']['SEARCH_MAXIMUM_PAGES'], batch_size):
-								batch_urls = all_urls[i:i + batch_size]
-								print_log(
-									f"Starting batch {i // batch_size + 1} of {len(all_urls) // batch_size + (1 if len(all_urls) % batch_size else 0)}",
-									"info")
-
-								tasks = []
-								for url in batch_urls:
-									site = identify_website(url)
-									tasks.append(scrape_book(url, browser, site))
-
-								results = await asyncio.gather(*tasks)
-
-								for index, result in enumerate(results):
-									if result:
-										books.append(result)
-									else:
-										failed_urls.append(batch_urls[index])
-										logger.warning(f"Failed to scrape: {batch_urls[index]}")
-
-								if i + batch_size < total_urls:
-									print_log("Pausing between batches...", "info")
-									await asyncio.sleep(random.uniform(3, 5))
-
-
-
-
-
-					except Exception as e:
-						print_log(
-							f"Failed to launch Playwright browser: {e}. Playwright-based sites will be skipped.",
-							"critical")
-						module_logger.critical(f"Failed to launch Playwright browser: {e}", exc_info=True)
-						# Remove Playwright sites from SITES_TO_SCRAPE if browser launch fails
-						SITES_TO_SCRAPE[:] = [site for site in SITES_TO_SCRAPE if
-						                      site.lower() not in ["amazon", "packtpub", "oreilly"]]
-					# if not SITES_TO_SCRAPE:  # If no sites left to scrape
-					#     print_log("No sites left to scrape after browser launch failure. Exiting.", "error")
-					#     sys.exit(1)
-
-					print_log(f"{site_name.title()} - Searching for '{search_item}' using Playwright...", "info")
-					current_search_results = await get_search_results_via_playwright(
-						browser=browser,
-						site_name=site_name,
-						query=search_item,
-					)
-
-				# Compile all potential books found on all sites per search query
-				# site_books_from_search.extend(current_search_results)
-				print_log(f"Found {len(current_search_results)} potential new books for '{search_item}'.", "success")
-				module_logger.info(f"Found {len(current_search_results)} potential new books for '{search_item}'.")
-
-		# --- Deduplicate Cross-Site using ISBN / Fuzzy search / Hash ---
-		# new_books_for_detailed_scrape = await check_for_new_books_before_scrape(site_books_from_search)
-		new_books_for_detailed_scrape = books_from_search
-
-		# Calculate duplicates skipped for this site
-		# site_duplicates_skipped = len(site_books_from_search) - len(new_books_for_detailed_scrape)
-		# total_duplicates_skipped += site_duplicates_skipped
-
-		# print_log(
-		# 	f"{site_name.title()} - Identified {len(new_books_for_detailed_scrape)} new book{'s' if len(new_books_for_detailed_scrape) != 1 else ''} for detailed scraping (skipped {site_duplicates_skipped} duplicates).",
-		# 	"info")
-
-		# --- Queue Detailed Scraping Tasks for current site ---
-		site_scrape_tasks = []
-		for book_data_to_scrape in new_books_for_detailed_scrape:
-			if book_data_to_scrape['site'].lower() == "leanpub":
-				print_log(f"--- Scraping {len(book_data_to_scrape)} Book Data ---", "step")
-				# Scraping Leanpub details via httpx API
-				site_scrape_tasks.append(get_leanpub_book_details(url=book_data_to_scrape.get("book_url")))
-		# else:
-		# 	# Other sites use Playwright for detailed scraping
-		# 	if browser:  # Ensure browser is available
-		# 		site_scrape_tasks.append(
-		# 			scrape_book(url=book_data_to_scrape.get("book_url"), browser=browser,
-		# 			            site=book_data_to_scrape.get("site")))
-		# 	else:
-		# 		print_log(
-		# 			f"Skipping detailed scrape for {book_data_to_scrape.get('title', 'Unknown')} from {site_name} as Playwright browser is not available.",
-		# 			"warning")
-
-		# Run detailed scraping tasks for the current site concurrently
-		if site_scrape_tasks:
-			current_site_scraped_results = await asyncio.gather(*site_scrape_tasks, return_exceptions=True)
-
-			# Process results from detailed scraping for the current site
-			for original_book_data, result in zip(new_books_for_detailed_scrape, current_site_scraped_results):
-				if isinstance(result, dict):
-					scraped_books_data.append(result)
+					# 4. Scrape Amazon Books
 					print_log(
-						f"Successfully scraped details for: {result.get('title', 'Unknown Title')} from {site_name}",
-						"info")
-				elif isinstance(result, Exception):
-					failed_scrape_attempts.append({
-						"url": original_book_data.get("url", "N/A"),
-						"site": original_book_data.get("site", "N/A"),
-						"title": original_book_data.get("title", "N/A"),
-						"error": str(result)
-					})
-					print_log(
-						f"Failed to scrape details for {original_book_data.get('url', 'N/A')} from {site_name}: {str(result)}",
-						"error")
-				else:
-					failed_scrape_attempts.append({
-						"url": original_book_data.get("url", "N/A"),
-						"site": original_book_data.get("site", "N/A"),
-						"title": original_book_data.get("title", "N/A"),
-						"error": f"Detailed scrape returned unexpected type: {type(result)} - {str(result)}"
-					})
-					print_log(
-						f"Failed to scrape details for {original_book_data.get('url', 'N/A')} from {site_name}: Unexpected result type.",
-						"error")
-		else:
-			print_log(f"No new books identified for detailed scraping on {site_name}.", "info")
+						f"\n{site_title} - Scraping {len(deduplicated_amazon_search_results)} potential new books.",
+						"step")
 
+					site_scrape_tasks = []
+					for book_data_to_scrape in deduplicated_amazon_search_results:
+						site_scrape_tasks.append(get_html_book_details(book=book_data_to_scrape, browser=browser))
+					if site_scrape_tasks:
+						current_site_scraped_results = await asyncio.gather(*site_scrape_tasks)
+						for result in current_site_scraped_results:
+							if result is not None:
+								scraped_books_data.append(result)
+							else:  # Handles the Leanpub unpublished books
+								unpublished_books += 1
+
+
+			# Packtpub
+			elif site_name == "packtpub":
+				site_initial_search_results = []
+				packtpub_search_results = []
+				deduplicated_packtpub_search_results = []
+
+				async with async_playwright() as p:
+					browser: Browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
+
+					for search_item in SEARCH_QUERIES:
+						print_log(f"{site_title} - Searching for '{search_item}' via Playwright...", "step")
+
+						# 1. Get search results - Format: {'site', 'title', 'asin', 'book_url'}
+						site_initial_search_results += await get_search_results_via_playwright(browser, 'amazon',
+						                                                                       search_item)
+					initial_search_results += len(site_initial_search_results)
+
+					# 2. Pre-scrape deduplication
+					print_log(f"{site_title} - Deduplicating {len(site_initial_search_results)} search results...",
+					          "step")
+
+					# Deduplicate within search results by book_id
+					seen_ids = set()
+					for book in site_initial_search_results:
+						key_value = book.get("asin")
+						if key_value not in seen_ids:
+							amazon_search_results.append(book)
+							seen_ids.add(key_value)
+						else:
+							search_duplicates_skipped += 1
+							print_log(f'{site_title} - Duplicate book found in search results: "{book.get("title")}"',
+							          "warning")
+
+					# Deduplicate with Database Amazon asin
+					db_deduplication_tasks = []
+					for book in amazon_search_results:
+						asin = book.get("asin")
+						db_deduplication_tasks.append(
+							asyncio.to_thread(amazon_prescrape_deduplicate, asin))
+
+					print_log(
+						f"Starting concurrent deduplication checks for {len(amazon_search_results)} {site_title} books...")
+					exists_results = await asyncio.gather(*db_deduplication_tasks)
+					print_log(f"Finished concurrent deduplication checks for {site_title} books.")
+
+					# 3. Process the results and build the deduplicated list
+					for i, book in enumerate(amazon_search_results):
+						exists = exists_results[i]
+						if not exists:
+							deduplicated_amazon_search_results.append(book)
+							print_log(f"{site_title} - New book found: {book.get('title')}", "success")
+						else:
+							total_duplicates_skipped += 1
+
+					print_log(f"{site_title} - Deduplication done.")
+
+					# 4. Scrape Amazon Books
+					print_log(
+						f"\n{site_title} - Scraping {len(deduplicated_amazon_search_results)} potential new books.",
+						"step")
+
+					site_scrape_tasks = []
+					for book_data_to_scrape in deduplicated_amazon_search_results:
+						site_scrape_tasks.append(get_html_book_details(book=book_data_to_scrape, browser=browser))
+					if site_scrape_tasks:
+						current_site_scraped_results = await asyncio.gather(*site_scrape_tasks)
+						for result in current_site_scraped_results:
+							if result is not None:
+								scraped_books_data.append(result)
+							else:  # Handles the Leanpub unpublished books
+								unpublished_books += 1
+
+
+	#
+	# for original_book_data, result in zip(books_from_search, current_site_scraped_results):
+	# 	if isinstance(result, dict):
+	# 		scraped_books_data.append(result)
+	# 		print_log(
+	# 			f"Successfully scraped details for: {result.get('title')} from {site_name}",
+	# 			"success")
+	# 	elif isinstance(result, Exception):
+	# 		failed_scrape_attempts.append({
+	# 			"url": original_book_data.get("url", "N/A"),
+	# 			"site": original_book_data.get("site", "N/A"),
+	# 			"title": original_book_data.get("title", "N/A"),
+	# 			"error": str(result)
+	# 		})
+	# 		print_log(
+	# 			f"Failed to scrape details for {original_book_data.get('url', 'N/A')} from {site_name}: {str(result)}",
+	# 			"error")
+	# 	else:
+	# 		failed_scrape_attempts.append({
+	# 			"url": original_book_data.get("url", "N/A"),
+	# 			"site": original_book_data.get("site", "N/A"),
+	# 			"title": original_book_data.get("title", "N/A"),
+	# 			"error": f"Detailed scrape returned unexpected type: {type(result)} - {str(result)}"
+	# 		})
+	# 		print_log(
+	# 			f"Failed to scrape details for {original_book_data.get('url', 'N/A')} from {site_name}: Unexpected result type.",
+	# 			"error")
+
+	# exit(0)
+
+	# Packtpub
+	# Get search results - Format: {'site', 'title', '', 'book_url'}
+	# Pre-scrape deduplication
+	# Format: {'site', 'title', 'asin', 'book_url'}
+
+	# O'Reilly
+	# Get search results - Format: {'site', 'title', '', 'book_url'}
+	# Pre-scrape deduplication
+	# Format: {'site', 'title', 'asin', 'book_url'}
+
+	# --- Deduplicate Cross-Site using ISBN / Fuzzy search / Hash ---
+
+	# batch_size = 10
+	# try:
+	# 	async with async_playwright() as p:
+	# 		browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
+	# 		print_log("Playwright browser launched successfully.")
+	# 		all_urls = []
+	# 		books = []
+	#
+	# 		for i in range(0, site_constants['amazon']['SEARCH_MAXIMUM_PAGES'], batch_size):
+	# 			batch_urls = all_urls[i:i + batch_size]
+	# 			print_log(
+	# 				f"Starting batch {i // batch_size + 1} of {len(all_urls) // batch_size + (1 if len(all_urls) % batch_size else 0)}",
+	# 				"info")
+	#
+	# 			tasks = []
+	# 			for url in batch_urls:
+	# 				site = identify_website(url)
+	# 				tasks.append(scrape_book(url, browser, site))
+	#
+	# 			results = await asyncio.gather(*tasks)
+	#
+	# 			for index, result in enumerate(results):
+	# 				if result:
+	# 					books.append(result)
+	# 				else:
+	# 					failed_urls.append(batch_urls[index])
+	# 					logger.warning(f"Failed to scrape: {batch_urls[index]}")
+	#
+	# 			if i + batch_size < total_urls:
+	# 				print_log("Pausing between batches...", "info")
+	# 				await asyncio.sleep(random.uniform(3, 5))
+
+	# except Exception as e:
+	# 	print_log(
+	# 		f"Failed to launch Playwright browser: {e}. Playwright-based sites will be skipped.",
+	# 		"critical")
+	# 	module_logger.critical(f"Failed to launch Playwright browser: {e}", exc_info=True)
+	# 	# Remove Playwright sites from SITES_TO_SCRAPE if browser launch fails
+	# 	SITES_TO_SCRAPE[:] = [site for site in SITES_TO_SCRAPE if
+	# 	                      site.lower() not in ["amazon", "packtpub", "oreilly"]]
+	# if not SITES_TO_SCRAPE:  # If no sites left to scrape
+	#     print_log("No sites left to scrape after browser launch failure. Exiting.", "error")
+	#     sys.exit(1)
+
+	# print_log(f"{site_name.title()} - Searching for '{search_item}' using Playwright...", "info")
+	# current_search_results = await get_search_results_via_playwright(
+	# 	browser=browser,
+	# 	site_name=site_name,
+	# 	query=search_item,
+	# )
+
+	# Compile all potential books found on all sites per search query
+	# site_books_from_search.extend(current_search_results)
+	# print_log(f"Found {len(books_from_search)} potential new books.", "success")
+	# module_logger.info(f"Found {len(books_from_search)} potential new books.")
+
+	# --- Scrape books from different sites ---
+	# site_scrape_tasks = []
+	# print_log(f"\n--- Scraping {len(books_from_search)} Book Data ---", "step")
+
+	# async with async_playwright() as p:
+	# 	browser = await p.chromium.launch(headless=HEADLESS_BROWSER)
+
+	# for book_data_to_scrape in books_from_search:
+	# 	if book_data_to_scrape['site'].lower() == "leanpub":
+	# 		site_scrape_tasks.append(get_leanpub_book_details(url=book_data_to_scrape.get("book_url")))
+	# elif book_data_to_scrape['site'].lower() == "amazon":
+	# 	site_scrape_tasks.append(get_html_book_details(
+	# 		url=book_data_to_scrape.get("book_url"),
+	# 		browser=browser,
+	# 		site='amazon'))
+
+	# else:
+	# 	# Other sites use Playwright for detailed scraping
+	# 	if browser:  # Ensure browser is available
+	# 		site_scrape_tasks.append(
+	# 			scrape_book(url=book_data_to_scrape.get("book_url"), browser=browser,
+	# 			            site=book_data_to_scrape.get("site")))
+	# 	else:
+	# 		print_log(
+	# 			f"Skipping detailed scrape for {book_data_to_scrape.get('title', 'Unknown')} from {site_name} as Playwright browser is not available.",
+	# 			"warning")
+
+	# Run detailed scraping tasks for the current site concurrently
+	# if site_scrape_tasks:
+	# 	current_site_scraped_results = await asyncio.gather(*site_scrape_tasks, return_exceptions=True)
+
+	# Process results from detailed scraping for the current site
+	# for original_book_data, result in zip(books_from_search, current_site_scraped_results):
+	# 	if isinstance(result, dict):
+	# 		scraped_books_data.append(result)
+	# 		print_log(
+	# 			f"Successfully scraped details for: {result.get('title', 'Unknown Title')} from {site_name}",
+	# 			"info")
+	# 	elif isinstance(result, Exception):
+	# 		failed_scrape_attempts.append({
+	# 			"url": original_book_data.get("url", "N/A"),
+	# 			"site": original_book_data.get("site", "N/A"),
+	# 			"title": original_book_data.get("title", "N/A"),
+	# 			"error": str(result)
+	# 		})
+	# 		print_log(
+	# 			f"Failed to scrape details for {original_book_data.get('url', 'N/A')} from {site_name}: {str(result)}",
+	# 			"error")
+	# 	else:
+	# 		failed_scrape_attempts.append({
+	# 			"url": original_book_data.get("url", "N/A"),
+	# 			"site": original_book_data.get("site", "N/A"),
+	# 			"title": original_book_data.get("title", "N/A"),
+	# 			"error": f"Detailed scrape returned unexpected type: {type(result)} - {str(result)}"
+	# 		})
+	# 		print_log(
+	# 			f"Failed to scrape details for {original_book_data.get('url', 'N/A')} from {site_name}: Unexpected result type.",
+	# 			"error")
+	# else:
+	# 	print_log(f"No new books identified for detailed scraping on {site_name}.", "info")
+
+	# --- Post-Scrape cross-site deduplication ---
+
+	# --- Save to CSV/MongoDB ---
+
+	# --- Deduplicate Cross-Site using ISBN / Fuzzy search / Hash ---
+	# new_books_for_detailed_scrape = await check_for_new_books_before_scrape(site_books_from_search)
+	# new_books_for_detailed_scrape = books_from_search
+
+	# Calculate duplicates skipped for this site
+	# site_duplicates_skipped = len(site_books_from_search) - len(new_books_for_detailed_scrape)
+	# total_duplicates_skipped += site_duplicates_skipped
+
+	# print_log(
+	# 	f"{site_name.title()} - Identified {len(new_books_for_detailed_scrape)} new book{'s' if len(new_books_for_detailed_scrape) != 1 else ''} for detailed scraping (skipped {site_duplicates_skipped} duplicates).",
+	# 	"info")
 
 	except KeyboardInterrupt:
 		print_log("Scraping interrupted by user.", "warning")
@@ -383,10 +647,14 @@ async def main():
 	total_time = time.time() - start_time
 	print_log(f"\n--- Scraping Process Summary ---", "step")
 	print_log(f"Total scraping process completed in {total_time:.2f} seconds.")
+	print_log(f"{initial_search_results} book{'s' if initial_search_results != 1 else ''} found in initial search.")
 	print_log(f"{len(scraped_books_data)} new book{'s' if len(scraped_books_data) != 1 else ''} scraped.")
-	print_log(f"{len(failed_scrape_attempts)} URLs failed during detailed scrape.",
-	          "warning" if len(failed_scrape_attempts) > 0 else "info")
-	print_log(f"{total_duplicates_skipped} books already in the database and skipped.")
+	print_log(f"{search_duplicates_skipped} search duplicate{'s' if search_duplicates_skipped != 1 else ''} found.")
+	print_log(f"{total_duplicates_skipped} book{'s' if total_duplicates_skipped != 1 else ''} already in the database.")
+	print_log(f"{unpublished_books} unpublished book{'s' if unpublished_books != 1 else ''} skipped.")
+	print_log(
+		f"{len(failed_scrape_attempts)} URL{'s' if len(failed_scrape_attempts) != 1 else ''} failed during detailed scrape.",
+		"warning" if len(failed_scrape_attempts) > 0 else "info")
 
 	# --- Output Saving ---
 	print_log("\n--- Output Summary ---", "step")

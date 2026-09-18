@@ -7,17 +7,17 @@ from configparser import ConfigParser
 
 # Package-wide name
 cfg = ConfigParser()
-cfg.read(filenames=['setup.cfg'])
-VERSION = cfg.get('metadata', 'version')
+cfg.read(filenames=["setup.cfg"])
+VERSION = cfg.get("metadata", "version")
 
 # Home dir
 HOME = pathlib.Path.home()
 
 # Name with underscore (wheel filename)
-PACKAGE_NAME = cfg.get('metadata', 'name')
+PACKAGE_NAME = cfg.get("metadata", "name")
 
 # Name with dash (pip name, URL, S3 bucket)
-PACKAGE_NAME_DASH = PACKAGE_NAME.replace('_', '-')
+PACKAGE_NAME_DASH = PACKAGE_NAME.replace("_", "-")
 
 # Append package dir to sys.path
 PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__))))
@@ -27,10 +27,22 @@ sys.path.append(os.path.abspath(os.path.join(PROJECT_DIR, "src", PACKAGE_NAME)))
 HERE = pathlib.Path(__file__).parent
 
 # The text of the README file
-README = (HERE / "README.md").read_text(encoding='utf8')
+README = (HERE / "README.md").read_text(encoding="utf8")
 
 # Add possible dependencies here
 DEPENDENCIES = ["pathlib"]
+
+# Console-script entry points, declared in setup.cfg's [options.entry_points].
+# setup.py reads setup.cfg by hand via ConfigParser (rather than delegating to
+# setuptools' native setup.cfg support), so this section must be forwarded explicitly.
+ENTRY_POINTS = {}
+if cfg.has_section("options.entry_points"):
+    ENTRY_POINTS = {
+        section_key: [
+            line.strip() for line in value.strip().splitlines() if line.strip()
+        ]
+        for section_key, value in cfg.items("options.entry_points")
+    }
 
 # Github download link
 GITHUB_URL = "https://github.com/yuchdev/{PACKAGE_NAME}"
@@ -45,7 +57,9 @@ TARGET_TARBALL = f"{PACKAGE_NAME}-{VERSION}.tar.gz"
 GITHUB_DOWNLOAD = f"{GITHUB_URL}/releases/download/release.{VERSION}/{TARGET_TARBALL}"
 
 # AWS download link
-AWS_DOWNLOAD = f"https://{PACKAGE_NAME_DASH}.s3.us-east-1.amazonaws.com/packages/{WHEEL_FILE}"
+AWS_DOWNLOAD = (
+    f"https://{PACKAGE_NAME_DASH}.s3.us-east-1.amazonaws.com/packages/{WHEEL_FILE}"
+)
 
 # PyPI project page
 PYPI_URL = f"https://pypi.org/project/{PACKAGE_NAME_DASH}/"
@@ -71,13 +85,11 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 4 - Beta',
-
+        "Development Status :: 4 - Beta",
         # Indicate who your project is intended for
-        'Intended Audience :: Developers',
+        "Intended Audience :: Developers",
         "Intended Audience :: End Users/Desktop",
         "Intended Audience :: Science/Research",
-
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate you support Python 3. These classifiers are *not*
         # checked by 'pip install'. See instead 'python_requires' below.
@@ -85,9 +97,10 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    packages=find_packages(where=str(HERE / 'src')),
+    packages=find_packages(where=str(HERE / "src")),
     package_dir={"": "src"},
-    package_data={PACKAGE_NAME: ['defaults/*']},
+    package_data={PACKAGE_NAME: ["defaults/*"]},
     python_requires=">=3.8",
     install_requires=DEPENDENCIES,
+    entry_points=ENTRY_POINTS,
 )

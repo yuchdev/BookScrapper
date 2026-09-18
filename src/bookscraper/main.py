@@ -1,0 +1,26 @@
+import asyncio
+
+from .cli import build_parser
+from .commands import scrape_urls, search
+
+
+async def main() -> None:
+    parser = build_parser()
+    args = parser.parse_args()
+
+    if args.command == "scrape-urls":
+        await scrape_urls.run(args)
+    elif args.command == "search":
+        await search.run(args)
+    else:
+        # Unreachable: the subparsers are required=True.
+        parser.error(f"Unknown command: {args.command}")
+
+
+def main_sync() -> None:
+    """Synchronous wrapper so the console-script entry point and `python -m bookscraper` can call this directly."""
+    asyncio.run(main())
+
+
+if __name__ == "__main__":
+    main_sync()

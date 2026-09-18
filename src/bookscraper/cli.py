@@ -1,0 +1,69 @@
+import argparse
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Builds the `bookscraper` CLI's argument parser."""
+    parser = argparse.ArgumentParser(
+        prog="bookscraper",
+        description="Scrape and manage book metadata from Amazon, Leanpub, Packtpub, and O'Reilly.",
+    )
+    subparsers = parser.add_subparsers(
+        dest="command", required=True, metavar="{scrape-urls,search}"
+    )
+
+    scrape_parser = subparsers.add_parser(
+        "scrape-urls",
+        help="Scrape book details from a CSV of known URLs.",
+        description="Scrape book details from URLs listed in a CSV file (via Playwright).",
+    )
+    scrape_parser.add_argument(
+        "-f",
+        "--input-file",
+        dest="input_file",
+        required=True,
+        help="Path to the CSV file containing URLs to scrape (must have a 'url' column).",
+    )
+    scrape_parser.add_argument(
+        "-c",
+        "--output-to-csv",
+        dest="output_to_csv",
+        action="store_true",
+        help="Write scraped data to CSV files (books.csv, failed_books.csv, other_links.csv).",
+    )
+    scrape_parser.add_argument(
+        "-m",
+        "--output-to-mongo",
+        dest="output_to_mongo",
+        action="store_true",
+        help="Write scraped data to the configured MongoDB Atlas database.",
+    )
+
+    search_parser = subparsers.add_parser(
+        "search",
+        help="Search sites for new books matching configured queries, then scrape their details.",
+        description="Search configured sites for books matching SEARCH_QUERIES, deduplicate "
+        "against MongoDB, and scrape details for new results.",
+    )
+    search_parser.add_argument(
+        "-c",
+        "--output-to-csv",
+        dest="output_to_csv",
+        action="store_true",
+        help="Write scraped data to CSV files (scraped_books.csv, failed_urls.csv).",
+    )
+    search_parser.add_argument(
+        "-m",
+        "--output-to-mongo",
+        dest="output_to_mongo",
+        action="store_true",
+        help="Write scraped data to the configured MongoDB Atlas database.",
+    )
+    search_parser.add_argument(
+        "--max-search-pages",
+        dest="max_search_pages",
+        type=int,
+        default=3,
+        help="Maximum number of search-result pages to fetch per query per site (default: 3).",
+    )
+
+    return parser

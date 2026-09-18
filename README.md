@@ -20,14 +20,14 @@ checks for output destinations, ensuring a smooth and resilient scraping experie
 
 To quickly start the application at this stage of development:
 
-1. Install requirements and virtual environment
+1. Install requirements and virtual environment, then run `pip install -e .` to register the `bookscraper` command
 2. Ensure the .env file is set with:
     ```dotenv
     MONGODB_URI="mongodb+srv://<username>:<password>@<cluster-url>/<database-name>?retryWrites=true&w=majority"
     TLS_CERT_FILE="/path/to/your/tls_certificate.pem" # Optional if not using client certificates
     ```
 3. cd into BookScraper project folder
-4. run `python -m src.search_and_scrape -m`
+4. run `bookscraper search --output-to-mongo` (or `python -m bookscraper search --output-to-mongo` without installing)
 
 ---
 
@@ -106,6 +106,11 @@ purposes.
    ```bash
    playwright install chromium
    ```
+5. **Install the `bookscraper` package itself (registers the `bookscraper` command):**
+   ```bash
+   pip install -e .
+   ```
+   Without this step, the CLI is still runnable as `python -m bookscraper ...` from the project root.
 
 ### Configuration (`.env` file)
 
@@ -134,14 +139,14 @@ If you don't specify the configuration in the `.env` file, the application will 
 
 ## 💡 Usage
 
-The scraper requires an input CSV file containing the URLs to scrape.
+`bookscraper` has two subcommands: `scrape-urls` (scrape details for a known list of URLs) and `search` (discover
+new books by searching configured sites, then scrape their details). Run `bookscraper --help`,
+`bookscraper scrape-urls --help`, or `bookscraper search --help` for full option listings.
 
-### Input CSV Format
+### Input CSV Format (`scrape-urls`)
 
-The application uses a CSV file with a single column named `url`. If the file doesn't exist at the specified path (or at
-the default path if not specified), it will be created automatically with the header.
-
-Default path: `~/.bookscrapper/urls.txt`
+`scrape-urls` requires an input CSV file (`-f`/`--input-file`) with a single column named `url`. The file must
+already exist — it is not created automatically.
 
 Example content:
 
@@ -156,51 +161,62 @@ url
 
 ### Command-Line Arguments
 
-Run the `scrape_existing_books.py` script with the following arguments:
+**`scrape-urls`** — scrape details for a known list of URLs:
 
-* `-f` or `--file <path/to/urls.csv>`: **(Optional)** Specifies the path to your input CSV file containing book URLs. If
-  not provided, the default path `~/.bookscrapper/urls.txt` will be used. If the file doesn't exist, it will be created
-  automatically with the header.
-* `-c` or `--csv`: **(Optional)** If present, scraped data will be saved to `books.csv`, `failed_books.csv`, and
-  `other_links.csv` in the current directory.
-* `-m` or `--mongo`: **(Optional)** If present, scraped data will be saved to your configured MongoDB Atlas database.
+* `-f` or `--input-file <path/to/urls.csv>`: **(Required)** Path to your input CSV file containing book URLs.
+* `-c` or `--output-to-csv`: **(Optional)** If present, scraped data will be saved to `books.csv`, `failed_books.csv`,
+  and `other_links.csv` in the current directory.
+* `-m` or `--output-to-mongo`: **(Optional)** If present, scraped data will be saved to your configured MongoDB Atlas
+  database.
+
+**`search`** — discover new books by searching configured sites, then scrape their details:
+
+* `-c` or `--output-to-csv`: **(Optional)** If present, scraped data will be saved to `scraped_books.csv` and
+  `failed_urls.csv` in the current directory.
+* `-m` or `--output-to-mongo`: **(Optional)** If present, scraped data will be saved to your configured MongoDB Atlas
+  database.
+* `--max-search-pages <n>`: **(Optional)** Maximum number of search-result pages to fetch per query per site
+  (default: `3`).
 
 ### Examples
 
-1. **Scrape and save to CSV only (using default URLs file):**
+1. **Scrape a known list of URLs, save to CSV only:**
    ```bash
-   python src/scrape_existing_books.py -c
+   bookscraper scrape-urls -f urls.csv -c
    ```
-2. **Scrape and save to MongoDB only (using default URLs file):**
+2. **Scrape a known list of URLs, save to MongoDB only:**
    ```bash
-   python src/scrape_existing_books.py -m
+   bookscraper scrape-urls -f urls.csv -m
    ```
-3. **Scrape and save to both CSV and MongoDB (using default URLs file):**
+3. **Scrape a known list of URLs, save to both CSV and MongoDB:**
    ```bash
-   python src/scrape_existing_books.py -c -m
+   bookscraper scrape-urls -f urls.csv -c -m
    ```
-4. **Scrape and save to CSV only (using custom URLs file):**
+4. **Search configured sites for new books, save to CSV only:**
    ```bash
-   python src/scrape_existing_books.py -f urls.csv -c
+   bookscraper search -c
    ```
-5. **Scrape and save to MongoDB only (using custom URLs file):**
+5. **Search configured sites for new books, save to MongoDB only, up to 5 result pages per query:**
    ```bash
-   python src/scrape_existing_books.py -f urls.csv -m
+   bookscraper search -m --max-search-pages 5
    ```
-6. **Scrape and save to both CSV and MongoDB (using custom URLs file):**
+6. **Without installing the package, use `python -m bookscraper` instead of `bookscraper`:**
    ```bash
-   python src/scrape_existing_books.py -f urls.csv -c -m
+   python -m bookscraper scrape-urls -f urls.csv -c -m
+   python -m bookscraper search -c -m
    ```
-7. **Display help message:**
+7. **Display help messages:**
    ```bash
-   python src/scrape_existing_books.py --help
+   bookscraper --help
+   bookscraper scrape-urls --help
+   bookscraper search --help
    ```
 
 ### Interactive Output Selection
 
-If you run the script without specifying `-c` or `-m` (e.g., `python src/scrape_existing_books.py -f urls.csv`), the
-script will perform pre-flight checks for CSV write permissions and MongoDB connectivity. Based on the successful
-checks, it will then prompt you to choose your desired output destination interactively:
+If you run either subcommand without specifying `-c` or `-m` (e.g., `bookscraper scrape-urls -f urls.csv`), it will
+perform pre-flight checks for CSV write permissions and MongoDB connectivity. Based on the successful checks, it will
+then prompt you to choose your desired output destination interactively:
 
 ```
 Running pre-flight checks for output destinations...
@@ -237,12 +253,9 @@ The `BookScraper` utilizes a comprehensive logging system:
 
 * **Console Output:** Real-time progress and critical messages are printed to your terminal, often with color-coded
   statuses (e.g., yellow for info, red for errors).
-* **Log Files:** All messages (INFO, WARNING, ERROR, CRITICAL) are simultaneously written to timestamped log files in
-  the `~/.bookscrapper/logs/` directory with the naming format `bookscraper-YYYYMMDD-HHMMSS.log`. These files provide a
-  persistent and detailed record of the scraping process, including timestamps and full tracebacks for errors, which is
-  invaluable for debugging.
-* **Log Rotation:** The system automatically maintains the 5 most recent log files, removing older logs to prevent
-  excessive disk usage.
+* **Log File:** All messages (INFO, WARNING, ERROR, CRITICAL) are appended to `bookscraper.log` in the current working
+  directory, including timestamps and full tracebacks for errors, which is invaluable for debugging. This file is not
+  rotated — delete or archive it manually if it grows too large.
 
 -----
 
@@ -259,14 +272,18 @@ BookScraper/
 └── src/
     └── bookscraper/
         ├── __init__.py
-        ├── book_utils.py # Helper functions (logging, hashing, date extraction, pre-flight checks)
-        ├── database.py   # MongoDB interaction logic
-        ├── parameters.py # Site-specific constants (selectors, 404 titles)
-        └── scrape_details.py # Core scraping logic for each site (Playwright interactions)
-    └── scrape_existing_books.py # Main entry point for the CLI tool
+        ├── __main__.py        # Enables `python -m bookscraper`
+        ├── cli.py             # Argument parsing (the `bookscraper`/`scrape-urls`/`search` CLI)
+        ├── main.py            # Entry point; dispatches to commands/ (also the console-script target)
+        ├── output.py          # Shared pre-flight checks + interactive (C)SV/(M)ongo/(B)oth/(E)xit prompt
+        ├── commands/
+        │   ├── scrape_urls.py # "I already have URLs" workflow
+        │   └── search.py      # "Discover new books" workflow
+        ├── book_utils.py      # Helper functions (logging, hashing, date extraction, pre-flight checks)
+        ├── database.py        # MongoDB interaction logic
+        ├── parameters.py      # Site-specific constants (selectors, 404 titles)
+        └── scrape_details.py  # Core scraping logic for each site (Playwright interactions)
 ```
-
-Log files are stored in `~/.bookscrapper/logs/` with the naming format `bookscraper-YYYYMMDD-HHMMSS.log`.
 
 -----
 
